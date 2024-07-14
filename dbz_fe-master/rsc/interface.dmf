@@ -1,0 +1,86 @@
+macro "macro"
+	elem 
+		name = "Numpad0"
+		command = "look"
+	elem 
+		name = "Numpad1"
+		command = "southwest"
+	elem 
+		name = "Numpad2"
+		command = "south"
+	elem 
+		name = "Numpad3"
+		command = "southeast"
+	elem 
+		name = "Numpad4"
+		command = "west"
+	elem 
+		name = "Numpad5"
+		command = "who"
+	elem 
+		name = "Numpad6"
+		command = "east"
+	elem 
+		name = "Numpad7"
+		command = "northwest"
+	elem 
+		name = "Numpad8"
+		command = "north"
+	elem 
+		name = "Numpad9"
+		command = "northeast"
+	elem 
+		name = "Multiply"
+		command = "inventory"
+	elem 
+		name = "Add"
+		command = "down"
+	elem 
+		name = "Subtract"
+		command = "up"
+	elem 
+		name = "Decimal"
+		command = "hide"
+	elem 
+		name = "Divide"
+		command = "score"
+
+
+window "MAIN"
+	elem "MAIN"
+		type = MAIN
+		pos = 281,0
+		size = 800x600
+		anchor1 = none
+		anchor2 = none
+		background-color = #000000
+		is-default = true
+		saved-params = "pos;size;is-minimized;is-maximized"
+		title = "Drag(*)nBall Z: FE"
+		statusbar = false
+	elem "INPUT"
+		type = INPUT
+		pos = 0,574
+		size = 800x26
+		anchor1 = 1,96
+		anchor2 = 99,99
+		font-family = "Courier"
+		is-default = true
+		border = sunken
+		saved-params = ""
+	elem "OUTPUT"
+		type = OUTPUT
+		pos = 0,0
+		size = 800x576
+		anchor1 = 1,1
+		anchor2 = 99,94
+		font-family = "Courier New"
+		font-size = 10
+		font-style = "bold"
+		text-color = #ffffff
+		background-color = #000000
+		is-default = true
+		border = sunken
+		saved-params = "max-lines"
+		max-lines = 0
+

@@ -1,0 +1,1 @@
+var/nav_menu = "<br><a href=index.dmb>ONLINE PLAYERS</a> {W/{x <a href=changes.dmb>CHANGELOG</a> {W/{x <a href=play.php>PLAY</a>[breakL(3)]"

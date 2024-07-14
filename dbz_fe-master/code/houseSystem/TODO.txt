@@ -1,0 +1,94 @@
+* Add Kienzan to Aliens
+* Add world drop notification to gogeta belt's and zamazu's time ring
+Shared access
+Wardrobe Module
+Finish public buildings
+Show upgrades in map when inside
+Show turf configurations when doing Inspect
+Show upgrade current config values when looking
+Change shared access to allow "ALL"
+Add damage to training in gravity > 15
+
+(DONE)BUG: When inside a house, exits are not blocked appropriately
+(DONE)BUG: Walk-in messages for people outside the house are displayed while inside a house
+(DONE)Pending: Allow people to enter houses that have owner blank or 0
+(DONE)Add command to remove upgrades (if stash, move the contents to the player inventory)
+(PARTIALLY DONE) Prevent unbuild to remove a room if there are upgrades inside.
+(DONE)Modify ohearers to be instance-aware!!!
+(DONE)Set prices for capsules
+(DONE)Rework safe zone location to have public houses
+
+(DONE) * Make it so that a player can be inside a house
+  - Player can enter through an entrance
+  - When inside, only the house tiles are displayed
+  - Optional: Make it so that the outside map is displayed when there are no adjacent rooms (looking out the window) (Decided to reduce map size instead)
+(DONE) * Finish install command
+  - Requires module in inventory
+  - Module is removed from inventory when used
+  - Item is created in the room
+  - Upgrade is saved to DB
+  - Turf is updated in DB
+(DONE) * Add Inspect command so that people can see details about the current room 
+* Finish house upgrades
+  (DONE) - STASH
+    - Be able to use 'put' and 'loot' from a container (DONE)
+    - Be able to 'look' inside a container (DONE)
+    - Max stashed items = 10? (DONE)
+    - Display can be changed for customization and ease of access (DONE)
+    - Save to DB:
+      When put (DONE)
+      When loot (DONE)
+    - Optional: Can be accessed when the user has a key? (deferred)
+  (DONE)- TRAININGCONSOLE
+    - Define a new mob (DONE)
+    - Be able to use 'config', 'start' and 'stop' commands (DONE) 
+    - 'start' creates a BOT npc on the room and is saved it as a reference in the object (DONE)
+    - 'start' cannot be used again if there is a bot active (DONE)
+    - 'stop' cannot be used if the mob is in a fight (Deferred)
+    - config is able to set the techniques and difficulty the difficulty (DONE)
+  (DONE) - TELEPORTER
+    - Be able to use 'config' commands (DONE)
+    - Change teleport so that a player can teleport to a teleporter (DONE)
+  (PARTIALLY DONE)- GRAVITYGEN
+    - Be able to use 'config', 'start' and 'stop' commands
+    - If player falls unconscious and gravity >= 10 then kill
+  (DONE)- TELEPORTSHIELD
+    - Prevent Teleport to go to a turf with this upgrade in it
+  (DONE)- MEDPOD
+    - Implement something like healSafe() on the room
+    - Optional: Allow player to 'enter' and 'exit' MEDPOD
+  - Wardrobe
+    - Be able to use 'appearance' command
+    - Works as a small container. max items = 4
+    - Player is able to change Hair Style, Color, Length
+* Create NPC to sell capsules and modules
+* Create NPC for Training Bot
+  - Bot can provide random gains as pushups when techniques >= X and difficulty >= Y
+* Finish lock/unlock system
+  - When the key is in inventory, the player can lock unlock an entrance
+  - Keys can be stolen and used to unlock doors
+* Add "Config" command to be able to configure different upgrades
+  (DONE) - STASH
+    - Display can be named
+    - Save display and contents to DB
+  (DONE) - TRAININGCONSOLE
+    - Set BOT techniques
+    - Set BOT difficulty
+    - Save config to DB
+  (DONE) - TELEPORTER
+    - Set teleporter (unique) named
+    - Save name to DB
+  (PARTIALLY DONE) - GRAVITYGEN
+    - Set the gravity of the room
+    - Can be turned on and off
+    - Max Gravity: 100?
+    - If the player falls unconscious at gravity > 10, they can die
+    - Save gravity to DB
+  (DONE)- TELEPORTSHIELD
+    - Nothing to configure
+  (DONE)- MEDPOD
+    - Nothing to configure
+  - Wardrobe
+    - Can be a container
+    - Display can be named
+    - Save display and contents to DB

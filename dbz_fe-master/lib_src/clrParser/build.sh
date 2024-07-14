@@ -1,0 +1,1 @@
+g++ -m32 -shared -o parseText.so main.cpp

@@ -1,0 +1,876 @@
+
+// DM Environment file for DragonBall Z FE.dme.
+// All manual changes should be made outside the BEGIN_ and END_ blocks.
+// New source code should be placed in .dm files: choose File/New --> Code File.
+
+// BEGIN_INTERNALS
+// END_INTERNALS
+
+// BEGIN_FILE_DIR
+#define FILE_DIR .
+// END_FILE_DIR
+#if DM_VERSION<462
+#define findtextEx findText
+#define cmptextEx cmpText
+#define ckeyEx cKey
+#define sorttextEx sortText
+#elif DM_VERSION>461
+#define findText findtextEx
+#define cmpText cmptextEx
+#define cKey ckeyEx
+#define sortText sorttextEx
+#endif
+
+//#define _MYSQL
+#ifdef _MYSQL
+#define MYSQL_HOSTNAME "127.0.0.1"
+#define MYSQL_PORT 3306
+#define MYSQL_DATABASE "dbzfe"
+#define MYSQL_USER "root"
+#define MYSQL_PASSWORD "6734156m"
+#endif
+
+#define FPS 30
+#define MAX_CHAT_CHARACTERS 300
+
+#define cround(x) -round(-x)
+#define clamp(n, low, high) min(max(n, low), high)
+#define ceiling(X) ( (round(X) != (X)) ? (round(X) + 1) : (X) )
+#define isloc(a,b) (a:loc == b:loc) ? 1 : 0
+#define isinstance(a,b) (a:insideBuilding == b:insideBuilding) ? 1 : 0
+#define floor(X) round(X)
+#define round_near(X) round((X),1)
+#define SIGN(X) ((X<0)?-1:1)
+#define isplayer(n) istype(n, /mob/Player)
+#define isnpc(n) istype(n, /mob/NPA)
+#define isclient(n) istype(n, /mob/cClient)
+#define islist(n) istype(n, /list)
+#define isplanet(n) istype(n, /planet)
+#define isatom(n) istype(n, /atom)
+#define isitem(n) istype(n, /obj/item)
+#define checkForNewLine(T) replacetextEx(T,"\\n","\n")
+#define NULL null
+
+//TIME MACROS//
+#define DAYS    *864000
+#define DAY     *864000
+#define HOURS   *36000
+#define HOUR    *36000
+#define MINUTES *600
+#define MINUTE  *600
+#define SECONDS *10
+#define SECOND  *10
+#define TICKS   *1
+#define TICK    *1
+#define MILLISECONDS /100
+#define MILLISECOND  /100
+
+//Suggest System//
+#define PRIORITY_HIGH 2
+#define PRIORITY_LOW 1
+#define NO_PRIORITY 0
+
+#define STATUS_ACCEPTED 2
+#define STATUS_DENIED 1
+
+
+//DMM_SUITE
+#define DMM_IGNORE_AREAS 1
+#define DMM_IGNORE_TURFS 2
+#define DMM_IGNORE_OBJS 4
+#define DMM_IGNORE_NPCS 8
+#define DMM_IGNORE_PLAYERS 16
+#define DMM_IGNORE_MOBS 24
+
+/*
+Combat related defines
+*/
+#define PK_TIME 15 MINUTES
+#define fightTimerDefault 2 MINUTES
+#define fightStunChance 22.00
+#define fightTechGainChance 20.00
+#define fightComboChance 30.00
+#define fightComboGainChance 10.00
+#define fightOffenseGainChance 6.00
+#define fightShyoukenCombo 55.00
+#define fightExtendCombo 25.00
+#define	fightUIAttack 5.00
+#define DEFAULT_STUN_TIME 6.5 SECONDS
+
+#define comboGainPercent 0.60
+#define techGainPercent 0.70
+#define offenseGainPercent 0.60
+#define killNPCPercent 7.50
+#define killPlayerPercent 4.00
+#define deathPlayerPercent 2.50
+
+#define MYSTERY_BOX_GAIN 2.25
+#define EARTH_DB_COOLDOWN_TIME 6 HOURS
+#define NAMEK_DB_COOLDOWN_TIME 24 HOURS
+/*
+Combat related defines
+*/
+
+//Demon Weapons//
+#define DEMON_SWORD 1
+#define DEMON_WHIP 2
+#define DEMON_SHIELD 3
+
+//Item slots//
+#define EQUIPMENT_SLOTS 19
+#define SPECIAL_HEAD 1
+#define HEAD 2
+#define EYE 3
+#define EARS 4
+#define NECK 5
+#define SHOULDERS 6
+#define BACK 7
+#define CHEST 8
+#define WAIST 9
+#define ARMS 10
+#define WRISTS 11
+#define HANDS 12
+#define LEFT_FINGER 13
+#define RIGHT_FINGER 14
+#define LEGS 15
+#define KNEES 16
+#define FEET 17
+#define FINGERS 100
+#define BODY 18
+
+//Difficulty levels//
+#define VERY_EASY 1
+#define EASY 2
+#define MEDIUM 3
+#define HARD 4
+#define VERY_HARD 5
+#define INSANE 6
+#define FUSION 7
+#define HEROIC 8
+#define GOD 9
+#define EVENT_MOB 50
+//End difficulty levels//
+
+//MAP SIZE DEFINITIONS//
+//Small MAP
+#define SMAP_TOP 6
+#define SMAP_BOT 6
+#define SMAP_LEFT 16
+#define SMAP_RIGHT 16
+//Large MAP
+#define MMAP_TOP 10
+#define MMAP_BOT 10
+#define MMAP_LEFT 32
+#define MMAP_RIGHT 32
+//					//
+
+//Global Definitions //
+#define BYOND 1
+#define TELNET 2
+#define EARTH 1
+#define data_dir "world_files"
+#define www_dir "/var/www/html"
+#define crypto_salt "A495270!"
+#define MAX_PL 2.147e+025
+#define MIN_PL 1
+#define MIN_ENERGY 1
+#define SELF 10
+//					//
+
+//Log Definitions //
+#define LOG_OFF 6
+#define LOG_FATAL 5
+#define LOG_ERROR 4
+#define LOG_WARN 3
+#define LOG_INFO 2
+#define LOG_DEBUG 1
+#define LOG_TRACE 0
+#define LOG_ALL -1
+//				//
+
+//Client states//
+#define STATE_LOGIN 0
+#define STATE_CREATION 1
+#define STATE_PLAYING 20
+//				//
+
+//Sex types//
+#define MALE 0
+#define FEMALE 1
+#define UNKNOWN 2
+//			//
+
+//Turf types//
+#define DIRT 0
+#define WATER 1
+#define MOUNTAIN 2
+#define TREE 3
+#define WALL 4
+#define FLOOR 5
+#define BUILDING 6
+#define EXIT 7
+//			//
+//Skill types//
+#define MELEE 0
+#define DEFENSE 1
+#define FINISHER 2
+#define UTILITY 3
+#define ENERGY 4
+//			//
+
+//Race types//
+#define NPC 0
+#define SAIYAN 1
+#define HUMAN 2
+#define NAMEK 3
+#define ANDROID 4
+#define MUTANT 5
+#define SAIBAMAN 6
+#define ICER 7
+#define BIO_ANDROID 8
+#define ALIEN 9
+#define ARLIAN 10
+#define SHINJIN 11
+#define HALFBREED 12
+#define SPIRIT 13
+#define DEMON 14
+#define GENIE 15
+#define IMMORTAL 16
+#define GOD_RACE 17
+#define KAIO 18
+#define MAKYAN 19
+#define LEGENDARY_SAIYAN 20
+#define KANASSAN 21
+#define REMORT_ANDROID 22
+#define ALL_RACES 999 // For quest system mostly
+//			//
+
+//ALIGNMENT Types//
+#define GOOD 0
+#define EVIL 1
+#define NEUTRAL 2
+//				//
+
+//TEXT ALIGNMENT//
+#define LEFT	0
+#define CENTER	1
+#define RIGHT	2
+//				//
+
+#define SPACEPOD 909
+// BEGIN_PREFERENCES
+#define DEBUG
+// END_PREFERENCES
+
+//LOSE CONSCIOUSNESS//
+#define MSG_LOSE_CONSCIOUSNESS 1
+#define MSG_KNOCKED_OUT 2
+#define MSG_BOT_BEATEN 3
+//                      //
+
+//HELP SYSTEM SOURCES
+#define HELP_FROMCMD 0
+#define HELP_FROMDB 1
+
+// BEGIN_INCLUDE
+#include "DBZFE.dm"
+#include "code\dbProcs.dm"
+#include "code\respawnMob.dm"
+#include "code\sha256.dm"
+#include "code\clientProcs\client_MAIN.dm"
+#include "code\clientProcs\clientPrompt.dm"
+#include "code\clientProcs\clType.dm"
+#include "code\clientProcs\colorPrompt.dm"
+#include "code\commands\admin\addchange.dm"
+#include "code\commands\admin\addwiz.dm"
+#include "code\commands\admin\ban.dm"
+#include "code\commands\admin\bring.dm"
+#include "code\commands\admin\changalign.dm"
+#include "code\commands\admin\compile.dm"
+#include "code\commands\admin\control.dm"
+#include "code\commands\admin\copyover.dm"
+#include "code\commands\admin\create.dm"
+#include "code\commands\admin\dbloc.dm"
+#include "code\commands\admin\destroydbs.dm"
+#include "code\commands\admin\disconnect.dm"
+#include "code\commands\admin\event.dm"
+#include "code\commands\admin\fixstorage.dm"
+#include "code\commands\admin\freeze.dm"
+#include "code\commands\admin\ftdebug.dm"
+#include "code\commands\admin\gethelp.dm"
+#include "code\commands\admin\getquest.dm"
+#include "code\commands\admin\givequest.dm"
+#include "code\commands\admin\goto.dm"
+#include "code\commands\admin\invisible.dm"
+#include "code\commands\admin\ko.dm"
+#include "code\commands\admin\koall.dm"
+#include "code\commands\admin\loc.dm"
+#include "code\commands\admin\makelssj.dm"
+#include "code\commands\admin\mass.dm"
+#include "code\commands\admin\multiplay.dm"
+#include "code\commands\admin\notice.dm"
+#include "code\commands\admin\post.dm"
+#include "code\commands\admin\previewtext.dm"
+#include "code\commands\admin\query.dm"
+#include "code\commands\admin\reboot.dm"
+#include "code\commands\admin\remchange.dm"
+#include "code\commands\admin\remwiz.dm"
+#include "code\commands\admin\replysuggestion.dm"
+#include "code\commands\admin\repop.dm"
+#include "code\commands\admin\reset.dm"
+#include "code\commands\admin\resetcds.dm"
+#include "code\commands\admin\restore.dm"
+#include "code\commands\admin\scatterdbs.dm"
+#include "code\commands\admin\server.dm"
+#include "code\commands\admin\setform.dm"
+#include "code\commands\admin\setlc.dm"
+#include "code\commands\admin\setname.dm"
+#include "code\commands\admin\setpl.dm"
+#include "code\commands\admin\setzenni.dm"
+#include "code\commands\admin\shutdown.dm"
+#include "code\commands\admin\slay.dm"
+#include "code\commands\admin\snoop.dm"
+#include "code\commands\admin\stats.dm"
+#include "code\commands\admin\stopsnoop.dm"
+#include "code\commands\admin\summondbs.dm"
+#include "code\commands\admin\teach.dm"
+#include "code\commands\admin\unteach.dm"
+#include "code\commands\admin\updateranking.dm"
+#include "code\commands\admin\viewskills.dm"
+#include "code\commands\admin\whois.dm"
+#include "code\commands\admin\wiz_commands.dm"
+#include "code\commands\admin\wizlock.dm"
+#include "code\commands\admin\wsay.dm"
+#include "code\commands\public\afk.dm"
+#include "code\commands\public\alias.dm"
+#include "code\commands\public\alias_list.dm"
+#include "code\commands\public\ansi.dm"
+#include "code\commands\public\changes.dm"
+#include "code\commands\public\channel.dm"
+#include "code\commands\public\commands.dm"
+#include "code\commands\public\compare.dm"
+#include "code\commands\public\defenseonly.dm"
+#include "code\commands\public\defensetips.dm"
+#include "code\commands\public\delete.dm"
+#include "code\commands\public\destroy.dm"
+#include "code\commands\public\disablemap.dm"
+#include "code\commands\public\drop.dm"
+#include "code\commands\public\eat.dm"
+#include "code\commands\public\emote.dm"
+#include "code\commands\public\enter.dm"
+#include "code\commands\public\equipment.dm"
+#include "code\commands\public\examine.dm"
+#include "code\commands\public\exit.dm"
+#include "code\commands\public\give.dm"
+#include "code\commands\public\grab.dm"
+#include "code\commands\public\history.dm"
+#include "code\commands\public\inventory.dm"
+#include "code\commands\public\itemdb.dm"
+#include "code\commands\public\look.dm"
+#include "code\commands\public\loot.dm"
+#include "code\commands\public\map.dm"
+#include "code\commands\public\motd.dm"
+#include "code\commands\public\movement.dm"
+#include "code\commands\public\ooc.dm"
+#include "code\commands\public\open.dm"
+#include "code\commands\public\passwd.dm"
+#include "code\commands\public\pickup.dm"
+#include "code\commands\public\prompt.dm"
+#include "code\commands\public\pushups.dm"
+#include "code\commands\public\put.dm"
+#include "code\commands\public\quit.dm"
+#include "code\commands\public\radar.dm"
+#include "code\commands\public\remove.dm"
+#include "code\commands\public\reply.dm"
+#include "code\commands\public\report.dm"
+#include "code\commands\public\rest.dm"
+#include "code\commands\public\save.dm"
+#include "code\commands\public\say.dm"
+#include "code\commands\public\score.dm"
+#include "code\commands\public\shortnum.dm"
+#include "code\commands\public\simultaneous.dm"
+#include "code\commands\public\skills.dm"
+#include "code\commands\public\sleep.dm"
+#include "code\commands\public\smoke.dm"
+#include "code\commands\public\socials.dm"
+#include "code\commands\public\tell.dm"
+#include "code\commands\public\time.dm"
+#include "code\commands\public\top.dm"
+#include "code\commands\public\travel.dm"
+#include "code\commands\public\unalias.dm"
+#include "code\commands\public\wake.dm"
+#include "code\commands\public\wear.dm"
+#include "code\commands\public\who.dm"
+#include "code\commands\public\whois.dm"
+#include "code\commands\public\wish.dm"
+#include "code\commands\public\yell.dm"
+#include "code\commands\socials\agree.dm"
+#include "code\commands\socials\disagree.dm"
+#include "code\commands\socials\nod.dm"
+#include "code\commands\socials\poke.dm"
+#include "code\commands\socials\raise.dm"
+#include "code\commands\socials\shake.dm"
+#include "code\commands\socials\smile.dm"
+#include "code\commands\socials\tip.dm"
+#include "code\commands\socials\wave.dm"
+#include "code\commands\techniques\defines.dm"
+#include "code\commands\techniques\main.dm"
+#include "code\commands\techniques\alien\enhance.dm"
+#include "code\commands\techniques\alien\fury.dm"
+#include "code\commands\techniques\alien\timeskip.dm"
+#include "code\commands\techniques\android\absorb.dm"
+#include "code\commands\techniques\android\barrier.dm"
+#include "code\commands\techniques\android\drain.dm"
+#include "code\commands\techniques\android\eye_laser.dm"
+#include "code\commands\techniques\android\hikou.dm"
+#include "code\commands\techniques\android\mask.dm"
+#include "code\commands\techniques\android\neomachine.dm"
+#include "code\commands\techniques\android\overclock.dm"
+#include "code\commands\techniques\android\power_blitz.dm"
+#include "code\commands\techniques\android\rocketpunch.dm"
+#include "code\commands\techniques\android\superandroid.dm"
+#include "code\commands\techniques\android\upgrade.dm"
+#include "code\commands\techniques\bio_android\absorb.dm"
+#include "code\commands\techniques\bio_android\assimilate.dm"
+#include "code\commands\techniques\bio_android\imperfect.dm"
+#include "code\commands\techniques\bio_android\perfect.dm"
+#include "code\commands\techniques\bio_android\semiperfect.dm"
+#include "code\commands\techniques\bio_android\superperfect.dm"
+#include "code\commands\techniques\bio_android\tail_stab.dm"
+#include "code\commands\techniques\common\barrage.dm"
+#include "code\commands\techniques\common\blast.dm"
+#include "code\commands\techniques\common\burst.dm"
+#include "code\commands\techniques\common\deflect.dm"
+#include "code\commands\techniques\common\dodge.dm"
+#include "code\commands\techniques\common\duck.dm"
+#include "code\commands\techniques\common\elbow.dm"
+#include "code\commands\techniques\common\fly.dm"
+#include "code\commands\techniques\common\hammer.dm"
+#include "code\commands\techniques\common\heal.dm"
+#include "code\commands\techniques\common\jump.dm"
+#include "code\commands\techniques\common\kaioken.dm"
+#include "code\commands\techniques\common\kamehameha.dm"
+#include "code\commands\techniques\common\kiaihou.dm"
+#include "code\commands\techniques\common\kick.dm"
+#include "code\commands\techniques\common\masenko.dm"
+#include "code\commands\techniques\common\mine.dm"
+#include "code\commands\techniques\common\parry.dm"
+#include "code\commands\techniques\common\power.dm"
+#include "code\commands\techniques\common\punch.dm"
+#include "code\commands\techniques\common\regeneration.dm"
+#include "code\commands\techniques\common\renzoku.dm"
+#include "code\commands\techniques\common\revert.dm"
+#include "code\commands\techniques\common\roundhouse.dm"
+#include "code\commands\techniques\common\scan.dm"
+#include "code\commands\techniques\common\sense.dm"
+#include "code\commands\techniques\common\snapneck.dm"
+#include "code\commands\techniques\common\spinkick.dm"
+#include "code\commands\techniques\common\spirit_bomb.dm"
+#include "code\commands\techniques\common\summon.dm"
+#include "code\commands\techniques\common\superkamehameha.dm"
+#include "code\commands\techniques\common\sweep.dm"
+#include "code\commands\techniques\common\teleport.dm"
+#include "code\commands\techniques\common\throw.dm"
+#include "code\commands\techniques\common\ultrainstinct.dm"
+#include "code\commands\techniques\common\uppercut.dm"
+#include "code\commands\techniques\common\zanzoken.dm"
+#include "code\commands\techniques\demon\aristocrat.dm"
+#include "code\commands\techniques\demon\deity.dm"
+#include "code\commands\techniques\demon\flameslash.dm"
+#include "code\commands\techniques\demon\hellfirelance.dm"
+#include "code\commands\techniques\demon\lure.dm"
+#include "code\commands\techniques\demon\materialize.dm"
+#include "code\commands\techniques\demon\noble.dm"
+#include "code\commands\techniques\demon\siphon.dm"
+#include "code\commands\techniques\demon\slash.dm"
+#include "code\commands\techniques\demon\soulspear.dm"
+#include "code\commands\techniques\demon\stab.dm"
+#include "code\commands\techniques\demon\stonespit.dm"
+#include "code\commands\techniques\genie\assimilate.dm"
+#include "code\commands\techniques\genie\candy_beam.dm"
+#include "code\commands\techniques\genie\gack.dm"
+#include "code\commands\techniques\genie\kaikosen.dm"
+#include "code\commands\techniques\genie\kid.dm"
+#include "code\commands\techniques\genie\mend.dm"
+#include "code\commands\techniques\genie\regeneration.dm"
+#include "code\commands\techniques\genie\retsuzan.dm"
+#include "code\commands\techniques\genie\super.dm"
+#include "code\commands\techniques\genie\vanishing_beam.dm"
+#include "code\commands\techniques\halfbreed\burningattack.dm"
+#include "code\commands\techniques\halfbreed\finishbuster.dm"
+#include "code\commands\techniques\halfbreed\mystic.dm"
+#include "code\commands\techniques\halfbreed\onslaught.dm"
+#include "code\commands\techniques\human\destructodisc.dm"
+#include "code\commands\techniques\human\shyouken.dm"
+#include "code\commands\techniques\human\solarflare.dm"
+#include "code\commands\techniques\human\spirit_burst.dm"
+#include "code\commands\techniques\human\tribeam.dm"
+#include "code\commands\techniques\human\wolffangfist.dm"
+#include "code\commands\techniques\icer\arrogance.dm"
+#include "code\commands\techniques\icer\death_beam.dm"
+#include "code\commands\techniques\icer\deathball.dm"
+#include "code\commands\techniques\icer\form_2.dm"
+#include "code\commands\techniques\icer\form_3.dm"
+#include "code\commands\techniques\icer\form_4.dm"
+#include "code\commands\techniques\icer\form_5.dm"
+#include "code\commands\techniques\icer\gold_form.dm"
+#include "code\commands\techniques\icer\kienzan.dm"
+#include "code\commands\techniques\icer\tailwhip.dm"
+#include "code\commands\techniques\kaio\aura_slide.dm"
+#include "code\commands\techniques\kaio\gekiretsu.dm"
+#include "code\commands\techniques\kaio\heal.dm"
+#include "code\commands\techniques\kaio\kaioken.dm"
+#include "code\commands\techniques\kaio\kizan.dm"
+#include "code\commands\techniques\kaio\telekinesis.dm"
+#include "code\commands\techniques\namek\enhancednamek.dm"
+#include "code\commands\techniques\namek\fuse.dm"
+#include "code\commands\techniques\namek\heal.dm"
+#include "code\commands\techniques\namek\makosen.dm"
+#include "code\commands\techniques\namek\regeneration.dm"
+#include "code\commands\techniques\namek\specialbeamcannon.dm"
+#include "code\commands\techniques\namek\super_hearing.dm"
+#include "code\commands\techniques\namek\supernamek.dm"
+#include "code\commands\techniques\npc\saibaman.dm"
+#include "code\commands\techniques\saiyan\erasercannon.dm"
+#include "code\commands\techniques\saiyan\omegacannon.dm"
+#include "code\commands\techniques\saiyan\powerball.dm"
+#include "code\commands\techniques\saiyan\ssj.dm"
+#include "code\commands\techniques\saiyan\ssj2.dm"
+#include "code\commands\techniques\saiyan\ssj3.dm"
+#include "code\commands\techniques\saiyan\ssj4.dm"
+#include "code\commands\techniques\saiyan\ssjb.dm"
+#include "code\commands\techniques\saiyan\ssjg.dm"
+#include "code\commands\techniques\saiyan\ssjr.dm"
+#include "code\commands\techniques\saiyan\zenkai.dm"
+#include "code\commands\techniques\saiyan\evil\bigbang.dm"
+#include "code\commands\techniques\saiyan\evil\final_flash.dm"
+#include "code\commands\techniques\saiyan\evil\galickgun.dm"
+#include "code\commands\techniques\spirit\consecrate.dm"
+#include "code\commands\techniques\spirit\divinecannon.dm"
+#include "code\commands\techniques\spirit\haunt.dm"
+#include "code\commands\techniques\spirit\perception.dm"
+#include "code\commands\techniques\spirit\phantasm.dm"
+#include "code\commands\techniques\spirit\phaserun.dm"
+#include "code\commands\techniques\spirit\pulse.dm"
+#include "code\commands\techniques\spirit\purify.dm"
+#include "code\commands\techniques\spirit\revenant.dm"
+#include "code\commands\techniques\spirit\shade.dm"
+#include "code\commands\techniques\spirit\shadow.dm"
+#include "code\commands\techniques\spirit\spectre.dm"
+#include "code\commands\techniques\spirit\spiritwave.dm"
+#include "code\commands\techniques\spirit\telekinesis.dm"
+#include "code\helpSystem\commands.dm"
+#include "code\helpSystem\datum.dm"
+#include "code\helpSystem\immcommands.dm"
+#include "code\houseSystem\commands.dm"
+#include "code\houseSystem\datum.dm"
+#include "code\houseSystem\immcommands.dm"
+#include "code\houseSystem\items.dm"
+#include "code\houseSystem\npc.dm"
+#include "code\houseSystem\turf.dm"
+#include "code\lib\fa_text.dm"
+#include "code\lib\filters.dm"
+#include "code\lib\inputs.dm"
+#include "code\lib\inputs_borders.dm"
+#include "code\lib\ktext.dm"
+#include "code\lib\alaparser\readme.dm"
+#include "code\lib\alaparser\utility.dm"
+#include "code\lib\alaparser\commands\Command.dm"
+#include "code\lib\alaparser\impl\Alaparser.dm"
+#include "code\lib\alaparser\impl\atom.dm"
+#include "code\lib\alaparser\impl\Components.dm"
+#include "code\lib\alaparser\matching\ComponentGenerator.dm"
+#include "code\lib\alaparser\matching\ComponentResult.dm"
+#include "code\lib\alaparser\matching\Matcher.dm"
+#include "code\lib\alaparser\matching\MatcherComponent.dm"
+#include "code\lib\alaparser\options\Option.dm"
+#include "code\lib\alaparser\options\OptionParser.dm"
+#include "code\lib\alaparser\parsing\Parser.dm"
+#include "code\lib\alaparser\parsing\ParserInput.dm"
+#include "code\lib\alaparser\parsing\ParserOutput.dm"
+#include "code\lib\textlib\utils.dm"
+#include "code\logSystem\appender.dm"
+#include "code\logSystem\defines.dm"
+#include "code\logSystem\layout.dm"
+#include "code\logSystem\logger.dm"
+#include "code\misc\cloudDatum.dm"
+#include "code\misc\event_mob.dm"
+#include "code\misc\fArea.dm"
+#include "code\misc\fAtom.dm"
+#include "code\misc\fCMD.dm"
+#include "code\misc\fCombat.dm"
+#include "code\misc\fDatum.dm"
+#include "code\misc\fDragonball.dm"
+#include "code\misc\fDragonball_NAMEK.dm"
+#include "code\misc\fFactory.dm"
+#include "code\misc\fForm.dm"
+#include "code\misc\fMoon.dm"
+#include "code\misc\fObj.dm"
+#include "code\misc\fShop.dm"
+#include "code\misc\fTurf.dm"
+#include "code\misc\tips.dm"
+#include "code\mob\ai.dm"
+#include "code\mob\atkDatum.dm"
+#include "code\mob\bonusStats.dm"
+#include "code\mob\characterHandling.dm"
+#include "code\mob\creation_procs.dm"
+#include "code\mob\fEAttk.dm"
+#include "code\mob\fItem.dm"
+#include "code\mob\invProcs.dm"
+#include "code\mob\login.dm"
+#include "code\mob\planetTravel.dm"
+#include "code\mob\utilityDatum.dm"
+#include "code\mob\attacks\atkDatums\absorb.dm"
+#include "code\mob\attacks\atkDatums\barrage.dm"
+#include "code\mob\attacks\atkDatums\deflect.dm"
+#include "code\mob\attacks\atkDatums\dodge.dm"
+#include "code\mob\attacks\atkDatums\duck.dm"
+#include "code\mob\attacks\atkDatums\jump.dm"
+#include "code\mob\attacks\atkDatums\kick.dm"
+#include "code\mob\attacks\atkDatums\parry.dm"
+#include "code\mob\attacks\atkDatums\punch.dm"
+#include "code\mob\attacks\atkDatums\roundhouse.dm"
+#include "code\mob\attacks\atkDatums\snapneck.dm"
+#include "code\mob\attacks\atkDatums\spinkick.dm"
+#include "code\mob\attacks\atkDatums\sweep.dm"
+#include "code\mob\attacks\atkDatums\alien\alien_fury.dm"
+#include "code\mob\attacks\atkDatums\alien\timeskip.dm"
+#include "code\mob\attacks\atkDatums\android\barrier.dm"
+#include "code\mob\attacks\atkDatums\android\drain.dm"
+#include "code\mob\attacks\atkDatums\android\rocketpunch.dm"
+#include "code\mob\attacks\atkDatums\bio_android\absorb.dm"
+#include "code\mob\attacks\atkDatums\bio_android\assimilate.dm"
+#include "code\mob\attacks\atkDatums\bio_android\tail_stab.dm"
+#include "code\mob\attacks\atkDatums\common\elbow.dm"
+#include "code\mob\attacks\atkDatums\common\hammer.dm"
+#include "code\mob\attacks\atkDatums\common\sk_throw.dm"
+#include "code\mob\attacks\atkDatums\common\uppercut.dm"
+#include "code\mob\attacks\atkDatums\common\zanzoken.dm"
+#include "code\mob\attacks\atkDatums\demon\hellfirelance.dm"
+#include "code\mob\attacks\atkDatums\demon\lure.dm"
+#include "code\mob\attacks\atkDatums\demon\siphon.dm"
+#include "code\mob\attacks\atkDatums\demon\slash.dm"
+#include "code\mob\attacks\atkDatums\demon\stab.dm"
+#include "code\mob\attacks\atkDatums\demon\stonespit.dm"
+#include "code\mob\attacks\atkDatums\genie\assimilate.dm"
+#include "code\mob\attacks\atkDatums\genie\candy_beam.dm"
+#include "code\mob\attacks\atkDatums\genie\mend.dm"
+#include "code\mob\attacks\atkDatums\human\wolffangfist.dm"
+#include "code\mob\attacks\atkDatums\icer\tail_whip.dm"
+#include "code\mob\attacks\atkDatums\kaio\aura_slide.dm"
+#include "code\mob\attacks\atkDatums\kaio\kaio_heal.dm"
+#include "code\mob\attacks\atkDatums\namek\fuse.dm"
+#include "code\mob\attacks\atkDatums\namek\heal.dm"
+#include "code\mob\attacks\atkDatums\npc\self_destruct.dm"
+#include "code\mob\attacks\atkDatums\spirit\haunt.dm"
+#include "code\mob\attacks\atkDatums\spirit\pulse.dm"
+#include "code\mob\attacks\atkDatums\spirit\purify.dm"
+#include "code\mob\attacks\fEAttk\kiDef.dm"
+#include "code\mob\attacks\fEAttk\android\powerblitz.dm"
+#include "code\mob\attacks\fEAttk\common\blast.dm"
+#include "code\mob\attacks\fEAttk\common\energymine.dm"
+#include "code\mob\attacks\fEAttk\common\eye_laser.dm"
+#include "code\mob\attacks\fEAttk\common\kamehameha.dm"
+#include "code\mob\attacks\fEAttk\common\masenko.dm"
+#include "code\mob\attacks\fEAttk\common\renzoku.dm"
+#include "code\mob\attacks\fEAttk\common\spirit_bomb.dm"
+#include "code\mob\attacks\fEAttk\common\superkamehameha.dm"
+#include "code\mob\attacks\fEAttk\demon\flameslash.dm"
+#include "code\mob\attacks\fEAttk\demon\soulspear.dm"
+#include "code\mob\attacks\fEAttk\genie\gack.dm"
+#include "code\mob\attacks\fEAttk\genie\kaikosen.dm"
+#include "code\mob\attacks\fEAttk\genie\retsuzan.dm"
+#include "code\mob\attacks\fEAttk\genie\vanishing_beam.dm"
+#include "code\mob\attacks\fEAttk\halfbreed\burningattack.dm"
+#include "code\mob\attacks\fEAttk\halfbreed\finishbuster.dm"
+#include "code\mob\attacks\fEAttk\human\destructodisc.dm"
+#include "code\mob\attacks\fEAttk\human\solar_flare.dm"
+#include "code\mob\attacks\fEAttk\human\tri_beam.dm"
+#include "code\mob\attacks\fEAttk\icer\death_beam.dm"
+#include "code\mob\attacks\fEAttk\icer\deathball.dm"
+#include "code\mob\attacks\fEAttk\icer\kienzan.dm"
+#include "code\mob\attacks\fEAttk\kaio\gekiretsu.dm"
+#include "code\mob\attacks\fEAttk\kaio\kizan.dm"
+#include "code\mob\attacks\fEAttk\namek\makosen.dm"
+#include "code\mob\attacks\fEAttk\namek\specialbeamcannon.dm"
+#include "code\mob\attacks\fEAttk\saiyan_evil\bigbang.dm"
+#include "code\mob\attacks\fEAttk\saiyan_evil\erasercannon.dm"
+#include "code\mob\attacks\fEAttk\saiyan_evil\final_flash.dm"
+#include "code\mob\attacks\fEAttk\saiyan_evil\galickgun.dm"
+#include "code\mob\attacks\fEAttk\saiyan_evil\omegacannon.dm"
+#include "code\mob\attacks\fEAttk\saiyan_evil\powerball.dm"
+#include "code\mob\attacks\fEAttk\spirit\consecrate.dm"
+#include "code\mob\attacks\fEAttk\spirit\divinecannon.dm"
+#include "code\mob\attacks\fEAttk\spirit\spiritwave.dm"
+#include "code\mob\procs\formProcs.dm"
+#include "code\mob\procs\mobile.dm"
+#include "code\mob\races\_procs.dm"
+#include "code\mob\races\alien.dm"
+#include "code\mob\races\android.dm"
+#include "code\mob\races\bio_android.dm"
+#include "code\mob\races\demon.dm"
+#include "code\mob\races\genie.dm"
+#include "code\mob\races\halfbreed.dm"
+#include "code\mob\races\human.dm"
+#include "code\mob\races\icer.dm"
+#include "code\mob\races\immortal.dm"
+#include "code\mob\races\kaio.dm"
+#include "code\mob\races\kanassan.dm"
+#include "code\mob\races\legendary_saiyan.dm"
+#include "code\mob\races\namekian.dm"
+#include "code\mob\races\remort_android.dm"
+#include "code\mob\races\saiyan.dm"
+#include "code\mob\races\spirit.dm"
+#include "code\mob\skillDatum\arrogance.dm"
+#include "code\mob\skillDatum\barrier.dm"
+#include "code\mob\skillDatum\heal.dm"
+#include "code\mob\skillDatum\hikou.dm"
+#include "code\mob\skillDatum\kiaihou.dm"
+#include "code\mob\skillDatum\mask.dm"
+#include "code\mob\skillDatum\materialize.dm"
+#include "code\mob\skillDatum\mend.dm"
+#include "code\mob\skillDatum\onslaught.dm"
+#include "code\mob\skillDatum\perception.dm"
+#include "code\mob\skillDatum\phaserun.dm"
+#include "code\mob\skillDatum\regeneration.dm"
+#include "code\mob\skillDatum\shyouken.dm"
+#include "code\mob\skillDatum\telekenesis.dm"
+#include "code\npc\npc.dm"
+#include "code\npc\npc_procs.dm"
+#include "code\npc\planet_npcs\arlia.dm"
+#include "code\npc\planet_npcs\bas.dm"
+#include "code\npc\planet_npcs\earth.dm"
+#include "code\npc\planet_npcs\freezer.dm"
+#include "code\npc\planet_npcs\hfil.dm"
+#include "code\npc\planet_npcs\kaishin.dm"
+#include "code\npc\planet_npcs\king_kais.dm"
+#include "code\npc\planet_npcs\korins.dm"
+#include "code\npc\planet_npcs\moon.dm"
+#include "code\npc\planet_npcs\namek.dm"
+#include "code\npc\planet_npcs\npc_shops.dm"
+#include "code\npc\planet_npcs\snakeway.dm"
+#include "code\npc\planet_npcs\vegeta.dm"
+#include "code\player\player.dm"
+#include "code\player\main\commandQueue.dm"
+#include "code\player\main\outputBuffer.dm"
+#include "code\player\main\senseEnergy.dm"
+#include "code\procs\_params2list.dm"
+#include "code\procs\a_get_dir.dm"
+#include "code\procs\a_get_dist.dm"
+#include "code\procs\align_text.dm"
+#include "code\procs\build_map.dm"
+#include "code\procs\cap_first_letter.dm"
+#include "code\procs\cCooldowns.dm"
+#include "code\procs\checkPlane.dm"
+#include "code\procs\clearSpaces.dm"
+#include "code\procs\combo_option.dm"
+#include "code\procs\commafy.dm"
+#include "code\procs\compress_map.dm"
+#include "code\procs\cooldownLen.dm"
+#include "code\procs\coord.dm"
+#include "code\procs\deleteCharacter.dm"
+#include "code\procs\determine_attacks.dm"
+#include "code\procs\determine_stuff.dm"
+#include "code\procs\distance_order.dm"
+#include "code\procs\dragon_radar.dm"
+#include "code\procs\eff_color.dm"
+#include "code\procs\emit_death.dm"
+#include "code\procs\emit_message.dm"
+#include "code\procs\emit_power.dm"
+#include "code\procs\emit_self.dm"
+#include "code\procs\fake_difficulty.dm"
+#include "code\procs\fetchArg.dm"
+#include "code\procs\findin.dm"
+#include "code\procs\format_list.dm"
+#include "code\procs\format_text.dm"
+#include "code\procs\formatList.dm"
+#include "code\procs\get_area.dm"
+#include "code\procs\get_color.dm"
+#include "code\procs\get_lib.dm"
+#include "code\procs\get_nearby.dm"
+#include "code\procs\getName.dm"
+#include "code\procs\getNameFromDB.dm"
+#include "code\procs\grab.dm"
+#include "code\procs\isConcBreak.dm"
+#include "code\procs\isScanner.dm"
+#include "code\procs\meter.dm"
+#include "code\procs\mouter.dm"
+#include "code\procs\mPlus.dm"
+#include "code\procs\n_bubblesort.dm"
+#include "code\procs\n_check.dm"
+#include "code\procs\ohearers.dm"
+#include "code\procs\p_check.dm"
+#include "code\procs\parse_text.dm"
+#include "code\procs\percent.dm"
+#include "code\procs\percent_color.dm"
+#include "code\procs\percent_color_text.dm"
+#include "code\procs\pick_type.dm"
+#include "code\procs\playersInRoom.dm"
+#include "code\procs\processColor.dm"
+#include "code\procs\rand_decimal.dm"
+#include "code\procs\rColor.dm"
+#include "code\procs\read_file.dm"
+#include "code\procs\rot13.dm"
+#include "code\procs\rStrip_Escapes.dm"
+#include "code\procs\sanit_text.dm"
+#include "code\procs\sanitize_num.dm"
+#include "code\procs\search_for.dm"
+#include "code\procs\send.dm"
+#include "code\procs\short_num.dm"
+#include "code\procs\stack_items.dm"
+#include "code\procs\stack_list.dm"
+#include "code\procs\stunned.dm"
+#include "code\procs\syntax.dm"
+#include "code\procs\text_to_list.dm"
+#include "code\procs\time.dm"
+#include "code\procs\timeGetTime.dm"
+#include "code\procs\translate_defense.dm"
+#include "code\procs\view_list.dm"
+#include "code\procs\view_procedures.dm"
+#include "code\procs\wcheck.dm"
+#include "code\procs\word_wrap.dm"
+#include "code\procs\wrap.dm"
+#include "code\questSystem\commands.dm"
+#include "code\questSystem\main.dm"
+#include "code\questSystem\procs\awardItem.dm"
+#include "code\questSystem\procs\canComplete.dm"
+#include "code\questSystem\procs\checkItem.dm"
+#include "code\questSystem\procs\checkKill.dm"
+#include "code\questSystem\procs\checkPower.dm"
+#include "code\questSystem\procs\checkSkill.dm"
+#include "code\questSystem\procs\completeCheck.dm"
+#include "code\questSystem\procs\get.dm"
+#include "code\questSystem\procs\getRewards.dm"
+#include "code\questSystem\procs\grabItemName.dm"
+#include "code\questSystem\procs\grabNPCName.dm"
+#include "code\questSystem\procs\grabSkillName.dm"
+#include "code\questSystem\procs\hasItem.dm"
+#include "code\questSystem\procs\isCompleted.dm"
+#include "code\questSystem\procs\obtainQuest.dm"
+#include "code\questSystem\procs\printObjectives.dm"
+#include "code\questSystem\procs\questCheck.dm"
+#include "code\questSystem\procs\updateQuest.dm"
+#include "code\questSystem\procs\updateVariable.dm"
+#include "code\spacepod\movement.dm"
+#include "code\spacepod\spacePod.dm"
+#include "code\store-v2\commands.dm"
+#include "code\store-v2\immcommands.dm"
+#include "code\store-v2\procs.dm"
+#include "code\suggestSystem\commands.dm"
+#include "code\suggestSystem\main.dm"
+#include "rsc\interface.dmf"
+#include "worlds\A_EARTH.dmm"
+#include "worlds\B_NAMEK.dmm"
+#include "worlds\C_SPACE.dmm"
+#include "worlds\D_SNAKEWAY.dmm"
+#include "worlds\E_VOID.dmm"
+#include "worlds\F_ARLIA.dmm"
+#include "worlds\G_VEGETA.dmm"
+#include "worlds\H_FREEZER.dmm"
+#include "worlds\I_INSTANCES.dmm"
+#include "worlds\J_KAISHIN.dmm"
+#include "worlds\K_ADMIN_LOUNGE.dmm"
+#include "worlds\L_MOONS_1.dmm"
+#include "worlds\M_BAS.dmm"
+// END_INCLUDE
+

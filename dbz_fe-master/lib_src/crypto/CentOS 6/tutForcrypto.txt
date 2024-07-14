@@ -1,0 +1,8 @@
+for CentOS 6.
+yum install libstdc++.i686
+yum install gcc-c++*
+yum install glibc-devel.i686
+32 bit main http://pkgs.repoforge.org/cryptopp/cryptopp-5.5.2-1.el6.rf.i686.rpm
+rpm -i cryptopp-5.5.2-1.el6.rf.i686.rpm
+32bit devel http://pkgs.repoforge.org/cryptopp/cryptopp-devel-5.5.2-1.el6.rf.i686.rpm
+rpm -i cryptopp-devel-5.5.2-1.el6.rf.i686.rpm
