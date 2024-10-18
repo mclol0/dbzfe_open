@@ -8,4 +8,4 @@ proc
 		return "[h]h [m]m [s]s"
 	}
 
-	systemTime() return call(textLib,"systemTime")()
+	systemTime() return call_ext(textLib,"systemTime")()
