@@ -1,0 +1,15 @@
+# Admin
+/cfg/admin.txt
+world_files/bans.sav
+
+# Database
+dbzfe.db
+dbzfe.db-shm
+dbzfe.db-wal
+
+# Build
+DBZFE.dmb
+DBZFE.rsc
+
+# Logs
+error.log
