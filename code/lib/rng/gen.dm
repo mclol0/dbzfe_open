@@ -14,7 +14,7 @@ proc
 					turf/t = locate(XX,YY,zlevel)
 
 				if(t){
-					buffer += call(textLib,"ByondColors")(t.display)
+					buffer += call_ext(textLib,"ByondColors")(t.display)
 				}
 
 				if(XX >= world.maxx){ buffer += "<br />"; }

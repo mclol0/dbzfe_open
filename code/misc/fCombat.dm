@@ -168,7 +168,7 @@ fCombat
 		}
 
 		checkBreakDefense(mob/user, mob/target, damage=0, attack=NULL){
-			if(damage >= ret_percent_notrunc(40,target.currpl)){
+			if(damage >= ret_percent_notrunx(40,target.currpl)){
 				BROKEN_DEFENSE = TRUE;
 
 				if(attack != NULL){
@@ -184,7 +184,7 @@ fCombat
 
 		checkBreakBarrier(mob/user, mob/target, damage=0, attack=NULL){
 
-			if(damage >= ret_percent_notrunc(25,target.currpl)){
+			if(damage >= ret_percent_notrunx(25,target.currpl)){
 				BROKEN_DEFENSE = TRUE;
 
 				if(attack != NULL){

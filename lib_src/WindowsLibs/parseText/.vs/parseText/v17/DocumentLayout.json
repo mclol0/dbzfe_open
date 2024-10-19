@@ -1,0 +1,86 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Administrator\\Desktop\\GitProjs\\dbzfe_open\\lib_src\\parseText\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{FFDC4081-BE35-43E4-876C-A08A9AC1251D}|parseText\\parseText.vcxproj|C:\\Users\\Administrator\\Desktop\\GitProjs\\dbzfe_open\\lib_src\\parseText\\parseText\\parseText.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FFDC4081-BE35-43E4-876C-A08A9AC1251D}|parseText\\parseText.vcxproj|solutionrelative:parseText\\parseText.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FFDC4081-BE35-43E4-876C-A08A9AC1251D}|parseText\\parseText.vcxproj|C:\\Users\\Administrator\\Desktop\\GitProjs\\dbzfe_open\\lib_src\\parseText\\parseText\\parseText.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FFDC4081-BE35-43E4-876C-A08A9AC1251D}|parseText\\parseText.vcxproj|solutionrelative:parseText\\parseText.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FFDC4081-BE35-43E4-876C-A08A9AC1251D}|parseText\\parseText.vcxproj|C:\\Users\\Administrator\\Desktop\\GitProjs\\dbzfe_open\\lib_src\\parseText\\parseText\\dllmain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{FFDC4081-BE35-43E4-876C-A08A9AC1251D}|parseText\\parseText.vcxproj|solutionrelative:parseText\\dllmain.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:1:0:{d212f56b-c48a-434c-a121-1c5d80b59b9f}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{6324226f-61b6-4f28-92ee-18d4b5fe1e48}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "parseText.h",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\GitProjs\\dbzfe_open\\lib_src\\parseText\\parseText\\parseText.h",
+              "RelativeDocumentMoniker": "parseText\\parseText.h",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\GitProjs\\dbzfe_open\\lib_src\\parseText\\parseText\\parseText.h",
+              "RelativeToolTip": "parseText\\parseText.h",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAwwBwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-08-15T19:47:27.159Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "dllmain.cpp",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\GitProjs\\dbzfe_open\\lib_src\\parseText\\parseText\\dllmain.cpp",
+              "RelativeDocumentMoniker": "parseText\\dllmain.cpp",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\GitProjs\\dbzfe_open\\lib_src\\parseText\\parseText\\dllmain.cpp",
+              "RelativeToolTip": "parseText\\dllmain.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-08-15T19:46:47.782Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "parseText.cpp",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Desktop\\GitProjs\\dbzfe_open\\lib_src\\parseText\\parseText\\parseText.cpp",
+              "RelativeDocumentMoniker": "parseText\\parseText.cpp",
+              "ToolTip": "C:\\Users\\Administrator\\Desktop\\GitProjs\\dbzfe_open\\lib_src\\parseText\\parseText\\parseText.cpp",
+              "RelativeToolTip": "parseText\\parseText.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-08-15T19:46:47.511Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

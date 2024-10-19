@@ -257,7 +257,7 @@ mob
 			if(tech && tech.canFinish && src.currpl <= MIN_PL) {
 				if(DEAD) return
 
-				new /obj/item/corpse(src, killer, floor((gainZenni() + ret_percent_notrunc(killer.calcBonusMF(),gainZenni()) * 1.5)))
+				new /obj/item/corpse(src, killer, floor((gainZenni() + ret_percent_notrunx(killer.calcBonusMF(),gainZenni()) * 1.5)))
 
 				if(difficultyLevel == EVENT_MOB){
 					send("{Y\[{x{GEVENT{x{Y\]{x [raceColor(name)] has been slain by [killer.raceColor(killer.name)]!",game.players,TRUE);

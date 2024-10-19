@@ -302,7 +302,7 @@ mob
 		}
 
 		calcBonusPL(){
-			var/bonusPL = ret_percent_notrunc(((totalKi()) / POWERLEVEL_PER_KI * KI_PERCENT),maxpl);
+			var/bonusPL = ret_percent_notrunx(((totalKi()) / POWERLEVEL_PER_KI * KI_PERCENT),maxpl);
 
 			return floor(bonusPL);
 		}
@@ -316,9 +316,9 @@ mob
 				return round(((totalWeight()) / GAIN_PER_POUND * GAIN_PERCENT),0.01);
 			} else {
 				return round(((totalWeight()/3.5) / GAIN_PER_POUND * GRAVITY_GAIN_PERCENT ),0.01);
-				
+
 			}
-			
+
 		}
 
 		calcFlightBonus(){
