@@ -1,4 +1,4 @@
 proc
 	rColor(text){
-		return call(textLib,"ByondColors")(text)
+		return call_ext(textLib,"ByondColors")(text)
 	}
