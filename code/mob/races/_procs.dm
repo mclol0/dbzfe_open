@@ -58,6 +58,9 @@ proc
 			if(KAIO){
 				return "{w[text]{x"
 			}
+			if(DIETY){
+				return "{Y[text]{x"
+			}
 			if(MAKYAN){
 				return "{r[text]{x"
 			}
@@ -92,6 +95,7 @@ proc
 			if(ALIEN) return 300;
 			if(BIO_ANDROID) return 300;
 			if(SPIRIT) return 220;
+			if(DIETY) return 400;
 			if(IMMORTAL) return MAX_PL;
 
 			if(LEGENDARY_SAIYAN) return 500;
@@ -109,6 +113,7 @@ proc
 			if(HALFBREED) return "Halfbreed";
 			if(IMMORTAL) return "Immortal";
 			if(KAIO) return "Kaio";
+			if(DIETY) return "Diety";
 			if(MAKYAN) return "Makyan";
 			if(DEMON) return "Demon";
 			if(GENIE) return "Genie";
@@ -186,6 +191,9 @@ mob
 					}
 					if(KAIO){
 						return "{w[text]{x"
+					}
+					if(DIETY){
+						return "{Y[text]{x"
 					}
 					if(MAKYAN){
 						return "{r[text]{x"

@@ -242,6 +242,7 @@ Combat related defines
 #define LEGENDARY_SAIYAN 20
 #define KANASSAN 21
 #define REMORT_ANDROID 22
+#define DIETY 23
 #define ALL_RACES 999 // For quest system mostly
 //			//
 

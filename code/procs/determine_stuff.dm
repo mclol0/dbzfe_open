@@ -61,6 +61,7 @@ proc
 			if(LEGENDARY_SAIYAN){ return "Saiyan"; }
 			if(KANASSAN){ return "Kanassan"; }
 			if(REMORT_ANDROID) { return "Android"; }
+			if(DIETY){ return "Diety"; }
 		}
 
 		return "RACE ERROR.";

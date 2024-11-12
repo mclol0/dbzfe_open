@@ -93,6 +93,19 @@ mob
 						}
 					}
 
+					if(DIETY){
+						var/planet/area = get_area("earth")
+
+						if(area){
+							warpArea(rand(1,area.dx),rand(1,area.dy),area)
+							send("{Y\[{x{GEVENT{x{Y\]{x [raceColor(name)] is now roaming planet {YEarth{x!",game.players,TRUE);
+							startx=src.x
+							starty=src.y
+							startz=src.z
+							random_roam();
+						}
+					}
+
 					if(ALIEN){
 						var/planet/area = get_area("arlia")
 
