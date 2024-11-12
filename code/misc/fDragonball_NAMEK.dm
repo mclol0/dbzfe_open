@@ -104,11 +104,12 @@ obj/item/NAMEK_DRAGONBALLS
 
 		scatter(){
 			var/planet/area = get_area("namek");
+			if(area != null && area.dx != null && area.dy != null){
+				relocate:
+				warpArea(rand(1,area.dx),rand(1,area.dy),area)
 
-			relocate:
-			warpArea(rand(1,area.dx),rand(1,area.dy),area)
-
-			if(game.safeTypes.Find(loc.type)){ goto relocate; }
+				if(game.safeTypes.Find(loc.type)){ goto relocate; }
+			}
 		}
 
 		blink(){

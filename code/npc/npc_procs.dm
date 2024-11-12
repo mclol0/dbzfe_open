@@ -93,6 +93,19 @@ mob
 						}
 					}
 
+					if(DIETY){
+						var/planet/area = get_area("earth")
+
+						if(area){
+							warpArea(rand(1,area.dx),rand(1,area.dy),area)
+							send("{Y\[{x{GEVENT{x{Y\]{x [raceColor(name)] is now roaming planet {YEarth{x!",game.players,TRUE);
+							startx=src.x
+							starty=src.y
+							startz=src.z
+							random_roam();
+						}
+					}
+
 					if(ALIEN){
 						var/planet/area = get_area("arlia")
 
@@ -257,7 +270,7 @@ mob
 			if(tech && tech.canFinish && src.currpl <= MIN_PL) {
 				if(DEAD) return
 
-				new /obj/item/corpse(src, killer, floor((gainZenni() + ret_percent_notrunc(killer.calcBonusMF(),gainZenni()) * 1.5)))
+				new /obj/item/corpse(src, killer, floor((gainZenni() + ret_percent_notrunx(killer.calcBonusMF(),gainZenni()) * 1.5)))
 
 				if(difficultyLevel == EVENT_MOB){
 					send("{Y\[{x{GEVENT{x{Y\]{x [raceColor(name)] has been slain by [killer.raceColor(killer.name)]!",game.players,TRUE);

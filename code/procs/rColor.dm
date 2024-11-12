@@ -1,15 +1,15 @@
 proc
 	rColor(text, color, client){
 
-		if(!color){ return call(textLib,"StripColors")(text); }
+		if(!color){ return call_ext(textLib,"StripColors")(text); }
 
 		switch(client){
 			if(TELNET){
-				return call(textLib,"ParseColors")(text);
+				return call_ext(textLib,"ParseColors")(text);
 			}
 
 			if(BYOND){
-				return call(textLib,"ByondColors")(text);
+				return call_ext(textLib,"ByondColors")(text);
 			}
 		}
 

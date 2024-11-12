@@ -1,1 +1,1 @@
-proc/trunc(x){ return x && x / abs(x) * round(abs(x)); }
+proc/trunx(x){ return x && x / abs(x) * round(abs(x)); }

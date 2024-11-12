@@ -2,7 +2,8 @@ var/DBZFE/game = new()
 var/Shop/shop = new()
 var/MUDbase/MUDbase = new()
 var/fQuest_Factory/qFac = new/fQuest_Factory
-var/textLib = getLib("parseText");
+var/textLib = "lib/unix/parseText.so";
+var/cryptoLib = "lib/unix/crypto.so";
 
 world
 	name = "Drag(*)nBall Z: Fighter Edition (ALPHA)"

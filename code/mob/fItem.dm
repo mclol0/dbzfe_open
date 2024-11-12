@@ -3972,7 +3972,7 @@ obj/item/
 				src.owner = m.name;
 				for(var/i in m:dropList){
 					var/dropChance = getDropChance(i); // Initial item drop chance;
-					var/totalDrop = (dropChance + ret_percent_notrunc(killer.calcBonusMF(),dropChance)); // Item drop chance after killers drop mod taken into account;
+					var/totalDrop = (dropChance + ret_percent_notrunx(killer.calcBonusMF(),dropChance)); // Item drop chance after killers drop mod taken into account;
 
 					if(prob(totalDrop)){
 						var/obj/item/x = new i;

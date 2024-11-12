@@ -1,4 +1,4 @@
 proc
 	rStrip_Escapes(text){
-		return call(textLib,"StripColors")(text)
+		return call_ext(textLib,"StripColors")(text)
 	}

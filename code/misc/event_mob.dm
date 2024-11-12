@@ -3,7 +3,7 @@ var/eventMOB/event = new();
 eventMOB
 
 	var
-		eventMobs = list("Broly","Lord Slug","Jiren","Golden Frieza","Zamasu","Gogeta");
+		eventMobs = list("Broly","Lord Slug","Jiren","Golden Frieza","Zamasu","Gogeta","Lord Beerus","Whis");
 
 		mob/NPA/EventMobRef = NULL;
 
@@ -111,7 +111,7 @@ eventMOB
 					eventMob.sex = MALE;
 					eventMob.name = "Zamasu"
 					eventMob.form = "Mystic"
-					eventMob.race = KAIO
+					eventMob.race = DIETY
 					eventMob.hostile = TRUE
 					eventMob.AGGRO = TRUE
 					eventMob.alignment = EVIL
@@ -152,6 +152,102 @@ eventMOB
 									"hair_color" = "{WWhite{x",
 									"height" = "Average",
 									"build" = "Toned")
+				}
+
+				if("Whis"){
+					eventMob.respawn = FALSE;
+					eventMob.sex = MALE;
+					eventMob.name = "Whis"
+					eventMob.form = "Mystic"
+					eventMob.race = DIETY
+					eventMob.hostile = TRUE
+					eventMob.AGGRO = TRUE
+					eventMob.alignment = EVIL
+					eventMob.difficultyLevel = EVENT_MOB;
+					eventMob.curreng = 500
+					eventMob.maxeng = 500
+					eventMob.bonus_str = 2150;
+					eventMob.bonus_arm = 1650;
+					eventMob.dropList.Add(/obj/item/EVENT_BOX);
+					eventMob.techniques.Add(/Command/Technique/fly,
+										/Command/Technique/punch,
+										/Command/Technique/roundhouse,
+										/Command/Technique/sweep,
+										/Command/Technique/parry,
+										/Command/Technique/jump,
+										/Command/Technique/duck,
+										/Command/Technique/dodge,
+										/Command/Technique/power,
+										/Command/Technique/snapneck,
+										/Command/Technique/deflect,
+										/Command/Technique/onslaught,
+										/Command/Technique/revert,
+										/Command/Technique/elbow,
+										/Command/Technique/blast,
+										/Command/Technique/eye_laser,
+										/Command/Technique/fury,
+										/Command/Technique/zanzoken)
+
+					eventMob.maxpl = 1055.00e+012;
+					eventMob.currpl = eventMob.getMaxPL();
+					//eventMob.teach = list("ssjb", "ssjr")
+
+
+					eventMob.visuals = list("skin_color" = "{CPale Blue{x",
+									"eye_color" = "{MViolet{x",
+									"hair_length" = "Short",
+									"hair_style" = "Spiked",
+									"hair_color" = "{WWhite{x",
+									"height" = "Tall",
+									"build" = "Skinny")
+				}
+
+				if("Lord Beerus"){
+					eventMob.respawn = FALSE;
+					eventMob.sex = MALE;
+					eventMob.name = "Lord Beerus"
+					eventMob.form = "Mystic"
+					eventMob.race = DIETY
+					eventMob.hostile = TRUE
+					eventMob.AGGRO = TRUE
+					eventMob.alignment = EVIL
+					eventMob.difficultyLevel = EVENT_MOB;
+					eventMob.curreng = 500
+					eventMob.maxeng = 500
+					eventMob.bonus_str = 1850;
+					eventMob.bonus_arm = 1250;
+					eventMob.dropList.Add(/obj/item/EVENT_BOX);
+					eventMob.techniques.Add(/Command/Technique/fly,
+										/Command/Technique/punch,
+										/Command/Technique/roundhouse,
+										/Command/Technique/sweep,
+										/Command/Technique/parry,
+										/Command/Technique/jump,
+										/Command/Technique/duck,
+										/Command/Technique/dodge,
+										/Command/Technique/power,
+										/Command/Technique/snapneck,
+										/Command/Technique/deflect,
+										/Command/Technique/onslaught,
+										/Command/Technique/revert,
+										/Command/Technique/elbow,
+										/Command/Technique/blast,
+										/Command/Technique/eye_laser,
+										/Command/Technique/fury,
+										/Command/Technique/zanzoken)
+
+					eventMob.maxpl = 955.00e+012;
+					eventMob.currpl = eventMob.getMaxPL();
+					//eventMob.teach = list("ssjb", "ssjr")
+
+
+					eventMob.visuals = list("skin_color" = "{mPurple{x",
+									"eye_color" = "{YYellow{x",
+									"hair_length" = "Bald",
+									"hair_style" = "Bunny Ears",
+									"hair_color" = "None",
+									"height" = "Tall",
+									"build" = "Skinny")
 				}
 				if("Lord Slug"){
 					eventMob.respawn = FALSE;

@@ -242,6 +242,7 @@ Combat related defines
 #define LEGENDARY_SAIYAN 20
 #define KANASSAN 21
 #define REMORT_ANDROID 22
+#define DIETY 23
 #define ALL_RACES 999 // For quest system mostly
 //			//
 
@@ -768,6 +769,7 @@ Combat related defines
 #include "code\procs\compress_map.dm"
 #include "code\procs\cooldownLen.dm"
 #include "code\procs\coord.dm"
+#include "code\procs\crypto.dm"
 #include "code\procs\deleteCharacter.dm"
 #include "code\procs\determine_attacks.dm"
 #include "code\procs\determine_stuff.dm"
@@ -825,6 +827,7 @@ Combat related defines
 #include "code\procs\time.dm"
 #include "code\procs\timeGetTime.dm"
 #include "code\procs\translate_defense.dm"
+#include "code\procs\trunc.dm"
 #include "code\procs\view_list.dm"
 #include "code\procs\view_procedures.dm"
 #include "code\procs\wcheck.dm"
