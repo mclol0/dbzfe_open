@@ -267,6 +267,7 @@ HOUSESYSTEM
 
 		canBuild(mob/user, turf/targetTurf) {
 			if(user.getArea() == get_area("earth")){
+				send("Cannot build here", user)
 				return FALSE
 			}
 			// Check if player is in safe zone
