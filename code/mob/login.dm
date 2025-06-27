@@ -144,9 +144,9 @@ mob
 
 					lifeTick = world.time; // Update our life tick to the current time so we don't idle out.
 
-					//world << SHA256("LOL")
-					//send(SHA256(crypto_salt+"[client.ctype==BYOND?input_text("Password:",src):input_password("Password:",src)]"),src,TRUE);
-					if(SHA256(crypto_salt+"[client.ctype==BYOND?input_text("Password:",src):input_password("Password:",src)]") == rowData["password"]){
+					//world << md5("LOL")
+					//send(md5(crypto_salt+"[client.ctype==BYOND?input_text("Password:",src):input_password("Password:",src)]"),src,TRUE);
+					if(md5(crypto_salt+"[client.ctype==BYOND?input_text("Password:",src):input_password("Password:",src)]") == rowData["password"]){
 						if(!game.multiplay && game.checkClient(client, name)){
 							send("Multiplay disabled.",src,TRUE)
 							sleep(1)
@@ -552,7 +552,7 @@ mob
 
 							client.mob = newMob
 
-							newMob.password=SHA256(crypto_salt+password)
+							newMob.password=md5(crypto_salt+password)
 							newMob.email=email
 
 							newMob.canSave = TRUE

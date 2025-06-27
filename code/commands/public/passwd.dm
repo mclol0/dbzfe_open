@@ -17,12 +17,12 @@ Command/Public
 
 				var/list/vlist = q.GetRowData();
 
-				if(SHA256(crypto_salt+token[1]) == vlist["password"]){
+				if(md5(crypto_salt+token[1]) == vlist["password"]){
 					if(!user.Review_Password(token[2])){
 						token += input_password("\nConfirm Password: ",user)
 
 						if(token[2] == token[3]){
-							if(_query("UPDATE `characters` SET `password`='[SHA256(crypto_salt+token[2])]' WHERE `name`='[user.name]';")){
+							if(_query("UPDATE `characters` SET `password`='[md5(crypto_salt+token[2])]' WHERE `name`='[user.name]';")){
 								send("{GSUCCESS: {WPassword updated.{x",user);
 							}else{
 								send("{RERROR: {WThere was a problem updating your password.{x",user);
