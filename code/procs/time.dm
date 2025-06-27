@@ -8,4 +8,9 @@ proc
 		return "[h]h [m]m [s]s"
 	}
 
-	systemTime() return call_ext(textLib,"systemTime")()
+	// Convert C systemTime to BYOND (returns "Sun Jan 15 14:30:25 2025" format)
+	systemTime()
+	{
+		// Use BYOND's built-in time2text function with the exact C format
+		return time2text(world.realtime, "DDD MMM DD hh:mm:ss YYYY")
+	}
