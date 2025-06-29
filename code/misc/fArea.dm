@@ -245,7 +245,7 @@ planet
 		name = "{RADMIN{x {WLOUNGE{x";
 
 	hbtc
-		gravity = 0;
+		gravity = 10;
 		locked = TRUE;
 		wrapArea = TRUE;
 		name = "{YHyperbolic Time Chamber{x";
