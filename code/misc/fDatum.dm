@@ -728,35 +728,28 @@ DBZFE
 		updateRanking(){
 			set waitfor=FALSE;
 
-			var/_updateTime = 2 HOURS;
-			var/_lastTime = 2 HOURS;
-
 			while(src){
 
-				if(world.time >= _lastTime){
-					_query("UPDATE `info` SET `last_ranking_update`='[systemTime()]';");
-					_query("DELETE FROM `power_ranking`;");
+				_query("UPDATE `info` SET `last_ranking_update`='[systemTime()]';");
+				_query("DELETE FROM `power_ranking`;");
 
-					var/database/query/q = _query("SELECT `name`, `stats` FROM `characters` WHERE `wizlevel`='0';");
+				var/database/query/q = _query("SELECT `name`, `stats` FROM `characters` WHERE `wizlevel`='0';");
 
-					while(q.NextRow()){
-						var
-							list/row = q.GetRowData()
-							list/player = params2list(row["stats"]);
-							rowCount = _rowCount("FROM `power_ranking` WHERE `name`='[rankColor(text2num(player["race"]),row["name"])]';");
+				while(q.NextRow()){
+					var
+						list/row = q.GetRowData()
+						list/player = params2list(row["stats"]);
+						rowCount = _rowCount("FROM `power_ranking` WHERE `name`='[rankColor(text2num(player["race"]),row["name"])]';");
 
-
-						if(rowCount > 0){
-							_query("UPDATE `power_ranking` SET `powerlevel`='[player["maxpl"]]' WHERE `name`='[rankColor(text2num(player["race"]),row["name"])]'");
-						}else{
-							_query("INSERT INTO `power_ranking` (`name`, `powerlevel`) VALUES ('[rankColor(text2num(player["race"]),row["name"])]', '[player["maxpl"]]')");
-						}
-
-						sleep(world.tick_lag);
+					if(rowCount > 0){
+						_query("UPDATE `power_ranking` SET `powerlevel`='[player["maxpl"]]' WHERE `name`='[rankColor(text2num(player["race"]),row["name"])]'");
+					}else{
+						_query("INSERT INTO `power_ranking` (`name`, `powerlevel`) VALUES ('[rankColor(text2num(player["race"]),row["name"])]', '[player["maxpl"]]')");
 					}
 
-					_lastTime = (world.time + _updateTime);
+					sleep(world.tick_lag);
 				}
-				sleep(world.tick_lag);
+
+				sleep(2 HOURS);
 			}
 		}
