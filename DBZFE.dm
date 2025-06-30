@@ -40,11 +40,9 @@ world
 		game.itemValues();
 		game.initShops();
 		game.dailyReboot();
-		//game.updateRanking();
-
+		game.updateRanking();
 		houseSystem.loadSystemData();
 		helpSystem.loadSystem();
-		game.updateRanking();
 
 		if(fexists(file("copyover/"))){
 			game.logger.info("Recovering from a copyover.");
