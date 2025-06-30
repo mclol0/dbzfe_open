@@ -6,7 +6,7 @@ var/textLib = "lib/unix/parseText.so";
 var/cryptoLib = "lib/unix/crypto.so";
 
 world
-	name = "Drag(*)nBall Z: Fighter Edition (ALPHA)"
+	name = "Drag(*)nBall Z: Fighter Edition"
 	hub = "Gokussj99.dbzfe"
 	hub_password = "NDzSjOrL7ZCJrrAR"
 	fps = FPS // PULSES PER SECOND
