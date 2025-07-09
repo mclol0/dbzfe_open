@@ -67,3 +67,20 @@ Command/Wiz
 				send("[n] ([T.x].[T.y].[T.z]) - [T:owner]", user)
 			}
 		}
+
+	toggleConstruction
+		name = "toggleconstruction"
+		format = "toggleconstruction";
+		internal_name = "toggleconstruction";
+		immCommand = 1
+		immReq = 1
+
+		command(mob/Player/user) {
+			if (houseSystem.constructionEnabled) {
+				houseSystem.constructionEnabled = FALSE
+				send("Construction is now disabled.", user)
+			} else {
+				houseSystem.constructionEnabled = TRUE
+				send("Construction is now enabled.", user)
+			}
+		}
