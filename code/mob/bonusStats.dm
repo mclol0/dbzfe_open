@@ -191,12 +191,12 @@ mob
 			return round((weight*getGravity()),0.1);
 		}
 
-		totalKi(){
+		totalKi(var/plMod = 0){
 			var/ki = bonus_ki;
 
 			for(var/obj/item/i in equipment){ ki = (ki + i.BONUS_KI); }
 
-			ki = (ki + gForm.getPLMod(form))
+			ki = ki + (plMod == 0 ? gForm.getPLMod(form) : plMod)
 
 			if(isplayer(src) && (race == SAIYAN || race == LEGENDARY_SAIYAN || race == HALFBREED) && hasTail){ ki = (ki + 500); }
 
@@ -301,8 +301,8 @@ mob
 			return round(((totalArmor()) / DEFENSE_PER_ARM * ARMOR_PERCENT),0.01);
 		}
 
-		calcBonusPL(){
-			var/bonusPL = ret_percent_notrunx(((totalKi()) / POWERLEVEL_PER_KI * KI_PERCENT),maxpl);
+		calcBonusPL(var/plMod = 0){
+			var/bonusPL = ret_percent_notrunx(((totalKi(plMod)) / POWERLEVEL_PER_KI * KI_PERCENT),maxpl);
 
 			return floor(bonusPL);
 		}

@@ -245,9 +245,11 @@ aiDatum
 			}
 		}
 
-		_matchPL(mod=0.75) {
-			if(mobRef && mobRef.fCombat.lastTarget && mobRef.fCombat.lastTarget:getMaxPL() > mobRef.maxpl){
-				mobRef.maxpl = (mobRef.fCombat.lastTarget:getMaxPL()*mod);
+		_matchPL(mod=0.45) {
+			var/enemyMaxPl = mobRef.fCombat.lastTarget:getPotentialMaxPL()
+			if(mobRef && mobRef.fCombat.lastTarget && enemyMaxPl > mobRef.maxpl){
+				var/targetPl = enemyMaxPl*mod
+				mobRef.maxpl = targetPl;
 				mobRef.currpl = mobRef.getMaxPL();
 			}
 		}
