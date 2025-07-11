@@ -88,10 +88,11 @@ Combat related defines
 #define PK_TIME 15 MINUTES
 #define fightTimerDefault 2 MINUTES
 #define fightStunChance 22.00
+#define mobFightStunChance 10.00
 #define fightTechGainChance 20.00
 #define fightComboChance 30.00
 #define fightComboGainChance 10.00
-#define fightOffenseGainChance 6.00
+#define fightOffenseGainChance 10.00
 #define fightShyoukenCombo 55.00
 #define fightExtendCombo 25.00
 #define	fightUIAttack 5.00
