@@ -97,7 +97,8 @@ mob
 			}else{
 				new /outputBuffer(src);
 
-				send(readFile("login"),src)
+				send(readFile("login"),src);
+				send("Build Date: [BuildDate]",src);
 
 				if(client.address in game.banned_ips){
 					send("You are banned from [game.name]!",src)
