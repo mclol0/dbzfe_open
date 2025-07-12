@@ -118,6 +118,7 @@ mob
 			doingPushups = FALSE;
 			suffocating = FALSE;
 			underGravity = FALSE; // Is the mob in a room with gravity > 15?
+			isOverweight = FALSE; // Is the mob carrying more than it's max weight?
 			commandList[] = list();
 			updateCommands = TRUE;
 
@@ -782,6 +783,192 @@ mob
 			}
 
 			return (maxpl + calcBonusPL());
+		}
+
+		getPotentialMaxPL() {
+			switch(race) {
+				if (LEGENDARY_SAIYAN) {
+					if (hasSkill("ssj4")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("legendary ssj4"))
+					}
+					if (hasSkill("ssj3")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("legendary ssj3"))
+					}
+					if (hasSkill("ssj2")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("legendary ssj2"))
+					}
+					if (hasSkill("ultrainstinct")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("ultra instinct"))
+					}
+					if (hasSkill("ultrainstinctomen")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("ultra instinct omen"))
+					}
+					if (hasSkill("ssjb")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("super saiyan blue"))
+					}
+					if (hasSkill("ssjr")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("super saiyan red"))
+					}
+					if (hasSkill("ssjg")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("super saiyan god"))
+					}
+					if (hasSkill("ssj")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("legendary ssj"))
+					}
+				}
+				if (SAIYAN) {
+					if (hasSkill("ultrainstinct")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("ultra instinct"))
+					}
+					if (hasSkill("ultrainstinctomen")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("ultra instinct omen"))
+					}
+					if (hasSkill("ssjb")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("super saiyan blue"))
+					}
+					if (hasSkill("ssjr")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("super saiyan red"))
+					}
+					if (hasSkill("ssjg")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("super saiyan god"))
+					}
+					if (hasSkill("ssj4")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("super saiyan 4"))
+					}
+					if (hasSkill("ssj3")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("super saiyan 3"))
+					}
+					if (hasSkill("kaioken") && hasSkill("ssj")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("super kaioken"))
+					}
+					if (hasSkill("ssj2")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("super saiyan 2"))
+					}
+					if (hasSkill("ssj")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("super saiyan"))
+					}
+					if (hasSkill("kaioken")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("kaioken x4"))
+					}
+				}
+				if (HALFBREED) {
+					if (hasSkill("mystic")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("mystic"))
+					}
+					if (hasSkill("ssj2")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("super saiyan 2"))
+					}
+					if (hasSkill("ssj")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("super saiyan"))
+					}
+				}
+				if (BIO_ANDROID) {
+					if (hasSkill("super perfect")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("super perfect"))
+					}
+					if (hasSkill("perfect")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("perfect"))
+					}
+					if (hasSkill("semi-perfect")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("semi-perfect"))
+					}
+					if (hasSkill("imperfect")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("imperfect"))
+					}
+				}
+				if (NAMEK) {
+					if (hasSkill("supernamek")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("super namek"))
+					}
+					if (hasSkill("enhancednamek")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("enhanced namek"))
+					}
+				}
+				if (KAIO) {
+					if (hasSkill("mystic")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("mystic"))
+					}
+					if (hasSkill("fullkaioken")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("kaioken"))
+					}
+				}
+				if (ICER) {
+					if (hasSkill("goldform") && hasSkill("form5")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("golden form 5"))
+					}
+					if (hasSkill("goldform") && hasSkill("form4")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("golden form 4"))
+					}
+					if (hasSkill("form5")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("form 5"))
+					}
+					if (hasSkill("form4")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("form 4"))
+					}
+					if (hasSkill("form3")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("form 3"))
+					}
+					if (hasSkill("form2")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("form 2"))
+					}
+				}
+				if (HUMAN) {
+					if (hasSkill("spiritburst")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("spirit burst"))
+					}
+				}
+				if (ANDROID) {
+					if (hasSkill("overclock")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("overclocked"))
+					}
+					if (hasSkill("neomachine")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("neomachine"))
+					}
+					if (hasSkill("superandroid")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("super android"))
+					}
+				}
+				if (GENIE) {
+					if (hasSkill("kid")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("kid"))
+					}
+					if (hasSkill("super")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("super"))
+					}
+				}
+				if (DEMON) {
+					if (hasSkill("deity")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("deity"))
+					}
+					if (hasSkill("aristocrat")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("aristocrat"))
+					}
+					if (hasSkill("noble")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("noble"))
+					}
+				}
+				if (ALIEN) {
+					if (hasSkill("enhance")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("enhanced"))
+					}
+				}
+				if (SPIRIT) {
+					if (hasSkill("revenant")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("revenant"))
+					}
+					if (hasSkill("spectre")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("spectre"))
+					}
+					if (hasSkill("shadow")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("shadow"))
+					}
+					if (hasSkill("shade")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("shade"))
+					}
+				}
+			}
+
+			return maxpl + calcBonusPL();
 		}
 
 		getMaxEN(){

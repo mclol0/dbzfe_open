@@ -35,11 +35,13 @@ turf
 		//opacityDisplay = " "
 		possibleDisplay[] = list();
 		gravity = NULL
+		noBuildArea = -1; // Set this to the distance you want to prevent building in that area. If 0, focused on the turf itself
 
 	arena
 		density = TRUE;
 		display = "{RA{x";
 		text = "<font color=red>A</font>";
+		noBuildArea = 5;
 
 	void
 		density = TRUE;
@@ -51,6 +53,7 @@ turf
 		name = "{WSpace{x"
 		display = "."
 		text = "."
+		noBuildArea = 0;
 		//possibleDisplay = list("{Y*{x", "{B*{x", "{Y.{x", "{B.{x", "{R.{x", " ", " ", " ", " ", "{W*{x", " ", " ", "{W.{x"," ", " ", " ", " ", " ", " "," ", " ", " ", " ", " ", " "," ", " ", " ", " ", " ", " "," ", " ", " ", " ", " ", " "," ", " ", " ", " ", " ", " ");
 
 		New(){
@@ -70,6 +73,7 @@ turf
 	arena_floor
 		display = "{W#{x"
 		text = "<font color=white>#</font>"
+		noBuildArea = 0;
 
 
 	king_kaio_planet
@@ -142,6 +146,7 @@ turf
 			icon_state="safe"
 			display = "{Y.{x"
 			text = "<font color=yellow>.</font>"
+			noBuildArea = 0;
 
 		tower_wall
 			icon_state="Tower Wall"
@@ -290,6 +295,7 @@ turf
 			icon_state="safe"
 			display = "{Y'{x"
 			text = "<font color=yellow>'</font>"
+			noBuildArea = 0;
 
 		grass
 			icon_state="grass"
@@ -353,6 +359,7 @@ turf
 			display = "{RL{x"
 			text = "<font color=red>L</font>"
 			density = FALSE
+			noBuildArea = 8;
 
 		korins_tower
 			icon_state="ktower"
@@ -360,6 +367,7 @@ turf
 			display="{YH{x"
 			text="<font color=grey>H</font>"
 			density=FALSE
+			noBuildArea = 8;
 
 		HBTC
 			icon_state="HBTC"
@@ -367,6 +375,7 @@ turf
 			display="{C%{x"
 			text="<font color=CYAN>%</font>"
 			density=FALSE
+			noBuildArea = 8;
 
 		UNDERWATER_LAKE
 			icon_state="HBTC"
@@ -374,6 +383,7 @@ turf
 			display="{CL{x"
 			text="<font color=CYAN>L</font>"
 			density=FALSE
+			noBuildArea = 4;
 
 		SILENT_BUBBLE
 			icon_state="HBTC"
@@ -381,6 +391,7 @@ turf
 			display="{Wo{x"
 			text="<font color=WHITE>o</font>"
 			density=FALSE
+			noBuildArea = 4;
 
 
 		gero_wall
@@ -403,6 +414,7 @@ turf
 			tType=EXIT
 			display="{RE{x"
 			text="<font color=RED>E</font>"
+			noBuildArea = 0;
 
 	arlia
 		name = "{rArlia{x";
@@ -430,21 +442,25 @@ turf
 			display="{DL{x"
 			text="<font color=GRAY>L</font>"
 			density=FALSE
+			noBuildArea = 8;
 
 		moon_lab_lair
 			tType=BUILDING
 			display="{Yo{x"
 			text="<font color=YELLOW>o</font>"
 			density=FALSE
+			noBuildArea = 8;
 
 		moon_lab_lair_basement
 			tType=BUILDING
 			display="{Yo{x"
 			text="<font color=YELLOW>o</font>"
 			density=FALSE
+			noBuildArea = 8;
 
 	snake_way
 		name = "{YSnake Way{x"
+		noBuildArea = 0;
 
 		snake_clouds
 			icon_state="snakeway_clouds"
@@ -483,6 +499,7 @@ turf
 
 	hfil
 		name = "{RHFIL{x"
+		noBuildArea = 0;
 
 		hfil_floor
 			icon_state="floor"
@@ -500,8 +517,6 @@ turf
 			display = "{m~{x"
 			text = "<font color=#cf00cf>~</font>"
 			possibleDisplay = list("{b~{x","{b~{x","{m~{x","{m~{x","{b~{x","{b~{x","{C~{x","{m~{x","{b~{x","{C~{x","{b~{x","{m~{x","{m~{x","{C~{x")
-
-
 
 		mountain
 			tType = MOUNTAIN

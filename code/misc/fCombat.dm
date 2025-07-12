@@ -168,7 +168,7 @@ fCombat
 		}
 
 		checkBreakDefense(mob/user, mob/target, damage=0, attack=NULL){
-			if(damage >= ret_percent_notrunx(40,target.currpl)){
+			if(damage >= ret_percent_notrunx(70,target.currpl)){
 				BROKEN_DEFENSE = TRUE;
 
 				if(attack != NULL){
@@ -184,7 +184,7 @@ fCombat
 
 		checkBreakBarrier(mob/user, mob/target, damage=0, attack=NULL){
 
-			if(damage >= ret_percent_notrunx(25,target.currpl)){
+			if(damage >= ret_percent_notrunx(60,target.currpl)){
 				BROKEN_DEFENSE = TRUE;
 
 				if(attack != NULL){
@@ -237,7 +237,7 @@ fCombat
 							send("{B*{x You tech block [user.raceColor(user.name)]'s [attack]!",target)
 							send("{R*{x [target.raceColor(target.name)] tech blocked your [attack]!",user)
 							send("{W*{x [target.raceColor(target.name)] tech blocked [user.raceColor(user.name)]'s [attack]!",a_oview_extra(0,target,user))
-							if(prob(fightStunChance) && c.tType == MELEE && c.canSTUN){stunned(user,target)}
+							if(prob(isplayer(user) ? fightStunChance : mobFightStunChance) && c.tType == MELEE && c.canSTUN){stunned(user,target)}
 							if(prob(fightOffenseGainChance) && !user.stunned){ user.gainPL(ret_percent((offenseGainPercent),user.getMaxPL()),target) }
 							target.atkDat:defense = FALSE;
 							return TRUE;

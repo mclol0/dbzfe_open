@@ -9,10 +9,14 @@ HOUSESYSTEM
 		list/TURFS[0]
 		list/CAPSULES[0]
 		list/COLORS[0]
+		constructionEnabled = TRUE
+		maxPlayerOwnedHouses = 5
+		maxHouseSize = 10
 
 		//DB Related
 		DBHOUSESTABLE = "playerhouses"
 		DBUPGRADESTABLE = "playerhouseupgrades"
+		DBSETTINGSTABLE = "housesystemsettings"
 		list/DBTABLES[0]
 		FIXCMD = "hsfixdb"
 		DBINTEGRITTYCHECK = FALSE
@@ -43,6 +47,7 @@ HOUSESYSTEM
 	New() {
 		DBTABLES[DBHOUSESTABLE] = "CREATE TABLE `playerhouses` ( `ID` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, `owner` TEXT NOT NULL, `type` TEXT NOT NULL, `color` TEXT NOT NULL, `loc` TEXT NOT NULL, `upgrades` TEXT NOT NULL, `originalturf` TEXT NOT NULL, `instanceID` INTEGER, `attributes` TEXT )"
 		DBTABLES[DBUPGRADESTABLE] = "CREATE TABLE `playerhouseupgrades` ( `ID` INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT UNIQUE, `loc` TEXT NOT NULL, `type` TEXT NOT NULL, `attributes` TEXT NOT NULL, `owner` TEXT NOT NULL )"
+		DBTABLES[DBSETTINGSTABLE] = "CREATE TABLE `housesystemsettings` ( `ID` TEXT NOT NULL PRIMARY KEY UNIQUE, `value` TEXT NOT NULL )"
 
 		UPGRADES[STASH] = /obj/item/HOUSESYSTEM/UPGRADES/STASH
 		UPGRADES[TCONSOLE] = /obj/item/HOUSESYSTEM/UPGRADES/INTERACTABLE/TCONSOLE
@@ -99,6 +104,44 @@ HOUSESYSTEM
 		deletePlayer(name) {
 			_query("DELETE FROM `[DBHOUSESTABLE]` WHERE `owner`='[name]';");
 			_query("DELETE FROM `[DBUPGRADESTABLE]` WHERE `owner`='[name]';");
+		}
+
+		toggleConstruction(value) {
+			constructionEnabled = value
+			var/rowCount = _rowCount("FROM `[DBSETTINGSTABLE]` WHERE `ID`='constructionEnabled';")
+
+			if (rowCount == 0) {
+				_query("INSERT INTO `[DBSETTINGSTABLE]` (ID, value) VALUES('constructionEnabled', 'FALSE');")
+			}
+
+			_query("UPDATE `[DBSETTINGSTABLE]` SET `value`='[constructionEnabled]' WHERE `ID`='constructionEnabled';")
+		}
+
+		_loadSettingsFromDB() {
+			_checkDBIntegrity()
+			var/database/query/q = _query("SELECT * FROM `[DBSETTINGSTABLE]`);")
+
+			var/list/rowData
+			while(q.NextRow()) {
+				rowData = q.GetRowData()
+				var/settingID = rowData["ID"]
+				var/settingValue = rowData["value"]
+
+				if (settingID == "constructionEnabled") {
+					constructionEnabled = (settingValue == "TRUE")
+					continue
+				}
+
+				if (settingID == "maxPlayerOwnedHouses") {
+					maxPlayerOwnedHouses = text2num(settingValue)
+					continue
+				}
+
+				if (settingID == "maxHouseSize") {
+					maxHouseSize = text2num(settingValue)
+					continue
+				}
+			}
 		}
 
 		_deleteTurfFromDB(dbID) {
@@ -204,6 +247,7 @@ HOUSESYSTEM
 		loadSystemData() {
 			_loadTurfsFromDB()
 			_loadUpgradesFromDB()
+			_loadSettingsFromDB()
 		}
 
 		getLastID(tableName, owner){
@@ -266,10 +310,23 @@ HOUSESYSTEM
 		}
 
 		canBuild(mob/user, turf/targetTurf) {
-			if(user.getArea() == get_area("earth")){
-				send("Cannot build here", user)
+			// We immortals know what we are doing... right?
+			if (user.isImm)
+			{
+				return TRUE
+			}
+
+			if (constructionEnabled == FALSE) {
+				send("The house system is currently disabled. You cannot build.", user)
 				return FALSE
 			}
+
+			// Check if the user has reached the maximum number of houses
+			if (ispath(targetTurf, /turf/HOUSESYSTEM/player/entrance) && _getNumberOfOwnedHouses(user) >= maxPlayerOwnedHouses) {
+				send("You have reached the maximum number of houses you can own. You need to delete one before building another.", user)
+				return FALSE
+			}
+
 			// Check if player is in safe zone
 			if (user.isSafe())
 			{
@@ -285,14 +342,29 @@ HOUSESYSTEM
 			}
 
 			// Check if the current turf has density or is water
-			if (currentTurf.density || currentTurf:tType == WATER || currentTurf:tType == MOUNTAIN) {
+			if (currentTurf.density || currentTurf:tType == WATER || currentTurf:tType == MOUNTAIN || currentTurf.tType == BUILDING) {
 				send("You cannot build on water, mountains or locations that you cannot walk through", user)
 				return FALSE
 			}
 
-			//Check targetTurf positioning
+			// Check distance to no build turfs
+			for(var/turf/Turf in t_oview(10,user)){
+				var/turf/checkTurf = Turf;
+				if (checkTurf.noBuildArea >= 0 && a_get_dist(user, checkTurf) <= checkTurf.noBuildArea) {
+					send("You are not allowed to build in this area", user);
+					return FALSE
+				}
+			}
 
-			if (ispath(targetTurf, /turf/HOUSESYSTEM/player) && getAdjacentTurfInstanceID(user) || user.isImm || ispath(targetTurf, /turf/HOUSESYSTEM/player/entrance) && !getAdjacentTurfInstanceID(user)) {
+			//Check targetTurf positioning
+			var/closestInstanceId = getAdjacentTurfInstanceID(user)
+
+			if (!closestInstanceId && _getNumberOfRooms(closestInstanceId) >= maxHouseSize) {
+				send("You have reached the maximum number of rooms you can build in this house.", user)
+				return FALSE
+			}
+
+			if (ispath(targetTurf, /turf/HOUSESYSTEM/player) && closestInstanceId || ispath(targetTurf, /turf/HOUSESYSTEM/player/entrance) && !closestInstanceId) {
 				return TRUE
 			}
 
@@ -451,6 +523,28 @@ HOUSESYSTEM
 			}
 
 			return instanceId
+		}
+
+		_getNumberOfOwnedHouses(mob/user) {
+			var/database/query/q = _query("SELECT count(distinct instanceId) as value FROM `[DBHOUSESTABLE]` WHERE owner = '[user.name]';")
+			while(q.NextRow()) {
+				var/rowData = q.GetRowData()
+				var/value = text2num(rowData["value"])
+
+				return value
+			}
+		}
+
+		_getNumberOfRooms(var/instanceId) {
+			var/database/query/q = _query("SELECT count(*) as value FROM `[DBHOUSESTABLE]` WHERE instanceId = [instanceId];")
+			while(q.NextRow()) {
+				var/rowData = q.GetRowData()
+				var/value = text2num(rowData["value"])
+
+				return value
+			}
+
+			return 0
 		}
 
 		_checkDBIntegrity(mob/user, var/checkOnly = FALSE, var/forceCheck = FALSE)

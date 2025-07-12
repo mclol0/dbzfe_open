@@ -17,7 +17,7 @@ turf
 				list/allowedAccess = list()
 				list/deniedAccess = list()
 
-			density = TRUE
+			density = FALSE
 
 			New(){
 				..()
@@ -43,9 +43,8 @@ turf
 			}
 
 			Enter(mob/m, turf/oldloc) {
-
-				if ((!m.density && !m.insideBuilding) || (m.density && m.insideBuilding && m.insideBuilding == oldloc:instanceId) || type == houseSystem.TURFS[houseSystem.ENTRANCE]) {
-					return 1
+				if (!m.insideBuilding || (m.insideBuilding && m.insideBuilding == oldloc:instanceId) || type == houseSystem.TURFS[houseSystem.ENTRANCE]) {
+					return TRUE
 				}
 
 				if (isDenied(m.name)) {

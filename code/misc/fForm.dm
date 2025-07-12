@@ -639,6 +639,7 @@ fForm_factory
 				o.gravRes = 4;
 			}
 
+			// DEMON
 			if("noble"){
 				o.name = "Noble";
 				o.bonusKI = 2300;
@@ -684,6 +685,7 @@ fForm_factory
 				o.gravRes = 4;
 			}
 
+			// ALIEN
 			if("enhanced"){
 				o.name = "Enhanced";
 				o.bonusKI = 5750;
