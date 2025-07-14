@@ -3858,8 +3858,6 @@ obj/item/
 		PRICE = 300000
 
 	ANDROID_PART
-		DROP_CHANCE = 1
-
 		ANDROID_ARM
 			DISPLAY = "{rripped-off{x android arm"
 			SINGLE_DISPLAY = "{rripped-off{x android arm"
@@ -3873,6 +3871,7 @@ obj/item/
 			WEIGHT = 2
 			STACKABLE = TRUE
 			MULTI = TRUE
+			DROP_CHANCE = 5
 
 		ANDROID_LEG
 			DISPLAY = "{rbroken{x android leg"
@@ -3887,6 +3886,7 @@ obj/item/
 			WEIGHT = 3
 			STACKABLE = TRUE
 			MULTI = TRUE
+			DROP_CHANCE = 5
 
 		ANDROID_EYE
 			DISPLAY = "{rcracked{x android eye"
@@ -3901,6 +3901,7 @@ obj/item/
 			WEIGHT = 2
 			STACKABLE = TRUE
 			MULTI = TRUE
+			DROP_CHANCE = 5
 
 		ANDROID_SERVO
 			DISPLAY = "{rburnt{x android servo motor"
@@ -3915,6 +3916,7 @@ obj/item/
 			WEIGHT = 2
 			STACKABLE = TRUE
 			MULTI = TRUE
+			DROP_CHANCE = 5
 
 		ANDROID_ACTUATOR
 			DISPLAY = "{oflaming{x actuator"
@@ -3929,6 +3931,7 @@ obj/item/
 			WEIGHT = 2
 			STACKABLE = TRUE
 			MULTI = TRUE
+			DROP_CHANCE = 5
 	
 	consecrated_ground
 		text = "{c*{x"

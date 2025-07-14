@@ -293,26 +293,20 @@ mob
 				if(isplayer(killer) && (killer.race == ANDROID || killer.race == REMORT_ANDROID)){
 					var/gainMod = 0;
 					if(killer.maxpl >= (maxpl * 1.60)) {
-						send("very weak",killer)
 						gainMod = game.settings.veryWeakRandGain()
 					}
 					else if(killer.maxpl >= (maxpl * 1.30)) {
-						send("weak",killer)
 						gainMod = game.settings.weakRandGain()
 					}
 					else if(killer.maxpl >= (maxpl * 0.75)) {
-						send("equal",killer)
 						gainMod = game.settings.equalRandGain()
 					}
 					else if(killer.maxpl >= (maxpl * 0.45)) {
-						send("strong",killer)
 						gainMod = game.settings.strongRandGain()
 					} else {
-						send("godlike",killer)
 						gainMod = game.settings.godlikeRandGain()
 					}
 
-					send("gainmod: [gainMod]",killer)
 					killer:gainlc(game.settings.lcBaseValue * gainMod, src)
 				}
 
