@@ -2365,10 +2365,7 @@ obj/item/
 
 		_open(mob/Player/m){
 			if(..(m)){
-				if(prob(25) && (m.race == ANDROID || m.race == REMORT_ANDROID)){
-					var lc_gain = rand(5,7);
-					m.gainlc(lc_gain,m,TRUE);
-				}else if(prob(10) && m.maxpl < MAX_PL){
+				if(prob(10) && m.maxpl < MAX_PL){
 					m.gainPL_EVENT(ret_percent(MYSTERY_BOX_GAIN,m.maxpl),m,TRUE);
 				}else if(prob(35)){
 					var/zenniValue = 5000;
@@ -2416,10 +2413,7 @@ obj/item/
 
 		_open(mob/Player/m){
 			if(..(m)){
-				if(prob(5) && (m.race == ANDROID || m.race == REMORT_ANDROID)){
-					var lc_gain = rand(8,16);
-					m.gainlc(lc_gain,m,TRUE);
-				}else if(prob(5) && m.maxpl < MAX_PL){
+				if(prob(5) && m.maxpl < MAX_PL){
 					m.gainPL_EVENT(ret_percent(MYSTERY_BOX_GAIN*2,m.maxpl),m,TRUE);
 				}else if(prob(35)){
 					var/zenniValue = 5000*3;
@@ -3862,6 +3856,83 @@ obj/item/
 		ANNOUNCE_DROP = TRUE;
 		NO_MYSTERY = TRUE;
 		PRICE = 300000
+
+	ANDROID_PART
+		ANDROID_ARM
+			DISPLAY = "{rripped-off{x android arm"
+			SINGLE_DISPLAY = "{rripped-off{x android arm"
+			MULTI_DISPLAY = "{rripped-off{x android arms"
+			CAN_PICKUP = TRUE
+			DECAY = TRUE
+			MISC = TRUE
+			CONTAINER = FALSE
+			SHOW_ITEMDB = TRUE
+			PRICE = 30000
+			WEIGHT = 2
+			STACKABLE = TRUE
+			MULTI = TRUE
+			DROP_CHANCE = 5
+
+		ANDROID_LEG
+			DISPLAY = "{rbroken{x android leg"
+			SINGLE_DISPLAY = "{rbroken{x android leg"
+			MULTI_DISPLAY = "{rbroken{x android legs"
+			CAN_PICKUP = TRUE
+			DECAY = TRUE
+			MISC = TRUE
+			CONTAINER = FALSE
+			SHOW_ITEMDB = TRUE
+			PRICE = 30000
+			WEIGHT = 3
+			STACKABLE = TRUE
+			MULTI = TRUE
+			DROP_CHANCE = 5
+
+		ANDROID_EYE
+			DISPLAY = "{rcracked{x android eye"
+			SINGLE_DISPLAY = "{rcracked{x android eye"
+			MULTI_DISPLAY = "{rcracked{x android eyes"
+			CAN_PICKUP = TRUE
+			DECAY = TRUE
+			MISC = TRUE
+			CONTAINER = FALSE
+			SHOW_ITEMDB = TRUE
+			PRICE = 30000
+			WEIGHT = 2
+			STACKABLE = TRUE
+			MULTI = TRUE
+			DROP_CHANCE = 5
+
+		ANDROID_SERVO
+			DISPLAY = "{rburnt{x android servo motor"
+			SINGLE_DISPLAY = "{rburnt{x android servo motor"
+			MULTI_DISPLAY = "{rburnt{x android servo motors"
+			CAN_PICKUP = TRUE
+			DECAY = TRUE
+			MISC = TRUE
+			CONTAINER = FALSE
+			SHOW_ITEMDB = TRUE
+			PRICE = 30000
+			WEIGHT = 2
+			STACKABLE = TRUE
+			MULTI = TRUE
+			DROP_CHANCE = 5
+
+		ANDROID_ACTUATOR
+			DISPLAY = "{oflaming{x actuator"
+			SINGLE_DISPLAY = "{oflaming{x actuator"
+			MULTI_DISPLAY = "{oFlaming{x actuators"
+			CAN_PICKUP = TRUE
+			DECAY = TRUE
+			MISC = TRUE
+			CONTAINER = FALSE
+			SHOW_ITEMDB = TRUE
+			PRICE = 30000
+			WEIGHT = 2
+			STACKABLE = TRUE
+			MULTI = TRUE
+			DROP_CHANCE = 5
+	
 	consecrated_ground
 		text = "{c*{x"
 		DISPLAY = "{CConsecrated Pool{x"

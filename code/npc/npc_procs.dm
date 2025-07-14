@@ -291,7 +291,23 @@ mob
 				event(killer, tech);
 
 				if(isplayer(killer) && (killer.race == ANDROID || killer.race == REMORT_ANDROID)){
-					killer:gainlc(pick(0.20,0.25,0.30,0.35,0.40),src)
+					var/gainMod = 0;
+					if(killer.maxpl >= (maxpl * 1.60)) {
+						gainMod = game.settings.veryWeakRandGain()
+					}
+					else if(killer.maxpl >= (maxpl * 1.30)) {
+						gainMod = game.settings.weakRandGain()
+					}
+					else if(killer.maxpl >= (maxpl * 0.75)) {
+						gainMod = game.settings.equalRandGain()
+					}
+					else if(killer.maxpl >= (maxpl * 0.45)) {
+						gainMod = game.settings.strongRandGain()
+					} else {
+						gainMod = game.settings.godlikeRandGain()
+					}
+
+					killer:gainlc(game.settings.lcBaseValue * gainMod, src)
 				}
 
 				killer:gainPL(calc,src)

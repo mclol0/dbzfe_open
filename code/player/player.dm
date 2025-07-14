@@ -313,6 +313,7 @@ mob
 		New(){
 			..()
 			game.mobiles += src;
+			canReceiveItems = TRUE
 			loc=locate(1,1,world.maxz)
 		}
 

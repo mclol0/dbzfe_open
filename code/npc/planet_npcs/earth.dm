@@ -1,6 +1,119 @@
 mob
 	NPA
 		earth
+			DrGero
+				name = "Dr. Gero";
+				race = ANDROID;
+				hostile = FALSE;
+				sex = MALE;
+				alignment = EVIL;
+				difficultyLevel = VERY_EASY;
+				currpl = 13000000;
+				maxpl = 13000000;
+				curreng = 100;
+				maxeng = 100;
+				zenni = 0;
+				randomRespawn = FALSE
+
+				var
+					list
+						knownPlayers = list()
+
+						unknownDialog = list(
+							"say What are YOU doing? This place is not for you!",
+							"say You are not an android, so you can't use this place!",
+							"say I don't know what you are doing here, but you can't use this place!",
+							"say Stop wasting my time. Go away!",
+							"say I don't have time for you. If you are not an android, get out of here!"
+						)
+						
+						idleActions = list(
+							"say Where did I leave that extra arm...",
+							"say I need to find more android parts to upgrade my creations.",
+							"emote laughs evily as he works on his androids.",
+							"say I will create the perfect android one day!",
+							"emote looks at you with a suspicious eye.",
+							"emote ducks behind a makeshift wall as something {Yexplodes{c in his workbench.",
+							"say They will be all grounded to a pulp this time!",
+							"say I'll make sure to destroy half the planet next time instead...",
+							"emote whispers something to himself as he works on a complicated piece of machinery.",
+						)
+
+						notNeededDialog = list(
+							"say What did you want me to do with this...?",
+							"say I have no use for this",
+							"say Why are you wasting my time with this garbage!?",
+							"say Did you really think I want that piece of crap!"
+						)
+
+				visuals = list("skin_color" = "{yTan{x",
+								"eye_color" = "{BBlue{x",
+								"hair_length" = "Long",
+								"hair_style" = "Parted",
+								"hair_color" = "{WWhite{x",
+								"height" = "Average",
+								"build" = "Skinny")
+
+				New(){
+					canReceiveItems = TRUE
+					..()
+				}
+
+				receive_item(obj/item/I, mob/giver) {
+					if (istype(I, /obj/item/ANDROID_PART)) {
+						if (isAndroid(giver)) {
+							var/list/lines = list(
+								"say Thanks [giver]! I'm gonna put this to good use!",
+								"say I just needed this [giver]!",
+								"say I have been looking for this [giver]!",
+								"say Just the piece that was missing!"
+							)
+							alaparser.parse(src, pick(lines), list())
+							astype(giver, /mob/Player/Android)?.gainlc(game.settings.lcExchangeReward, giver, TRUE)
+							src.destroyItem(I)
+						} else {
+							alaparser.parse(src, "say Well thank you for your gift! I have nothing for you since you are not an android... but I will make sure to use it well!")
+							src.destroyItem(I)
+						}
+					} else {
+						alaparser.parse(src, pick(notNeededDialog), list())
+						src.giveItem(I, giver)
+					}
+				}
+
+				event_entered(mob/M) {
+					set waitfor = FALSE;
+					set background = TRUE;
+					sleep(4)
+					var/list/possibleActions = list()
+					possibleActions += idleActions
+
+					if(M.loc == src.loc) {
+						if (isAndroid(M)) {
+							var/known = (M in knownPlayers)
+							if (known) {
+								possibleActions += list(
+									"say How are you doing, [M]? I can upgrade your android parts for credits",
+									"say [M]! Did you manage to kill Goku yet?",
+									"say Remember [M]! Any kind of android part can be useful... Arms, legs and even internal components!",
+									"say Remember [M]!. Give me android scraps and I'll give you some credits in exchange!"
+								)
+							} else if (!known) {
+								alaparser.parse(src,"say Hello, [M]. Here you will be able to upgrade to unlock new skills and get stronger. And if you happen to come by any android pieces, give them to me and i'll reward you.",list())
+								knownPlayers += M
+								return
+							}
+						} else {
+							possibleActions += unknownDialog
+						}
+
+						if (prob(game.settings.npcIdleActionProbability)) {
+							var/action = pick(possibleActions)
+							alaparser.parse(src, action, list())
+						}
+					}
+				}
+
 			Bulma
 				name = "Bulma";
 				race = HUMAN;
@@ -427,7 +540,7 @@ mob
 				alliedType = list(/mob/NPA/earth/KingCold)
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/eye_laser, /Command/Technique/hammer,
 						/Command/Technique/uppercut)
-				dropList = list(/obj/item/COMPRESSED_METAL)
+				dropList = list(/obj/item/COMPRESSED_METAL, /obj/item/ANDROID_PART/ANDROID_ARM, /obj/item/ANDROID_PART/ANDROID_LEG, /obj/item/ANDROID_PART/ANDROID_EYE, /obj/item/ANDROID_PART/ANDROID_SERVO, /obj/item/ANDROID_PART/ANDROID_ACTUATOR)
 
 				visuals = list("skin_color" = "{WWhite{x",
 								"eye_color" = "{RRed{x",
@@ -503,7 +616,7 @@ mob
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/eye_laser,/Command/Technique/hikou,
 						/Command/Technique/hammer, /Command/Technique/uppercut)
 
-				dropList = list(/obj/item/HEAVY_METAL_CHESTPLATE)
+				dropList = list(/obj/item/HEAVY_METAL_CHESTPLATE, /obj/item/ANDROID_PART/ANDROID_ARM, /obj/item/ANDROID_PART/ANDROID_LEG, /obj/item/ANDROID_PART/ANDROID_EYE, /obj/item/ANDROID_PART/ANDROID_SERVO, /obj/item/ANDROID_PART/ANDROID_ACTUATOR)
 
 				visuals = list("skin_color" = "{yTan{x",
 								"eye_color" = "{CBlue{x",
@@ -531,7 +644,7 @@ mob
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/eye_laser, /Command/Technique/hikou,
 						/Command/Technique/hammer, /Command/Technique/uppercut)
 
-				dropList = list(/obj/item/ANDROID_17_SCARF)
+				dropList = list(/obj/item/ANDROID_17_SCARF, /obj/item/ANDROID_PART/ANDROID_ARM, /obj/item/ANDROID_PART/ANDROID_LEG, /obj/item/ANDROID_PART/ANDROID_EYE, /obj/item/ANDROID_PART/ANDROID_SERVO, /obj/item/ANDROID_PART/ANDROID_ACTUATOR)
 
 				visuals = list("skin_color" = "{yTan{x",
 								"eye_color" = "{DBlack{x",
@@ -566,7 +679,7 @@ mob
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/eye_laser, /Command/Technique/hikou,
 						/Command/Technique/hammer, /Command/Technique/uppercut)
 
-				dropList = list(/obj/item/ANDROID_18_PEARL_NECKLACE,/obj/item/GOLD_EARRING)
+				dropList = list(/obj/item/ANDROID_18_PEARL_NECKLACE,/obj/item/GOLD_EARRING, /obj/item/ANDROID_PART/ANDROID_ARM, /obj/item/ANDROID_PART/ANDROID_LEG, /obj/item/ANDROID_PART/ANDROID_EYE, /obj/item/ANDROID_PART/ANDROID_SERVO, /obj/item/ANDROID_PART/ANDROID_ACTUATOR)
 
 				visuals = list("skin_color" = "{yTan{x",
 								"eye_color" = "{DBlack{x",
@@ -601,7 +714,7 @@ mob
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/eye_laser, /Command/Technique/hikou,
 									/Command/Technique/absorb,/Command/Technique/drain, /Command/Technique/hammer, /Command/Technique/uppercut)
 
-				dropList = list(/obj/item/ANDROID_19_HAT,/obj/item/ANDROID_ENERGY_CRYSTALS)
+				dropList = list(/obj/item/ANDROID_19_HAT,/obj/item/ANDROID_ENERGY_CRYSTALS, /obj/item/ANDROID_PART/ANDROID_ARM, /obj/item/ANDROID_PART/ANDROID_LEG, /obj/item/ANDROID_PART/ANDROID_EYE, /obj/item/ANDROID_PART/ANDROID_SERVO, /obj/item/ANDROID_PART/ANDROID_ACTUATOR)
 
 				visuals = list("skin_color" = "{WPale{x",
 								"eye_color" = "{CBlue{x",
@@ -723,7 +836,7 @@ mob
 									/Command/Technique/absorb,
 									/Command/Technique/drain, /Command/Technique/hammer, /Command/Technique/uppercut)
 
-				dropList = list(/obj/item/DR_GERO_VEST,/obj/item/RED_RIBBON_INSIGNIA)
+				dropList = list(/obj/item/DR_GERO_VEST,/obj/item/RED_RIBBON_INSIGNIA, /obj/item/ANDROID_PART/ANDROID_ARM, /obj/item/ANDROID_PART/ANDROID_LEG, /obj/item/ANDROID_PART/ANDROID_EYE, /obj/item/ANDROID_PART/ANDROID_SERVO, /obj/item/ANDROID_PART/ANDROID_ACTUATOR)
 
 				visuals = list("skin_color" = "{yTan{x",
 								"eye_color" = "{CBlue{x",
