@@ -2365,10 +2365,7 @@ obj/item/
 
 		_open(mob/Player/m){
 			if(..(m)){
-				if(prob(25) && (m.race == ANDROID || m.race == REMORT_ANDROID)){
-					var lc_gain = rand(5,7);
-					m.gainlc(lc_gain,m,TRUE);
-				}else if(prob(10) && m.maxpl < MAX_PL){
+				if(prob(10) && m.maxpl < MAX_PL){
 					m.gainPL_EVENT(ret_percent(MYSTERY_BOX_GAIN,m.maxpl),m,TRUE);
 				}else if(prob(35)){
 					var/zenniValue = 5000;
@@ -2416,10 +2413,7 @@ obj/item/
 
 		_open(mob/Player/m){
 			if(..(m)){
-				if(prob(5) && (m.race == ANDROID || m.race == REMORT_ANDROID)){
-					var lc_gain = rand(8,16);
-					m.gainlc(lc_gain,m,TRUE);
-				}else if(prob(5) && m.maxpl < MAX_PL){
+				if(prob(5) && m.maxpl < MAX_PL){
 					m.gainPL_EVENT(ret_percent(MYSTERY_BOX_GAIN*2,m.maxpl),m,TRUE);
 				}else if(prob(35)){
 					var/zenniValue = 5000*3;
