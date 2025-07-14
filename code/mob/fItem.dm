@@ -3856,6 +3856,80 @@ obj/item/
 		ANNOUNCE_DROP = TRUE;
 		NO_MYSTERY = TRUE;
 		PRICE = 300000
+
+	ANDROID_PART
+		DROP_CHANCE = 1
+
+		ANDROID_ARM
+			DISPLAY = "{rripped-off{x android arm"
+			SINGLE_DISPLAY = "{rripped-off{x android arm"
+			MULTI_DISPLAY = "{rripped-off{x android arms"
+			CAN_PICKUP = TRUE
+			DECAY = TRUE
+			MISC = TRUE
+			CONTAINER = FALSE
+			SHOW_ITEMDB = TRUE
+			PRICE = 30000
+			WEIGHT = 2
+			STACKABLE = TRUE
+			MULTI = TRUE
+
+		ANDROID_LEG
+			DISPLAY = "{rbroken{x android leg"
+			SINGLE_DISPLAY = "{rbroken{x android leg"
+			MULTI_DISPLAY = "{rbroken{x android legs"
+			CAN_PICKUP = TRUE
+			DECAY = TRUE
+			MISC = TRUE
+			CONTAINER = FALSE
+			SHOW_ITEMDB = TRUE
+			PRICE = 30000
+			WEIGHT = 3
+			STACKABLE = TRUE
+			MULTI = TRUE
+
+		ANDROID_EYE
+			DISPLAY = "{rcracked{x android eye"
+			SINGLE_DISPLAY = "{rcracked{x android eye"
+			MULTI_DISPLAY = "{rcracked{x android eyes"
+			CAN_PICKUP = TRUE
+			DECAY = TRUE
+			MISC = TRUE
+			CONTAINER = FALSE
+			SHOW_ITEMDB = TRUE
+			PRICE = 30000
+			WEIGHT = 2
+			STACKABLE = TRUE
+			MULTI = TRUE
+
+		ANDROID_SERVO
+			DISPLAY = "{rburnt{x android servo motor"
+			SINGLE_DISPLAY = "{rburnt{x android servo motor"
+			MULTI_DISPLAY = "{rburnt{x android servo motors"
+			CAN_PICKUP = TRUE
+			DECAY = TRUE
+			MISC = TRUE
+			CONTAINER = FALSE
+			SHOW_ITEMDB = TRUE
+			PRICE = 30000
+			WEIGHT = 2
+			STACKABLE = TRUE
+			MULTI = TRUE
+
+		ANDROID_ACTUATOR
+			DISPLAY = "{oflaming{x actuator"
+			SINGLE_DISPLAY = "{oflaming{x actuator"
+			MULTI_DISPLAY = "{oFlaming{x actuators"
+			CAN_PICKUP = TRUE
+			DECAY = TRUE
+			MISC = TRUE
+			CONTAINER = FALSE
+			SHOW_ITEMDB = TRUE
+			PRICE = 30000
+			WEIGHT = 2
+			STACKABLE = TRUE
+			MULTI = TRUE
+	
 	consecrated_ground
 		text = "{c*{x"
 		DISPLAY = "{CConsecrated Pool{x"

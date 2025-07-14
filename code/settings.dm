@@ -15,6 +15,7 @@ Settings
 		_divider = 100
 
 		npcIdleActionProbability = 23
+		lcExchangeReward = 0.75
 
 	proc
 		veryWeakMinGain()

@@ -8,8 +8,8 @@ mob
 				sex = MALE;
 				alignment = EVIL;
 				difficultyLevel = VERY_EASY;
-				currpl = 30;
-				maxpl = 30;
+				currpl = 13000000;
+				maxpl = 13000000;
 				curreng = 100;
 				maxeng = 100;
 				zenni = 0;
@@ -39,6 +39,13 @@ mob
 							"emote whispers something to himself as he works on a complicated piece of machinery.",
 						)
 
+						notNeededDialog = list(
+							"say What did you want me to do with this...?",
+							"say I have no use for this",
+							"say Why are you wasting my time with this garbage!?",
+							"say Did you really think I want that piece of crap!"
+						)
+
 				visuals = list("skin_color" = "{yTan{x",
 								"eye_color" = "{BBlue{x",
 								"hair_length" = "Long",
@@ -53,7 +60,25 @@ mob
 				}
 
 				receive_item(obj/item/I, mob/giver) {
-
+					if (istype(I, /obj/item/ANDROID_PART)) {
+						if (isAndroid(giver)) {
+							var/list/lines = list(
+								"say Thanks [giver]! I'm gonna put this to good use!",
+								"say I just needed this [giver]!",
+								"say I have been looking for this [giver]!",
+								"say Just the piece that was missing!"
+							)
+							alaparser.parse(src, pick(lines), list())
+							astype(giver, /mob/Player/Android)?.gainlc(game.settings.lcExchangeReward, giver, TRUE)
+							src.destroyItem(I)
+						} else {
+							alaparser.parse(src, "say Well thank you for your gift! I have nothing for you since you are not an android... but I will make sure to use it well!")
+							src.destroyItem(I)
+						}
+					} else {
+						alaparser.parse(src, pick(notNeededDialog), list())
+						src.giveItem(I, giver)
+					}
 				}
 
 				event_entered(mob/M) {
@@ -515,7 +540,7 @@ mob
 				alliedType = list(/mob/NPA/earth/KingCold)
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/eye_laser, /Command/Technique/hammer,
 						/Command/Technique/uppercut)
-				dropList = list(/obj/item/COMPRESSED_METAL)
+				dropList = list(/obj/item/COMPRESSED_METAL, /obj/item/ANDROID_PART/ANDROID_ARM, /obj/item/ANDROID_PART/ANDROID_LEG, /obj/item/ANDROID_PART/ANDROID_EYE, /obj/item/ANDROID_PART/ANDROID_SERVO, /obj/item/ANDROID_PART/ANDROID_ACTUATOR)
 
 				visuals = list("skin_color" = "{WWhite{x",
 								"eye_color" = "{RRed{x",
@@ -591,7 +616,7 @@ mob
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/eye_laser,/Command/Technique/hikou,
 						/Command/Technique/hammer, /Command/Technique/uppercut)
 
-				dropList = list(/obj/item/HEAVY_METAL_CHESTPLATE)
+				dropList = list(/obj/item/HEAVY_METAL_CHESTPLATE, /obj/item/ANDROID_PART/ANDROID_ARM, /obj/item/ANDROID_PART/ANDROID_LEG, /obj/item/ANDROID_PART/ANDROID_EYE, /obj/item/ANDROID_PART/ANDROID_SERVO, /obj/item/ANDROID_PART/ANDROID_ACTUATOR)
 
 				visuals = list("skin_color" = "{yTan{x",
 								"eye_color" = "{CBlue{x",
@@ -619,7 +644,7 @@ mob
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/eye_laser, /Command/Technique/hikou,
 						/Command/Technique/hammer, /Command/Technique/uppercut)
 
-				dropList = list(/obj/item/ANDROID_17_SCARF)
+				dropList = list(/obj/item/ANDROID_17_SCARF, /obj/item/ANDROID_PART/ANDROID_ARM, /obj/item/ANDROID_PART/ANDROID_LEG, /obj/item/ANDROID_PART/ANDROID_EYE, /obj/item/ANDROID_PART/ANDROID_SERVO, /obj/item/ANDROID_PART/ANDROID_ACTUATOR)
 
 				visuals = list("skin_color" = "{yTan{x",
 								"eye_color" = "{DBlack{x",
@@ -654,7 +679,7 @@ mob
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/eye_laser, /Command/Technique/hikou,
 						/Command/Technique/hammer, /Command/Technique/uppercut)
 
-				dropList = list(/obj/item/ANDROID_18_PEARL_NECKLACE,/obj/item/GOLD_EARRING)
+				dropList = list(/obj/item/ANDROID_18_PEARL_NECKLACE,/obj/item/GOLD_EARRING, /obj/item/ANDROID_PART/ANDROID_ARM, /obj/item/ANDROID_PART/ANDROID_LEG, /obj/item/ANDROID_PART/ANDROID_EYE, /obj/item/ANDROID_PART/ANDROID_SERVO, /obj/item/ANDROID_PART/ANDROID_ACTUATOR)
 
 				visuals = list("skin_color" = "{yTan{x",
 								"eye_color" = "{DBlack{x",
@@ -689,7 +714,7 @@ mob
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/eye_laser, /Command/Technique/hikou,
 									/Command/Technique/absorb,/Command/Technique/drain, /Command/Technique/hammer, /Command/Technique/uppercut)
 
-				dropList = list(/obj/item/ANDROID_19_HAT,/obj/item/ANDROID_ENERGY_CRYSTALS)
+				dropList = list(/obj/item/ANDROID_19_HAT,/obj/item/ANDROID_ENERGY_CRYSTALS, /obj/item/ANDROID_PART/ANDROID_ARM, /obj/item/ANDROID_PART/ANDROID_LEG, /obj/item/ANDROID_PART/ANDROID_EYE, /obj/item/ANDROID_PART/ANDROID_SERVO, /obj/item/ANDROID_PART/ANDROID_ACTUATOR)
 
 				visuals = list("skin_color" = "{WPale{x",
 								"eye_color" = "{CBlue{x",
@@ -811,7 +836,7 @@ mob
 									/Command/Technique/absorb,
 									/Command/Technique/drain, /Command/Technique/hammer, /Command/Technique/uppercut)
 
-				dropList = list(/obj/item/DR_GERO_VEST,/obj/item/RED_RIBBON_INSIGNIA)
+				dropList = list(/obj/item/DR_GERO_VEST,/obj/item/RED_RIBBON_INSIGNIA, /obj/item/ANDROID_PART/ANDROID_ARM, /obj/item/ANDROID_PART/ANDROID_LEG, /obj/item/ANDROID_PART/ANDROID_EYE, /obj/item/ANDROID_PART/ANDROID_SERVO, /obj/item/ANDROID_PART/ANDROID_ACTUATOR)
 
 				visuals = list("skin_color" = "{yTan{x",
 								"eye_color" = "{CBlue{x",

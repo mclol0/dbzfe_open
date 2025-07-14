@@ -8,12 +8,16 @@ Command/Public
 		command(mob/Player/user, O, mob/Player/m, amount=0) {
 			var/foundItem = FALSE;
 
-			if(m && !isplayer(m)){
-				send("You can't give things to npcs!",user,TRUE);
-				return;
+			if(m && !m.canReceiveItems){
+				send("You cannot give items to NPCs!",user,TRUE)
+				return
 			}
 
 			if(TextMatch("zenni", O, 1, 1) && amount > 0){
+				if (istype(m, /mob/NPA)) {
+					send("You cannot give Zenni to NPCs!", user, TRUE)
+					return
+				}
 				amount = cround(amount);
 				send("You give [m.raceColor(m.name)] {G[commafy(amount)]{x {YZenni{x!",user,TRUE);
 				send("[user.raceColor(user.name)] gives you {G[commafy(amount)]{x {YZenni{x!",m,TRUE);
@@ -28,9 +32,6 @@ Command/Public
 
 						if(O && O:CAN_DROP && O:CAN_GIVE){
 							user.giveItem(O,m);
-							send("You give [m.raceColor(m.name)] [O:PREFIX][O:DISPLAY].",user)
-							send("[user.raceColor(user.name)] gives you [O:PREFIX][O:DISPLAY].",m)
-							send("[user.raceColor(user.name)] gives [m.raceColor(m.name)] [O:PREFIX][O:DISPLAY].",a_oview_extra(0,user,m))
 						}
 
 						foundItem = TRUE;
