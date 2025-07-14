@@ -289,6 +289,7 @@ Combat related defines
 #include "code\commands\admin\ban.dm"
 #include "code\commands\admin\bring.dm"
 #include "code\commands\admin\changalign.dm"
+#include "code\commands\admin\characters.dm"
 #include "code\commands\admin\compile.dm"
 #include "code\commands\admin\control.dm"
 #include "code\commands\admin\copyover.dm"
