@@ -1,6 +1,94 @@
 mob
 	NPA
 		earth
+			DrGero
+				name = "Dr. Gero";
+				race = ANDROID;
+				hostile = FALSE;
+				sex = MALE;
+				alignment = EVIL;
+				difficultyLevel = VERY_EASY;
+				currpl = 30;
+				maxpl = 30;
+				curreng = 100;
+				maxeng = 100;
+				zenni = 0;
+				randomRespawn = FALSE
+
+				var
+					list
+						knownPlayers = list()
+
+						unknownDialog = list(
+							"say What are YOU doing? This place is not for you!",
+							"say You are not an android, so you can't use this place!",
+							"say I don't know what you are doing here, but you can't use this place!",
+							"say Stop wasting my time. Go away!",
+							"say I don't have time for you. If you are not an android, get out of here!"
+						)
+						
+						idleActions = list(
+							"say Where did I leave that extra arm...",
+							"say I need to find more android parts to upgrade my creations.",
+							"emote laughs evily as he works on his androids.",
+							"say I will create the perfect android one day!",
+							"emote looks at you with a suspicious eye.",
+							"emote ducks behind a makeshift wall as something {Yexplodes{c in his workbench.",
+							"say They will be all grounded to a pulp this time!",
+							"say I'll make sure to destroy half the planet next time instead...",
+							"emote whispers something to himself as he works on a complicated piece of machinery.",
+						)
+
+				visuals = list("skin_color" = "{yTan{x",
+								"eye_color" = "{BBlue{x",
+								"hair_length" = "Long",
+								"hair_style" = "Parted",
+								"hair_color" = "{WWhite{x",
+								"height" = "Average",
+								"build" = "Skinny")
+
+				New(){
+					canReceiveItems = TRUE
+					..()
+				}
+
+				receive_item(obj/item/I, mob/giver) {
+
+				}
+
+				event_entered(mob/M) {
+					set waitfor = FALSE;
+					set background = TRUE;
+					sleep(4)
+					var/list/possibleActions = list()
+					possibleActions += idleActions
+
+					if(M.loc == src.loc) {
+						if (isAndroid(M)) {
+							var/known = (M in knownPlayers)
+							if (known) {
+								possibleActions += list(
+									"say How are you doing, [M]? I can upgrade your android parts for credits",
+									"say [M]! Did you manage to kill Goku yet?",
+									"say Remember [M]! Any kind of android part can be useful... Arms, legs and even internal components!",
+									"say Remember [M]!. Give me android scraps and I'll give you some credits in exchange!"
+								)
+							} else if (!known) {
+								alaparser.parse(src,"say Hello, [M]. Here you will be able to upgrade to unlock new skills and get stronger. And if you happen to come by any android pieces, give them to me and i'll reward you.",list())
+								knownPlayers += M
+								return
+							}
+						} else {
+							possibleActions += unknownDialog
+						}
+
+						if (prob(game.settings.npcIdleActionProbability)) {
+							var/action = pick(possibleActions)
+							alaparser.parse(src, action, list())
+						}
+					}
+				}
+
 			Bulma
 				name = "Bulma";
 				race = HUMAN;

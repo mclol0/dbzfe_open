@@ -14,6 +14,8 @@ Settings
 
 		_divider = 100
 
+		npcIdleActionProbability = 23
+
 	proc
 		veryWeakMinGain()
 			return lcVeryWeakMinGain / _divider

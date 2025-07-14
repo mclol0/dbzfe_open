@@ -12,7 +12,7 @@
 "al" = (/mob/NPA/earth/KidBuu,/turf/earth/grass,/planet/earth)
 "am" = (/turf/earth/UNDERWATER_LAKE,/planet/earth)
 "an" = (/mob/NPA/earth/TeenGohan,/turf/earth/grass,/planet/earth)
-"ao" = (/turf/earth/gero_lab,/planet/earth)
+"ao" = (/mob/NPA/earth/DrGero,/turf/earth/gero_lab,/planet/earth)
 "ap" = (/mob/NPA/earth/MajinVegeta,/turf/earth/grass,/planet/earth)
 "aq" = (/turf/earth/sand,/planet/earth)
 "ar" = (/turf/king_kaio_planet/Lowwalk,/planet/earth)

@@ -35,6 +35,7 @@ mob
 		isImm = FALSE; //Is this mob an immortal. Prevents querying the DB as much
 		insideMedPod = FALSE // Are we inside a medpod
 		lastTell = NULL // Last person we send a tell to. Used for reply
+		canReceiveItems = FALSE
 
 		/* NEW Bonus Stats */
 		bonus_ki = 0; // Ki aka powerlevel mod
@@ -1702,6 +1703,8 @@ mob
 				return "{M*{x"
 			}
 		}
+
+		receive_item(obj/item/I, mob/giver) {}
 
 	Cross(atom/theAtom){
 		if(istype(theAtom,/mob)){
