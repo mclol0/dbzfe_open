@@ -29,7 +29,8 @@ DBZFE
 		mobiles[] = list();
 		aggroMobs[] = list();
 		teleporters[] = list();
-		teachList[] = list(); // Save list of NPCS that teach a given skill
+		teachList[] = list(); // Save list of NPCS that teach a given skill 
+		Settings/settings = new();
 
 		list/meleeTargets[] = list();
 		list/energyTargets[] = list();

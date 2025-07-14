@@ -278,6 +278,7 @@ Combat related defines
 #include "DBZFE.dm"
 #include "code\dbProcs.dm"
 #include "code\respawnMob.dm"
+#include "code\settings.dm"
 #include "code\sha256.dm"
 #include "code\clientProcs\client_MAIN.dm"
 #include "code\clientProcs\clientPrompt.dm"
