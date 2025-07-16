@@ -51,8 +51,7 @@ proc
 			if(SHINJIN) { return "Shin-jin"; }
 			if(HALFBREED) { return "Halfbreed"; }
 			if(IMMORTAL) { return "Immortal"; }
-			if(SPIRIT) { return "Spirit"; }
-			if(SPIRIT) { return "Spirit"; }			
+			if(SPIRIT) { return "Spirit"; }		
 			if(DEMON) { return "Demon"; }
 			if(GENIE) { return "Genie"; }
 			if(GOD_RACE){ return "God"; }

@@ -97,7 +97,6 @@ proc
 			if(SPIRIT) return 220;
 			if(DIETY) return 400;
 			if(IMMORTAL) return MAX_PL;
-
 			if(LEGENDARY_SAIYAN) return 500;
 			if(REMORT_ANDROID) return 500;
 		}
@@ -121,7 +120,6 @@ proc
 			if(ALIEN) return "Alien";
 			if(BIO_ANDROID) return "Bio-Android";
 			if(SPIRIT) return "Spirit";
-
 			if(LEGENDARY_SAIYAN) return "Saiyan";
 			if(REMORT_ANDROID) return "Android";
 		}

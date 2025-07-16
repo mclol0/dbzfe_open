@@ -307,7 +307,7 @@ mob
 						gainMod = game.settings.godlikeRandGain()
 					}
 
-					killer:gainlc(game.settings.lcBaseValue * gainMod, src)
+					killer:gainlc(game.settings.get("lcBaseValue") * gainMod, src)
 				}
 
 				killer:gainPL(calc,src)

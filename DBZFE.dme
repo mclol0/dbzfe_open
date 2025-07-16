@@ -87,8 +87,6 @@ Combat related defines
 */
 #define PK_TIME 15 MINUTES
 #define fightTimerDefault 2 MINUTES
-#define fightStunChance 22.00
-#define mobFightStunChance 10.00
 #define fightTechGainChance 20.00
 #define fightComboChance 30.00
 #define fightComboGainChance 10.00
@@ -330,6 +328,7 @@ Combat related defines
 #include "code\commands\admin\setlc.dm"
 #include "code\commands\admin\setname.dm"
 #include "code\commands\admin\setpl.dm"
+#include "code\commands\admin\settings.dm"
 #include "code\commands\admin\setzenni.dm"
 #include "code\commands\admin\shutdown.dm"
 #include "code\commands\admin\slay.dm"
