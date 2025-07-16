@@ -1,6 +1,5 @@
 mob
 	Player
-
 		Remort_Android
 			bonus_str = 50; // BASE STR
 			bonus_sta = 150; // BASE STAM

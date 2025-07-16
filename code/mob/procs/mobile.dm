@@ -1592,7 +1592,7 @@ mob
 		general_mark(mob/m){
 			var/obj/item/i = equipment[EYE]
 
-			if(i && isScanner(i,FALSE) || race == ANDROID || race == REMORT_ANDROID){
+			if(i && isScanner(i,FALSE) || isAndroid(src)){
 				if(shortNUM){
 					return m.raceColor(short_num(m.currpl))
 				}else{
@@ -1647,7 +1647,7 @@ mob
 
 			var/obj/item/i = equipment[EYE]
 
-			if(i && isScanner(i,FALSE) || race == ANDROID || race == REMORT_ANDROID || (race == SPIRIT && hasSkill("perception"))){
+			if(i && isScanner(i,FALSE) || isAndroid(src) || (race == SPIRIT && hasSkill("perception"))){
 				if(shortNUM){
 					return "{G[short_num(m.currpl)]{x"
 				}else{

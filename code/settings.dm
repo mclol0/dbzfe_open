@@ -1,64 +1,81 @@
 Settings
 	var
-		lcBaseValue = 1
-		lcVeryWeakMinGain = 10
-		lcVeryWeakMaxGain = 30
-		lcWeakMinGain = 20
-		lcWeakMaxGain = 50
-		lcEqualMinGain = 40
-		lcEqualMaxGain = 100
-		lcStrongMinGain = 80
-		lcStrongMaxGain = 140
-		lcGodlikeMinGain = 130
-		lcGodlikeMaxGain = 200
-
+		list/map = list()
 		_divider = 100
 
-		npcIdleActionProbability = 23
-		lcExchangeReward = 0.75
+	New() {
+		// Android LC values
+		map["lcBaseValue"] = 1
+		map["lcVeryWeakMinGain"] = 10
+		map["lcVeryWeakMaxGain"] = 30
+		map["lcWeakMinGain"] = 20
+		map["lcWeakMaxGain"] = 50
+		map["lcEqualMinGain"] = 40
+		map["lcEqualMaxGain"] = 100
+		map["lcStrongMinGain"] = 80
+		map["lcStrongMaxGain"] = 140
+		map["lcGodlikeMinGain"] = 130
+		map["lcGodlikeMaxGain"] = 200
+		map["lcExchangeReward"] = 0.75
+
+		// NPC liveliness
+		map["npcIdleActionProbability"] = 23
+
+		// Combat
+		map["fightStunChance"] = 22.00
+		map["mobFightStunChance"] = 10.00
+	}
 
 	proc
 		veryWeakMinGain()
-			return lcVeryWeakMinGain / _divider
+			return map["lcVeryWeakMinGain"] / _divider
 		
 		veryWeakMaxGain()
-			return lcVeryWeakMaxGain / _divider
+			return map["lcVeryWeakMaxGain"] / _divider
 
 		weakMinGain()
-			return lcWeakMinGain / _divider
+			return map["lcWeakMinGain"] / _divider
 
 		weakMaxGain()
-			return lcWeakMaxGain / _divider
+			return map["lcWeakMaxGain"] / _divider
 
 		equalMinGain()
-			return lcEqualMinGain / _divider
+			return map["lcEqualMinGain"] / _divider
 
 		equalMaxGain()
-			return lcEqualMaxGain / _divider
+			return map["lcEqualMaxGain"] / _divider
 
 		strongMinGain()
-			return lcStrongMinGain / _divider
+			return map["lcStrongMinGain"] / _divider
 
 		strongMaxGain()
-			return lcStrongMaxGain / _divider
+			return map["lcStrongMaxGain"] / _divider
 
 		godlikeMinGain()
-			return lcGodlikeMinGain / _divider
+			return map["lcGodlikeMinGain"] / _divider
 
 		godlikeMaxGain()
-			return lcGodlikeMaxGain / _divider
+			return map["lcGodlikeMaxGain"] / _divider
 
 		veryWeakRandGain()
-			return rand(lcVeryWeakMinGain, lcVeryWeakMaxGain) / _divider
+			return rand(map["lcVeryWeakMinGain"], map["lcVeryWeakMaxGain"]) / _divider
 			
 		weakRandGain()
-			return rand(lcWeakMinGain, lcWeakMaxGain) / _divider
+			return rand(map["lcWeakMinGain"], map["lcWeakMaxGain"]) / _divider
 
 		equalRandGain()
-			return rand(lcEqualMinGain, lcEqualMaxGain) / _divider
+			return rand(map["lcEqualMinGain"], map["lcEqualMaxGain"]) / _divider
 
 		strongRandGain()
-			return rand(lcStrongMinGain, lcStrongMaxGain) / _divider	
+			return rand(map["lcStrongMinGain"], map["lcStrongMaxGain"]) / _divider	
 
 		godlikeRandGain()
-			return rand(lcGodlikeMinGain, lcGodlikeMaxGain) / _divider
+			return rand(map["lcGodlikeMinGain"], map["lcGodlikeMaxGain"]) / _divider
+
+		setValue(var/key, var/value) {
+			map[key] = value
+		}
+
+		get(var/key) {
+			return map[key]
+		}

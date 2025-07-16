@@ -290,7 +290,7 @@ mob
 
 				event(killer, tech);
 
-				if(isplayer(killer) && (killer.race == ANDROID || killer.race == REMORT_ANDROID)){
+				if(isplayer(killer) && isAndroid(killer)){
 					var/gainMod = 0;
 					if(killer.maxpl >= (maxpl * 1.60)) {
 						gainMod = game.settings.veryWeakRandGain()
@@ -307,7 +307,7 @@ mob
 						gainMod = game.settings.godlikeRandGain()
 					}
 
-					killer:gainlc(game.settings.lcBaseValue * gainMod, src)
+					killer:gainlc(game.settings.get("lcBaseValue") * gainMod, src)
 				}
 
 				killer:gainPL(calc,src)

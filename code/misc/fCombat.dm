@@ -209,7 +209,7 @@ fCombat
 					send("{W*{x [user.raceColor(user.name)]'s [attack] misses [target.raceColor(target.name)]!",a_oview_extra(0,user,target))
 					return TRUE;
 				}else if((target.form in list("Ultra Instinct", "Ultra Instinct Omen")) && !c.canFinish && !target.resting && !target.sleeping){
-					if(prob(fightStunChance) && c.tType == MELEE && c.canSTUN){stumble(user,target)}
+					if(prob(isplayer(user) ? game.settings.get("mobfightStunChance") : game.settings.get("fightStunChance")) && c.tType == MELEE && c.canSTUN){stumble(user,target)}
 					target._doEnergy(-4);
 					send("{B*{x [user.raceColor(target.name)] instinctively dodges your [attack]! [target.raceColor(target.name)]!",user)
 					send("{R*{x You instinctively dodge [user.raceColor(user.name)]'s [attack]!",target)
@@ -237,7 +237,7 @@ fCombat
 							send("{B*{x You tech block [user.raceColor(user.name)]'s [attack]!",target)
 							send("{R*{x [target.raceColor(target.name)] tech blocked your [attack]!",user)
 							send("{W*{x [target.raceColor(target.name)] tech blocked [user.raceColor(user.name)]'s [attack]!",a_oview_extra(0,target,user))
-							if(prob(isplayer(user) ? fightStunChance : mobFightStunChance) && c.tType == MELEE && c.canSTUN){stunned(user,target)}
+							if(prob(isplayer(user) ? game.settings.get("mobFightStunChance") : game.settings.get("fightStunChance")) && c.tType == MELEE && c.canSTUN){stunned(user,target)}
 							if(prob(fightOffenseGainChance) && !user.stunned){ user.gainPL(ret_percent((offenseGainPercent),user.getMaxPL()),target) }
 							target.atkDat:defense = FALSE;
 							return TRUE;

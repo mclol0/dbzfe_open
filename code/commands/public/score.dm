@@ -29,7 +29,7 @@ Command/Public
 			buffer += "<al2></a><al12>Zenni:</a> <al43>{G[commafy(user.zenni)]{x</a>\n"
 			buffer += "<al2></a><al12>Weight:</a> <al43>{G[user.totalWeight()]{x/{G[user.calcMaxWeight()] kgs.{x</a>\n"
 			if((user.race in list(SAIYAN,LEGENDARY_SAIYAN,ICER,HALFBREED))){buffer += "<al2></a><al12>Tail:</a> <al43>[user.hasTail ? "{GPresent{x" : "{RSevered{x"]</a>\n";}
-			if(user.race == ANDROID || user.race == REMORT_ANDROID){
+			if(isAndroid(user)){
 				buffer += "<al2></a><al12>Lab Credits:</a> <al43>[ncheck(user.labcredits,7)]</a>\n"
 				buffer += "<al2></a><al12>Gero's Lab :</a> <al43>25.-33</a>\n"
 			}
