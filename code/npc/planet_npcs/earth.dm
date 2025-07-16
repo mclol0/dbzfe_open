@@ -69,7 +69,7 @@ mob
 								"say Just the piece that was missing!"
 							)
 							alaparser.parse(src, pick(lines), list())
-							astype(giver, /mob/Player/Android)?.gainlc(game.settings.lcExchangeReward, giver, TRUE)
+							astype(giver, /mob/Player)?.gainlc(game.settings.lcExchangeReward, giver, TRUE)
 							src.destroyItem(I)
 						} else {
 							alaparser.parse(src, "say Well thank you for your gift! I have nothing for you since you are not an android... but I will make sure to use it well!")
