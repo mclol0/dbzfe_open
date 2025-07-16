@@ -313,9 +313,9 @@ mob
 
 		calcBonusGain(var/gravity = FALSE){
 			if(gravity == FALSE) {
-				return round(((totalWeight()) / GAIN_PER_POUND * GAIN_PERCENT),0.01);
+				return clamp(round(((totalWeight()) / GAIN_PER_POUND * GAIN_PERCENT),0.01), 0, 100);
 			} else {
-				return round(((totalWeight()/3.5) / GAIN_PER_POUND * GRAVITY_GAIN_PERCENT ),0.01);
+				return clamp(round(((totalWeight()/3.5) / GAIN_PER_POUND * GRAVITY_GAIN_PERCENT ),0.01), 0, 100);
 
 			}
 

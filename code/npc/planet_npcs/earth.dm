@@ -540,7 +540,7 @@ mob
 				alliedType = list(/mob/NPA/earth/KingCold)
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/eye_laser, /Command/Technique/hammer,
 						/Command/Technique/uppercut)
-				dropList = list(/obj/item/COMPRESSED_METAL, obj/item/ANDROID_PART/ANDROID_ACTUATOR)
+				dropList = list(/obj/item/COMPRESSED_METAL, /obj/item/ANDROID_PART/ANDROID_ACTUATOR)
 
 				visuals = list("skin_color" = "{WWhite{x",
 								"eye_color" = "{RRed{x",
