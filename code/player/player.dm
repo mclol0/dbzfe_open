@@ -506,6 +506,7 @@ mob
 			}
 
 			init(){
+				setEmail()
 				startingSkills()
 				regenStam()
 				regenPL()
@@ -515,6 +516,17 @@ mob
 				checkSk()
 				growTail()
 				game.players.Add(src)
+			}
+
+			setEmail() {
+				var/database/query/result = _query("SELECT email from characters where name = '[name]'")
+				while(result.NextRow()) {
+					var/list/row = result.GetRowData()
+					var/dbEmail = row["email"]			
+
+					email = dbEmail
+					break
+				}
 			}
 
 			parsePrompt(var/text as text){
