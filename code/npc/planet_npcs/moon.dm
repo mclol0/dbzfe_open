@@ -28,7 +28,7 @@ mob
 								"height" = "Short",
 								"build" = "Toned")
 
-				dropList = list(/obj/item/ANDROID_PART/ANDROID_ARM, /obj/item/ANDROID_PART/ANDROID_LEG, /obj/item/ANDROID_PART/ANDROID_EYE, /obj/item/ANDROID_PART/ANDROID_SERVO, /obj/item/ANDROID_PART/ANDROID_ACTUATOR)
+				dropList = list(/obj/item/ANDROID_PART/ANDROID_EYE)
 
 			Baby_Imperfect
 				name = "Infused Baby Clone"
@@ -55,7 +55,7 @@ mob
 								"hair_color" = "Black",
 								"height" = "Average",
 								"build" = "Muscular")
-				dropList = list(/obj/item/ANDROID_PART/ANDROID_ARM, /obj/item/ANDROID_PART/ANDROID_LEG, /obj/item/ANDROID_PART/ANDROID_EYE, /obj/item/ANDROID_PART/ANDROID_SERVO, /obj/item/ANDROID_PART/ANDROID_ACTUATOR)
+				dropList = list(/obj/item/ANDROID_PART/ANDROID_SERVO)
 
 			Baby_Overclocked
 				name = "Neo Machine Baby Clone"
@@ -72,7 +72,7 @@ mob
 				bonus_str = 2550;
 				bonus_arm = 2550;
 				randomRespawn = FALSE;
-				dropList = list(/obj/item/DR_MYUU_INSIGNIA, /obj/item/ANDROID_PART/ANDROID_ARM, /obj/item/ANDROID_PART/ANDROID_LEG, /obj/item/ANDROID_PART/ANDROID_EYE, /obj/item/ANDROID_PART/ANDROID_SERVO, /obj/item/ANDROID_PART/ANDROID_ACTUATOR)
+				dropList = list(/obj/item/DR_MYUU_INSIGNIA, /obj/item/ANDROID_PART/ANDROID_ACTUATOR)
 				techniques = list(/Command/Technique/elbow,/Command/Technique/hammer,/Command/Technique/uppercut,/Command/Technique/kizan,
 								/Command/Technique/zanzoken,/Command/Technique/drain,/Command/Technique/shyouken, /Command/Technique/pulse, /Command/Technique/eye_laser, /Command/Technique/gack)
 
@@ -100,7 +100,7 @@ mob
 				bonus_str = 2750;
 				bonus_arm = 2750;
 				randomRespawn = FALSE;
-				dropList = list(/obj/item/NEO_TECH_BLINDFOLD, /obj/item/ANDROID_PART/ANDROID_ARM, /obj/item/ANDROID_PART/ANDROID_LEG, /obj/item/ANDROID_PART/ANDROID_EYE, /obj/item/ANDROID_PART/ANDROID_SERVO, /obj/item/ANDROID_PART/ANDROID_ACTUATOR)
+				dropList = list(/obj/item/NEO_TECH_BLINDFOLD, /obj/item/ANDROID_PART/ANDROID_ARM)
 				techniques = list(/Command/Technique/elbow,/Command/Technique/hammer,/Command/Technique/uppercut,/Command/Technique/kizan,
 								/Command/Technique/zanzoken,/Command/Technique/drain,/Command/Technique/shyouken, /Command/Technique/pulse, /Command/Technique/eye_laser, /Command/Technique/gack)
 
