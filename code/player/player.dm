@@ -264,7 +264,7 @@ mob
 						respawn();
 					}
 
-					if(isplayer(killer) && (killer.race == ANDROID || killer.race == REMORT_ANDROID) && killer != src){
+					if(isplayer(killer) && isAndroid(killer) && killer != src){
 						killer:gainlc(pick(2,3),src)
 					}
 
@@ -433,7 +433,7 @@ mob
 
 
 		learnSkill(skName,or=FALSE, nomsg=FALSE){
-			if((race in list(ANDROID,REMORT_ANDROID)) && !or) return FALSE;
+			if(isAndroid(src) && !or) return FALSE;
 
 			if(!hasSkill(skName) && (game.skillList[skName] in skillSet()) || or){
 				if(!nomsg){ send("{G*{x You learn {R[game.skillNames[skName]]{x!",src,TRUE); }
@@ -619,7 +619,7 @@ mob
 			}
 
 			checkSkill(mob/m,FORMAT=FALSE){
-				if((race in list(ANDROID,REMORT_ANDROID))) return NULL;
+				if(isAndroid(src)) return NULL;
 
 				if(isnpc(m)){
 

@@ -1,3 +1,3 @@
 proc/isAndroid(mob/M) {
-	return M.race == ANDROID || M.race == REMORT_ANDROID
+	return M.race in list(ANDROID,REMORT_ANDROID)
 }
