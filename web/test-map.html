@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragon Ball Z Map Renderer Test</title>
+    <style>
+        body {
+            background: #1a1a2e;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 2rem;
+        }
+        
+        .test-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            color: #ff6b1a;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .test-section {
+            background: rgba(20, 20, 30, 0.9);
+            border: 1px solid #ff6b1a;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .sample-data {
+            background: rgba(0, 0, 0, 0.8);
+            color: #00ff00;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            border: 1px solid #333;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        /* Minimap Styles */
+        .minimap-demo {
+            display: flex;
+            justify-content: center;
+        }
+
+        .minimap-section {
+            width: 320px;
+            background: rgba(20, 20, 30, 0.95);
+            border: 1px solid var(--primary-orange);
+            border-radius: 8px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .minimap-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255, 107, 26, 0.3);
+        }
+
+        .minimap-header h4 {
+            color: var(--primary-orange);
+            margin: 0;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1rem;
+        }
+
+        .minimap-controls {
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .minimap-btn {
+            background: rgba(255, 107, 26, 0.2);
+            border: 1px solid var(--primary-orange);
+            color: var(--primary-orange);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .minimap-btn:hover {
+            background: var(--primary-orange);
+            color: var(--dark-bg);
+        }
+
+        .minimap-container {
+            margin-bottom: 0.5rem;
+            border: 1px solid rgba(255, 107, 26, 0.5);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        #minimapCanvas {
+            display: block;
+            width: 100%;
+            height: auto;
+            background: #000;
+        }
+
+        .minimap-info {
+            margin-bottom: 0.5rem;
+        }
+
+        .location-display {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 0.5rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        .location-display span {
+            display: block;
+            margin-bottom: 0.25rem;
+            font-family: 'Courier New', monospace;
+            color: var(--text-light);
+        }
+
+        .minimap-legend {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 0.5rem;
+            border-radius: 4px;
+        }
+
+        .legend-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.25rem;
+            font-size: 0.75rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            color: var(--text-light);
+        }
+
+        .terrain-mini {
+            width: 10px;
+            height: 10px;
+            margin-right: 0.25rem;
+            border: 1px solid #333;
+            display: inline-block;
+        }
+
+        .terrain-mini.plains { background-color: #2d5a2d; }
+        .terrain-mini.water { background-color: #1e3a8a; }
+        .terrain-mini.wall { background-color: #8b4513; }
+        .terrain-mini.special { background-color: #ff6b1a; }
+        
+        button {
+            background: #ff6b1a;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1rem;
+            margin: 0.5rem;
+        }
+        
+        button:hover {
+            background: #ff8b3a;
+        }
+        
+        :root {
+            --primary-orange: #ff6b1a;
+            --accent-gold: #ffd700;
+            --primary-blue: #1e88e5;
+            --text-light: #ffffff;
+            --text-gray: #cccccc;
+            --dark-bg: #1a1a2e;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🐉 Dragon Ball Z Map Renderer Test</h1>
+        
+        <div class="test-section">
+            <h2>Sample Map Data</h2>
+            <p>This is what the MUD sends when you type "look":</p>
+            <div class="sample-data" id="sampleData">Where: (1G) Earth (Moon Cycle: Third Quarter)
+
+...{g.{x{g.{x........{y.{x{y.{x{y.{x{y.{x... [6]
+......{g.{x{g.{x........{g.{x{g.{x... [5]
+.......{g.{x{g.{x{C"{x{C"{x.....{b~{x....{b~{x.. [4]
+........{g.{x............{b~{x... [3]
+.......{g.{x.............{b~{x{b~{x.. [2]
+.........{g.{x.............. [1]
+.........{W#{x........{g.{x...... [1]
+.......{g.{x{g.{x........{b~{x{b~{x..... [1]
+....{g.{x.....{b~{x{b~{x....{b~{x......{b~{x. [2]
+..{b~{x..........{b~{x..{b~{x.{b~{x....{b~{x. [3]
+..{b~{x{b~{x........{b~{x....{b~{x.....{b~{x. [4]
+..{b~{x........{b~{x..{b~{x........{b~{x. [5]
+..{b~{x.........{b~{x.........{b~{x.. [6]
+
+Location: Earth Plains -125.105
+Nearby: Wild Animals, Training Droids
+Exits: north south east west nw ne sw se</div>
+            
+            <button onclick="testMapRenderer()">🗺️ Render Sample Map</button>
+            <button onclick="testLargerMap()">🌍 Test Larger Map</button>
+            <button onclick="clearMap()">🧹 Clear Map</button>
+        </div>
+        
+        <div class="test-section">
+            <h2>Minimap Preview</h2>
+            <div class="minimap-demo">
+                <div class="minimap-section">
+                    <div class="minimap-header">
+                        <h4>🗺️ World Map</h4>
+                        <div class="minimap-controls">
+                            <button id="minimapFullscreen" class="minimap-btn" title="Fullscreen Map">🔍</button>
+                        </div>
+                    </div>
+                    <div class="minimap-container">
+                        <canvas id="minimapCanvas" width="300" height="250"></canvas>
+                    </div>
+                    <div class="minimap-info">
+                        <div class="location-display">
+                            <span id="minimapLocation">Location: Unknown</span>
+                            <span id="minimapCoords">Coords: 0, 0</span>
+                        </div>
+                    </div>
+                    <div class="minimap-legend">
+                        <div class="legend-grid">
+                            <span class="legend-item"><span class="terrain-mini plains"></span>Plains</span>
+                            <span class="legend-item"><span class="terrain-mini water"></span>Water</span>
+                            <span class="legend-item"><span class="terrain-mini wall"></span>Wall</span>
+                            <span class="legend-item"><span class="terrain-mini special"></span>Special</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>Map Renderer Controls</h2>
+            <p>The minimap is now always visible beside your terminal and includes:</p>
+            <ul>
+                <li>🗺️ **Always visible** - No need to toggle</li>
+                <li>🎯 **Compact design** - Doesn't interfere with gameplay</li>
+                <li>🔍 **Fullscreen option** - Click 🔍 for detailed view</li>
+                <li>🖱️ **Interactive** - Click on map tiles for information</li>
+                <li>📱 **Responsive** - Adapts to screen size</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="map-renderer.js"></script>
+    
+    <script>
+        let mapRenderer;
+        
+        // Initialize map renderer
+        document.addEventListener('DOMContentLoaded', function() {
+            try {
+                mapRenderer = new MudMapRenderer();
+                console.log('Map renderer test initialized');
+            } catch (error) {
+                console.error('Failed to initialize map renderer:', error);
+            }
+        });
+        
+        function testMapRenderer() {
+            if (!mapRenderer) {
+                alert('Map renderer not initialized');
+                return;
+            }
+            
+            const sampleMapData = document.getElementById('sampleData').textContent;
+            mapRenderer.parseMapData(sampleMapData);
+            mapRenderer.updateLocationInfo('Earth (south)', '-125.105');
+        }
+        
+        function testLargerMap() {
+            if (!mapRenderer) {
+                alert('Map renderer not initialized');
+                return;
+            }
+            
+            // Generate a larger test map with diverse DBZ terrain
+            const largerMapData = `Where: (5G) Multi-Planet View (Day Cycle: Noon)
+
+............................ [10]
+..~~~~@@@@@@@@@............ [9]
+..~~~~@{g@{x{g@{x{g@{x..~~~........ [8]
+..~~~~@{y|{x{y|{x{y|{x..~~~........ [7]
+..{W^{x{W^{x.."###"..{r~{x{r~{x........ [6]
+..{W^{x{W^{x.."#*#"..{r~{x{r~{x........ [5]
+..{g.{x{g.{x.."###"..{M"{x{M"{x........ [4]
+..{y.{x{y.{x{y.{x{y.{x{y.{x{y.{x{y.{x{y.{x{y.{x{y.{x.. [3]
+..{C.{x{C.{x{C.{x.{YH{x{RL{x{RA{x{RE{x{C%{x.... [2]
+.......................... [1]
+
+Location: Multi-Planet Junction
+Nearby: Various beings from across the universe
+Exits: north south east west up down portal`;
+            
+            mapRenderer.parseMapData(largerMapData);
+            mapRenderer.updateLocationInfo('Multi-Planet Junction', 'Various');
+        }
+        
+        function clearMap() {
+            if (mapRenderer && mapRenderer.canvas) {
+                mapRenderer.ctx.clearRect(0, 0, mapRenderer.canvas.width, mapRenderer.canvas.height);
+                console.log('Map cleared');
+            }
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragon Ball Z Connection Test</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background: #1a1a2e;
+            color: #ffffff;
+            padding: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .test-section {
+            background: rgba(255, 107, 26, 0.1);
+            border: 1px solid #ff6b1a;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+        .status {
+            font-weight: bold;
+            padding: 0.5rem;
+            border-radius: 4px;
+            margin: 0.5rem 0;
+        }
+        .success { background: rgba(0, 255, 0, 0.2); color: #44ff44; }
+        .error { background: rgba(255, 0, 0, 0.2); color: #ff4444; }
+        .info { background: rgba(0, 255, 255, 0.2); color: #44ffff; }
+        button {
+            background: #ff6b1a;
+            color: #000;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            margin: 0.5rem;
+        }
+        button:hover {
+            background: #ffd700;
+        }
+        .log {
+            background: #000;
+            padding: 1rem;
+            border-radius: 4px;
+            max-height: 200px;
+            overflow-y: auto;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>🐉 Dragon Ball Z Connection Diagnostics</h1>
+    
+    <div class="test-section">
+        <h2>Test 1: Direct MUD Connection (Expected to Fail)</h2>
+        <p>This tests direct WebSocket connection to dbzfe.com:4000</p>
+        <button onclick="testDirectConnection()">Test Direct Connection</button>
+        <div id="direct-status" class="status info">Not tested yet</div>
+        <div id="direct-log" class="log"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 2: WebSocket Bridge Connection</h2>
+        <p>This tests connection through WebSocket bridge at dbzfe.com:8080</p>
+        <button onclick="testBridgeConnection()">Test Bridge Connection</button>
+        <div id="bridge-status" class="status info">Not tested yet</div>
+        <div id="bridge-log" class="log"></div>
+    </div>
+    
+    <div class="test-section">
+        <h2>Test 3: Telnet Test (External)</h2>
+        <p>To test telnet connectivity, run this command:</p>
+        <code style="background: #333; padding: 0.5rem; display: block; margin: 1rem 0;">
+            telnet dbzfe.com 4000
+        </code>
+        <p>If this works, your MUD server is running correctly.</p>
+    </div>
+    
+    <div class="test-section">
+        <h2>📋 Interpretation:</h2>
+        <ul>
+            <li><strong>Direct Connection Fails (1006):</strong> Normal - MUD servers don't speak WebSocket</li>
+            <li><strong>Bridge Connection Fails:</strong> Bridge service not set up yet</li>
+            <li><strong>Bridge Connection Works:</strong> Ready for browser-based play!</li>
+            <li><strong>Telnet Works:</strong> MUD server is running properly</li>
+        </ul>
+    </div>
+
+    <script>
+        function log(elementId, message, type = 'info') {
+            const logElement = document.getElementById(elementId);
+            const timestamp = new Date().toLocaleTimeString();
+            const colorMap = {
+                'info': '#44ffff',
+                'success': '#44ff44',
+                'error': '#ff4444',
+                'warning': '#ffaa00'
+            };
+            
+            logElement.innerHTML += `<div style="color: ${colorMap[type]}">[${timestamp}] ${message}</div>`;
+            logElement.scrollTop = logElement.scrollHeight;
+        }
+        
+        function updateStatus(elementId, message, type) {
+            const statusElement = document.getElementById(elementId);
+            statusElement.textContent = message;
+            statusElement.className = `status ${type}`;
+        }
+        
+        function testDirectConnection() {
+            log('direct-log', 'Testing direct connection to dbzfe.com:4000...', 'info');
+            updateStatus('direct-status', 'Testing...', 'info');
+            
+            const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsUrl = `${protocol}//dbzfe.com:4000`;
+            
+            log('direct-log', `Attempting: ${wsUrl}`, 'info');
+            
+            try {
+                const socket = new WebSocket(wsUrl);
+                
+                const timeout = setTimeout(() => {
+                    socket.close();
+                    log('direct-log', 'Connection timeout (expected)', 'warning');
+                    updateStatus('direct-status', 'Failed as expected - MUD needs bridge', 'error');
+                }, 5000);
+                
+                socket.onopen = () => {
+                    clearTimeout(timeout);
+                    log('direct-log', 'Unexpected success! Direct WebSocket connection worked', 'success');
+                    updateStatus('direct-status', 'Unexpected success!', 'success');
+                    socket.close();
+                };
+                
+                socket.onerror = (error) => {
+                    clearTimeout(timeout);
+                    log('direct-log', 'Connection error (expected)', 'warning');
+                    updateStatus('direct-status', 'Failed as expected - direct connection not supported', 'error');
+                };
+                
+                socket.onclose = (event) => {
+                    clearTimeout(timeout);
+                    log('direct-log', `Connection closed: ${event.code} ${event.reason || '(no reason)'}`, 'warning');
+                    if (event.code === 1006) {
+                        log('direct-log', 'Error 1006: This is normal - MUD servers use telnet, not WebSocket', 'info');
+                        updateStatus('direct-status', 'Expected failure - Bridge required', 'error');
+                    }
+                };
+                
+            } catch (error) {
+                log('direct-log', `Exception: ${error.message}`, 'error');
+                updateStatus('direct-status', 'Failed to create connection', 'error');
+            }
+        }
+        
+        function testBridgeConnection() {
+            log('bridge-log', 'Testing bridge connection to dbzfe.com:8080...', 'info');
+            updateStatus('bridge-status', 'Testing...', 'info');
+            
+            const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsUrl = `${protocol}//dbzfe.com:8080`;
+            
+            log('bridge-log', `Attempting: ${wsUrl}`, 'info');
+            
+            try {
+                const socket = new WebSocket(wsUrl);
+                
+                const timeout = setTimeout(() => {
+                    socket.close();
+                    log('bridge-log', 'Bridge connection timeout', 'error');
+                    updateStatus('bridge-status', 'Bridge not accessible - needs setup', 'error');
+                }, 10000);
+                
+                socket.onopen = () => {
+                    clearTimeout(timeout);
+                    log('bridge-log', '🎉 Bridge connection successful!', 'success');
+                    updateStatus('bridge-status', '✅ Bridge working - ready for browser play!', 'success');
+                    socket.close();
+                };
+                
+                socket.onerror = (error) => {
+                    clearTimeout(timeout);
+                    log('bridge-log', 'Bridge connection error - service may not be running', 'error');
+                    updateStatus('bridge-status', 'Bridge service not available', 'error');
+                };
+                
+                socket.onclose = (event) => {
+                    if (event.code !== 1000) {
+                        log('bridge-log', `Bridge closed: ${event.code} ${event.reason || '(no reason)'}`, 'error');
+                        if (event.code === 1006) {
+                            log('bridge-log', 'Bridge service appears to be down or unreachable', 'error');
+                            updateStatus('bridge-status', 'Bridge service needs to be set up', 'error');
+                        }
+                    }
+                };
+                
+            } catch (error) {
+                log('bridge-log', `Exception: ${error.message}`, 'error');
+                updateStatus('bridge-status', 'Failed to create bridge connection', 'error');
+            }
+        }
+        
+        // Auto-run tests on page load
+        setTimeout(() => {
+            log('direct-log', 'Page loaded - ready for testing', 'info');
+            log('bridge-log', 'Page loaded - ready for testing', 'info');
+        }, 500);
+    </script>
+</body>
+</html> 

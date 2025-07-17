@@ -1,0 +1,42 @@
+[Unit]
+Description=WebSocket to Telnet Bridge for Dragon Ball Z: Fighter's Edition
+Documentation=https://github.com/novnc/websockify
+After=network.target
+Wants=network.target
+
+[Service]
+Type=simple
+User=websockify
+Group=websockify
+WorkingDirectory=/opt/websockify
+ExecStart=/usr/local/bin/websockify --web=/opt/websockify/web --ssl-only --cert=/etc/ssl/certs/dbzfe.crt --key=/etc/ssl/private/dbzfe.key 8080 dbzfe.com:4000
+ExecReload=/bin/kill -HUP $MAINPID
+Restart=always
+RestartSec=5
+StartLimitInterval=60
+StartLimitBurst=3
+
+# Security settings
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/websockify/logs
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+
+# Network settings
+IPAddressDeny=any
+IPAddressAllow=localhost
+IPAddressAllow=10.0.0.0/8
+IPAddressAllow=172.16.0.0/12
+IPAddressAllow=192.168.0.0/16
+
+# Logging
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=websockify-dbzfe
+
+[Install]
+WantedBy=multi-user.target 
