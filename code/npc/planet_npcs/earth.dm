@@ -1027,6 +1027,7 @@ mob
 				maxpl = 600000000;
 				curreng = 150
 				maxeng = 150
+				teach = list("phase-shift")
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/hammer,
 								/Command/Technique/uppercut, /Command/Technique/super_kamehameha)
 
@@ -1590,7 +1591,7 @@ mob
 								"build" = "Fat")
 
 			Hit
-				form = "Ascended"
+				form = "Enhanced"
 				name = "Hit"
 				race = ALIEN
 				hostile = TRUE
@@ -1775,3 +1776,50 @@ mob
 								"hair_color" = "None",
 								"height" = "Short",
 								"build" = "Toned")
+
+			Bandit_Leader
+				name = "Bandit Leader"
+				race = HUMAN
+				hostile = TRUE
+				alignment = EVIL
+				sex = MALE
+				difficultyLevel = MEDIUM;
+				curreng = 100
+				maxeng = 100
+				New(){
+					maxpl = rand(1200, 2200)
+					currpl = maxpl
+					..()
+				}
+				techniques = list(/Command/Technique/elbow, /Command/Technique/blast)
+				visuals = list("skin_color" = "{yTan{x",
+							"eye_color" = "{RBrown{x",
+							"hair_length" = "Short",
+							"hair_style" = "Messy",
+							"hair_color" = "{DBlack{x",
+							"height" = "Average",
+							"build" = "Toned")
+
+			Desert_Wolf
+				name = "Desert Wolf"
+				race = ALIEN
+				hostile = TRUE
+				alignment = NEUTRAL
+				sex = UNKNOWN
+				difficultyLevel = MEDIUM;
+				curreng = 100
+				maxeng = 100
+				
+				New(){
+					maxpl = rand(1800, 2800)
+					currpl = maxpl
+					..()
+				}
+				techniques = list(/Command/Technique/barrage, /Command/Technique/uppercut)
+				visuals = list("skin_color" = "{WWhite{x",
+							"eye_color" = "{YYellow{x",
+							"hair_length" = "None",
+							"hair_style" = "Fur",
+							"hair_color" = "{WWhite{x",
+							"height" = "Short",
+							"build" = "Lean")

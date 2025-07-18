@@ -50,6 +50,11 @@ Command/Technique
 					}
 				} else {
 					if(user.form != "Normal"){
+						// Special message for Alien forms
+						if(user.form in list("Focused", "Phase-Shift", "Enhanced")){
+							send("{BYou exhale slowly as your power fades, your aura dissolving into the air.{x", user)
+							send("{B[user.raceColor(user.name)]'s aura flickers and fades as [user.determineSex(3)] returns to normal.{x", _ohearers(0, user))
+						}
 						var/c = percent(user.currpl,user.getMaxPL())
 						user.form = "Normal"
 						user.currpl = clamp(ret_percent(c,user.getMaxPL()), 5, user.getMaxPL())

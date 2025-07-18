@@ -565,6 +565,7 @@ mob
 				bonus_str = 50;
 				bonus_arm = 50;
 				randomRespawn = FALSE;
+				teach = list("focused")
 				techniques = list(/Command/Technique/elbow, /Command/Technique/hammer, /Command/Technique/uppercut, /Command/Technique/specialbeamcannon, /Command/Technique/zanzoken)
 				teachShow = list("consecrate")
 
@@ -643,7 +644,7 @@ mob
 				curreng = 100
 				maxeng = 100
 				techniques = list(/Command/Technique/elbow, /Command/Technique/hammer, /Command/Technique/uppercut, /Command/Technique/tail_whip, /Command/Technique/zanzoken)
-				teachDelayed= list("FORM 4" = list("teleport","ssj","form 4","fullkaioken","enhance"))
+				teachDelayed= list("FORM 4" = list("teleport","ssj","form 4","fullkaioken"))
 
 				visuals = list("skin_color" = "{WWhite{x",
 								"eye_color" = "{RRed{x",
