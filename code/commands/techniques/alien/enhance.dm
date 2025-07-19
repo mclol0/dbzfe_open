@@ -12,20 +12,30 @@ Command/Technique/Form
 		command(mob/user) {
 
 			if(user){
-
 				if(user.form != "Normal"){
 					send("You are already in the [user.form] form!",user)
 				}else{
 					var/c = percent(user.currpl,user.getMaxPL())
 					user.locked=TRUE;
-					send("{WYou begin to concentrate...{x",user);
-					send("{W*{x [user.raceColor(user.name)] {Wbegins to concentrate...{x",_ohearers(0,user))
-					sleep(10);
-					send("{B*{x {WA white aura bursts around you!{x",user);
-					send("{W*{x {WA white aura bursts around{x [user.raceColor(user.name)]{W!{x",_ohearers(0,user))
-					mOuter("a sudden surge of energy",user,ov_out(1,12,user));
+					// Begin enhanced transformation sequence
+					send("{DYou close your eyes, focusing your energy...{x", user)
+					send("{W*{x [user.raceColor(user.name)] {Dcloses their eyes, focusing intensely...{x", _ohearers(0, user))
+					sleep(7)
+					send("{DThe air around you begins to shimmer with {Bcrackling energy{D!{x", user)
+					send("{W*{x [user.raceColor(user.name)] {Dis surrounded by {Bcrackling energy{D!{x", _ohearers(0, user))
+					sleep(7)
+					send("{DYour veins glow with {Ygolden light{D as your power surges!{x", user)
+					send("{W*{x [user.raceColor(user.name)] {Dis outlined in {Ygolden light{D as their power surges!{x", _ohearers(0, user))
+					sleep(7)
+					send("{DThe ground trembles beneath you, and a {Bstorm of energy{D swirls around your body!{x", user)
+					send("{W*{x [user.raceColor(user.name)] {Dstands at the center of a {Bstorm of energy{D!{x", _ohearers(0, user))
+					sleep(7)
+					send("{DA blinding {Wwhite{D aura explodes outward!{x", user)
+					send("{W*{x [user.raceColor(user.name)] {Dis engulfed in a blinding {Wwhite{D aura!{x", _ohearers(0, user))
+					send("{DYou are now{x {WEnhanced{x{D.{x", user)
+					mOuter("a cataclysmic surge of energy", user, ov_out(1, 12, user));
 					user.form = formName;
-					user.currpl = clamp(ret_percent(c,user.getMaxPL()), 5, user.getMaxPL())
+					user.currpl = clamp(ret_percent(c, user.getMaxPL()), 5, user.getMaxPL())
 					user._doEnergy(-10)
 					user.CheckForm()
 					user.locked=FALSE;

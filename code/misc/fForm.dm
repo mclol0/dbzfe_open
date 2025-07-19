@@ -686,9 +686,37 @@ fForm_factory
 			}
 
 			// ALIEN
+			if("focused"){
+				o.name = "Focused";
+				o.bonusKI = 2500;
+				o.gMod = 0;
+				o.bonusSTR = 350;
+				o.bonusARM = 0;
+				o.bonusSTA = 0;
+				o.fColor = "{c";
+				o.pColor = "{c";
+				o.fAbbr = "Focused";
+				o.fsMod = 16;
+				o.gravRes = 2;
+			}
+
+			if("phase-shift"){
+				o.name = "Phase-Shift";
+				o.bonusKI = 4000;
+				o.gMod = 0;
+				o.bonusSTR = 600;
+				o.bonusARM = 400;
+				o.bonusSTA = 200;
+				o.fColor = "{M";
+				o.pColor = "{m";
+				o.fAbbr = "Phase-Shift";
+				o.fsMod = 21;
+				o.gravRes = 3;
+			}
+
 			if("enhanced"){
 				o.name = "Enhanced";
-				o.bonusKI = 5750;
+				o.bonusKI = 6000;
 				o.gMod = 0;
 				o.bonusSTR = 800;
 				o.bonusARM = 1000;

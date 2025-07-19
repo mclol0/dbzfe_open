@@ -27,9 +27,7 @@ mob
 			}
 
 			skillSet(){
-				switch(alignment){
-					if(GOOD){
-						return list(/Command/Technique/punch,
+				return list(/Command/Technique/punch,
 							/Command/Technique/kick,
 							/Command/Technique/roundhouse,
 							/Command/Technique/sweep,
@@ -58,48 +56,12 @@ mob
 							/Command/Technique/teleport,
 							/Command/Technique/energy_mine,
 							/Command/Technique/Form/enhance,
+							/Command/Technique/Form/focused,
+							/Command/Technique/Form/phaseshift,
 							/Command/Technique/zanzoken,
 							/Command/Technique/renzoku,
 							/Command/Technique/eye_laser,
 							/Command/Technique/kienzan)
-					}
-
-					if(EVIL){
-						return list(/Command/Technique/punch,
-							/Command/Technique/kick,
-							/Command/Technique/roundhouse,
-							/Command/Technique/sweep,
-							/Command/Technique/parry,
-							/Command/Technique/jump,
-							/Command/Technique/duck,
-							/Command/Technique/dodge,
-							/Command/Technique/deflect,
-							/Command/Technique/fly,
-							/Command/Technique/burst,
-							/Command/Technique/sense,
-							/Command/Technique/scan,
-							/Command/Technique/power,
-							/Command/Technique/snapneck,
-							/Command/Technique/barrage,
-							/Command/Technique/summon,
-							/Command/Technique/revert,
-							/Command/Technique/blast,
-							/Command/Technique/elbow,
-							/Command/Technique/hammer,
-							/Command/Technique/uppercut,
-							/Command/Technique/sk_throw,
-							/Command/Technique/spin_kick,
-							/Command/Technique/fury,
-							/Command/Technique/timeskip,
-							/Command/Technique/teleport,
-							/Command/Technique/energy_mine,
-							/Command/Technique/Form/enhance,
-							/Command/Technique/zanzoken,
-							/Command/Technique/renzoku,
-							/Command/Technique/eye_laser,
-							/Command/Technique/kienzan)
-					}
-				}
 			}
 
 			New(){

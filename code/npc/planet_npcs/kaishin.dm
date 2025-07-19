@@ -235,6 +235,7 @@ mob
 				bonus_str = 500;
 				randomRespawn = FALSE;
 				teachDelayed = list("npc_mystic" = list("spectre"));
+				teach = list("enhance")
 				teachShow = list("pulse");
 				techniques = list(/Command/Technique/elbow,/Command/Technique/blast,/Command/Technique/shyouken,/Command/Technique/hammer,
 						/Command/Technique/uppercut,/Command/Technique/gekiretsu,/Command/Technique/kizan,/Command/Technique/haunt)

@@ -949,6 +949,12 @@ mob
 					}
 				}
 				if (ALIEN) {
+					if (hasSkill("focused")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("focused"))
+					}
+					if (hasSkill("phase-shift")) {
+						return maxpl + calcBonusPL(gForm.getPLMod("phase-shift"))
+					}
 					if (hasSkill("enhance")) {
 						return maxpl + calcBonusPL(gForm.getPLMod("enhanced"))
 					}
