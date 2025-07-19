@@ -10,7 +10,7 @@ DBZFE
 		banned_players[] = list()
 		banned_ips[] = list()
 		locked = FALSE;
-		multiplay = FALSE;
+		multiplay = TRUE;
 		safeTypes[] = list(/turf/earth/safe_zone=TRUE,/turf/earth/gero_lab=TRUE);
 		geroTypes[] = list(/turf/earth/gero_lab=TRUE);
 		skillList[] = list();
