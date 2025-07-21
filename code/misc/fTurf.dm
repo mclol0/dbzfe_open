@@ -44,6 +44,7 @@ turf
 		noBuildArea = 5;
 
 	void
+		icon_state="void"
 		density = TRUE;
 		opacity = TRUE;
 		display = " "
@@ -77,9 +78,11 @@ turf
 
 
 	king_kaio_planet
+		noBuildArea = 0;
 		name = "{CKing Kai's{x {YPlanet{x";
 
 		road
+			icon_state="dirt"
 			display = "{W#{x";
 			text = "#";
 
@@ -88,6 +91,7 @@ turf
 			text = "<font color=white>#</font>"
 
 		sidewalk
+			icon_state="arena_wall"
 			display = "|";
 			text = "|";
 
@@ -211,10 +215,11 @@ turf
 
 
 	freezer
-		icon='rsc/icons.dmi';
+		//icon='rsc/icons.dmi'
 		name = "{MFrieza{x"
 
 		sand
+			icon_state="freezer_sand"
 			tType = DIRT
 			display="{w.{x"
 			text="<font color=red>,</font>"
@@ -226,24 +231,27 @@ turf
 			text="<font color=#ffffff>,</font>"
 
 		mountain
+			icon_state="mountains"
 			tType = MOUNTAIN
 			display = "{r^{x"
 			text = "<font color=#cf0000>^</font>"
 			density = TRUE;
 
 		water
+			icon_state="water"
 			tType = WATER
 			display = "{m~{x"
 			text = "<font color=#cf00cf>~</font>"
 			possibleDisplay = list("{m~{x","{m~{x","{m~{x","{m~{x","{m~{x","{m~{x","{M~{x")
 
 		river
+			icon_state="river"
 			tType = WATER
 			display = "{M~{x"
 			text = "<font color=#ff00ff>~</font>"
 
 	earth
-		icon='rsc/icons.dmi';
+		//icon='rsc/icons.dmi'
 		name = "{YEarth{x"
 
 		kame_wall
@@ -252,36 +260,43 @@ turf
 			display = "{M|{x"
 			text = "<font color=#ff00ff>|</font>"
 			density = TRUE
+			noBuildArea = 0;
 
 		kame_roof
 			display = "{R@{x"
 			text = "<font color=RED>@</font>"
 			density = TRUE
+			noBuildArea = 0;
 
 		kame_trim
 			display = "{R-{x"
 			text = "<font color=RED>-</font>"
 			density = TRUE
+			noBuildArea = 0;
 
 		kame_paint_k
 			display = "{RK{x"
 			text = "<font color=RED>K</font>"
 			density = TRUE
+			noBuildArea = 0;
 
 		kame_paint_a
 			display = "{RA{x"
 			text = "<font color=RED>A</font>"
 			density = TRUE
+			noBuildArea = 0;
 
 		kame_paint_m
 			display = "{RM{x"
 			text = "<font color=RED>M</font>"
 			density = TRUE
+			noBuildArea = 0;
 
 		kame_paint_e
 			display = "{RE{x"
 			text = "<font color=RED>E</font>"
 			density = TRUE
+			noBuildArea = 0
 
 		snowmountain
 			icon_state="snow_mountains"
@@ -438,6 +453,7 @@ turf
 			density = TRUE
 	moon
 		moon_lab_secret
+			icon_state="building"
 			tType=BUILDING
 			display="{DL{x"
 			text="<font color=GRAY>L</font>"
@@ -445,6 +461,7 @@ turf
 			noBuildArea = 8;
 
 		moon_lab_lair
+			icon_state="grass"
 			tType=BUILDING
 			display="{Yo{x"
 			text="<font color=YELLOW>o</font>"
@@ -452,6 +469,7 @@ turf
 			noBuildArea = 8;
 
 		moon_lab_lair_basement
+			icon_state="grass"
 			tType=BUILDING
 			display="{Yo{x"
 			text="<font color=YELLOW>o</font>"

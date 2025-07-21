@@ -341,6 +341,12 @@ HOUSESYSTEM
 				return FALSE
 			}
 
+			// Check if the area is set to no build
+			if (user.loc.loc:noBuildArea >= 0) {
+				send("You are not allowed to build in this area", user);
+				return FALSE
+			}
+
 			// Check if the current turf has density or is water
 			if (currentTurf.density || currentTurf:tType == WATER || currentTurf:tType == MOUNTAIN || currentTurf.tType == BUILDING) {
 				send("You cannot build on water, mountains or locations that you cannot walk through", user)
