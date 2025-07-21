@@ -5,6 +5,7 @@ planet
 	var/noSummon = FALSE;
 	var/atmosphere = TRUE;
 	var/list/moons[] = list();
+	var/noBuildArea = -1
 
 	proc
 
@@ -60,7 +61,7 @@ planet
 		hideEdges = TRUE;
 		gravity = 1;
 		powerLocked = TRUE;
-
+		noBuildArea = 0;
 
 		A_1
 			name = "{RArena{x #1"
@@ -118,6 +119,7 @@ planet
 		wrapArea = TRUE;
 		hideEdges = TRUE;
 		noSummon = TRUE;
+		noBuildArea = 0;
 
 	king_kaio_planet
 		gravity = 5;
@@ -125,12 +127,14 @@ planet
 		name = "{CKing Kai's{x {YPlanet{x"
 		wrapArea = TRUE;
 		noSummon = TRUE;
+		noBuildArea = 0;
 
 	space
 		gravity = 0;
 		locked = TRUE;
 		name = "{WOuter Space{x";
 		noSummon = TRUE;
+		noBuildArea = 0;
 
 	earth
 		gravity = 1;
@@ -161,6 +165,7 @@ planet
 		hideEdges = FALSE;
 		name = "{RSnakeway{x";
 		noSummon = TRUE;
+		noBuildArea = 0;
 		//startX=59;
 		//startY=2;
 
@@ -170,6 +175,7 @@ planet
 		wrapArea = TRUE;
 		name = "{RHFIL{x";
 		noSummon = TRUE;
+		noBuildArea = 0;
 		//startX=182;
 		//startY=2;
 
@@ -180,6 +186,7 @@ planet
 		wrapArea = TRUE;
 		name = "{DSilent Bubble{x";
 		noSummon = TRUE;
+		noBuildArea = 0;
 		startX=86;
 		startY=186;
 
@@ -190,6 +197,7 @@ planet
 		wrapArea = TRUE;
 		name = "{DSecret Moon Lab{x";
 		noSummon = TRUE;
+		noBuildArea = 0;
 		startX=186;
 		startY=286;
 
@@ -200,6 +208,7 @@ planet
 		wrapArea = TRUE;
 		name = "{DSecret Moon Lab{x";
 		noSummon = TRUE;
+		noBuildArea = 0;
 		startX=156;
 		startY=286;
 
@@ -210,6 +219,7 @@ planet
 		wrapArea = TRUE;
 		name = "{DSecret Moon Lab{x";
 		noSummon = TRUE;
+		noBuildArea = 0;
 		startX=156;
 		startY=286;
 
@@ -220,6 +230,7 @@ planet
 		wrapArea = TRUE;
 		name = "{BUnderwater Lake{x";
 		noSummon = TRUE;
+		noBuildArea = 0;
 		startX=97;
 		startY=197;
 
@@ -243,12 +254,14 @@ planet
 		hideEdges = TRUE;
 		noSummon = TRUE;
 		name = "{RADMIN{x {WLOUNGE{x";
+		noBuildArea = 0;
 
 	hbtc
 		gravity = 10;
 		locked = TRUE;
 		wrapArea = TRUE;
 		name = "{YHyperbolic Time Chamber{x";
+		noBuildArea = 0;
 		maxPower = 5.00e+08;
 		powerLocked = TRUE;
 		noSummon = TRUE;
@@ -262,6 +275,7 @@ planet
 		hideEdges = TRUE;
 		name = "{yKorin's{x {WTower{x";
 		noSummon = TRUE;
+		noBuildArea = 0;
 		startX = 57;
 		startY = 43;
 

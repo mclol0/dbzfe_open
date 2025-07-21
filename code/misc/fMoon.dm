@@ -96,4 +96,5 @@ moon
 		hostPlanet = "earth";
 		wrapArea = TRUE;
 		hideEdges = FALSE;
+		noBuildArea = 0;
 
