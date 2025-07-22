@@ -1,21 +1,20 @@
 proc
-	processColor(textBuffer, color, client){
+	processColor(textBuffer, color, client)
+	{
+		if (!color || !client)
+			return textBuffer
 
-		if(color && client){
-			switch(client){
-				if(TELNET){
-					for(var/X in game.telnet_escapes){
-						textBuffer = replacetextEx(textBuffer,X,game.telnet_escapes[X]);
-					}
-				}
+		var/list/escape_map
 
-				if(BYOND){
-					for(var/X in game.byond_escapes){
-						textBuffer = replacetextEx(textBuffer,X,game.byond_escapes[X]);
-					}
-				}
-			}
-		}
+		switch (client)
+			if (TELNET)
+				escape_map = game.telnet_escapes
+			if (BYOND)
+				escape_map = game.byond_escapes
 
-		return textBuffer;
+		if (escape_map)
+			for (var/key in escape_map)
+				textBuffer = replacetextEx(textBuffer, key, escape_map[key])
+
+		return textBuffer
 	}

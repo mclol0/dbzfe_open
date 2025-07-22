@@ -1,14 +1,18 @@
 proc
-	commafy(N, SigFig=999)
-		var/negative = FALSE;
+	commafy(N, SigFig = 999)
+	{
+		var/negative = (N < 0)
+		var/text = num2text(abs(N), SigFig)
 
-		if(N<0){negative=TRUE;}
+		var/decimal = findtextEx(text, ".")
+		if (!decimal)
+			decimal = length(text) + 1
 
-		. = num2text(abs(N), SigFig)
+		for (var/pos = decimal - 3; pos > 1; pos -= 3)
+			text = copytext(text, 1, pos) + "," + copytext(text, pos)
 
-		var/end = findtextEx(., ".") || length(.)+1
+		if (negative)
+			text = "-" + text
 
-		for(var/pos=end-3, pos>1, pos-=3)
-			. = copytext(., 1, pos) + "," + copytext(.,pos)
-
-		if(negative){ . = "-[.]"; }
+		return text
+	}

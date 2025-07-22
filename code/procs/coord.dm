@@ -1,3 +1,11 @@
-proc/coord(min,max){ return min > (max / 2) ? (min - max - 1) : min } // converts coordinates into more FE like coordinates lol.
+proc
+	coord(min, max)
+		if (min > (max >> 1))
+			return min - max - 1
+		return min
 
-proc/byondcoord(min,max) { return min < (0) ? (max + min + 1) : (min) }
+proc
+	byondcoord(min, max)
+		if (min < 0)
+			return max + min + 1
+		return min

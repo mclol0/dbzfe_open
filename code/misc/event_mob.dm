@@ -26,33 +26,32 @@ eventMOB
 
 
 	proc
-		start(){
-			set waitfor=FALSE;
-			set background = TRUE;
+		start()
+			set waitfor = FALSE
+			set background = TRUE
 
-			while(src){
-				if(!EventMobRef){
-					endTime = world.time;
-				}
+			while(src)
+				if(!EventMobRef)
+					endTime = world.time
 
-				if(!started && (world.time >= nextEventTime)){
-					EventMobRef = decideMob();
-					EventMobRef.start_event();
-					started = TRUE;
-					endTime = (world.time + 30 MINUTES);
-				}else if(started && (world.time >= endTime)){
-					if(EventMobRef && !EventMobRef.AI){
-						send("{Y\[{x{GEVENT{x{Y\]{x [EventMobRef.raceColor(EventMobRef.name)] has despawned!",game.players,TRUE);
-						del(EventMobRef);
-					}
+				if(!started && world.time >= nextEventTime)
+					EventMobRef = decideMob()
+					if(EventMobRef)
+						EventMobRef.start_event()
+						started = TRUE
+						endTime = world.time + (30 * 600)
 
-					started = FALSE;
-					nextEventTime = (world.time + 60 MINUTES;);
-				}
+				else if(started && world.time >= endTime)
+					if(EventMobRef && !EventMobRef.AI)
+						send("{Y\[{x{GEVENT{x{Y\]{x [EventMobRef.raceColor(EventMobRef.name)] has despawned!", game.players, TRUE)
+						del(EventMobRef)
 
-				sleep(world.tick_lag);
-			}
-		}
+					EventMobRef = null
+					started = FALSE
+					nextEventTime = world.time + (60 * 600)
+
+				sleep(10)
+
 
 		decideMob(var/mob){
 

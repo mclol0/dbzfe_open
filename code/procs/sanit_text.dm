@@ -1,23 +1,22 @@
 proc
-	sanit_text(text){
-		text = replacetext(text, "/", "\\")
-		return text
-	}
+	sanit_text(text)
+	// Replace forward slashes with backslashes
+		return replacetext(text, "/", "\\")
 
-	read_sanit(var/t as text){
+proc
+	read_sanit(t as text)
+	// Revert escaped quotes and double apostrophes
 		t = replacetext(t, "''", "'")
-		t = replacetext(t, "\\\"", "\"")
-		return t
-	}
+		return replacetext(t, "\\\"", "\"")
 
-	sanit(var/sanitized_text as text)
+proc
+	sanit(sanitized_text as text)
+	// Escape \, ", and '
 		sanitized_text = replacetext(sanitized_text, "\\", "\\\\")
 		sanitized_text = replacetext(sanitized_text, "\"", "\\\"")
-		sanitized_text = replacetext(sanitized_text, "'", "''")
-		return sanitized_text
-		
-	sanitHelp(text) {
-		text = replacetext(text, "'", "''")
+		return replacetext(sanitized_text, "'", "''")
 
-		return text
-	}
+proc
+	sanitHelp(text)
+	// Only escape single quotes
+		return replacetext(text, "'", "''")

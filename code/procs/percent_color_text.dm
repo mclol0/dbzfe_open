@@ -1,32 +1,29 @@
 proc
-	percent_color_text(min,max,text){
-		var/percent = percent(min,max)
-		if(percent <= 25){
+	percent_color_text(min, max, text)
+	{
+		var/p = percent(min, max)
+
+		if (p <= 25)
 			return "{R[text]{x"
-		}
-		else if(percent <= 50){
+		if (p <= 50)
 			return "{Y[text]{x"
-		}
-		else if(percent <= 100){
+		if (p <= 100)
 			return "{B[text]{x"
-		}
-		else if(percent){
+		if (p)
 			return "{C[text]{x"
-		}
 	}
 
-	percent_color_noTex(min,max){
-		var/percent = percent(min,max)
-		if(percent <= 25){
+proc
+	percent_color_noTex(min, max)
+	{
+		var/p = percent(min, max)
+
+		if (p <= 25)
 			return "{R"
-		}
-		else if(percent <= 50){
+		if (p <= 50)
 			return "{Y"
-		}
-		else if(percent <= 100){
+		if (p <= 100)
 			return "{B"
-		}
-		else if(percent){
+		if (p)
 			return "{C"
-		}
 	}

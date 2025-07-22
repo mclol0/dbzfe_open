@@ -7,37 +7,18 @@ mob
 
 	NPA
 		proc
-			random_roam(){
-				set waitfor=FALSE;
-				var/direction = NULL;
+			random_roam()
+				set waitfor = FALSE
 
-				while(src){
-					if(!AI){
-						direction = pick("north","south","east","west");
-						curreng = getMaxEN();
+				while(src)
+					if(!AI)
+						curreng = getMaxEN()
 
-						switch(direction){
-							if("north"){
-								alaparser.parse(src,"fly north",list());
-							}
+						var/direction = pick("north", "south", "east", "west")
+						alaparser.parse(src, "fly [direction]", list())
 
-							if("south"){
-								alaparser.parse(src,"fly south",list());
-							}
+					sleep(80)
 
-							if("east"){
-								alaparser.parse(src,"fly east",list());
-							}
-
-							if("west"){
-								alaparser.parse(src,"fly west",list());
-							}
-						}
-					}
-
-					sleep(8 SECONDS);
-				}
-			}
 
 			start_event(){
 				switch(race){
