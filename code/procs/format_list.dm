@@ -1,23 +1,30 @@
 proc
-	format_list(list/l, amount=3, spacing=23, EXTRA=FALSE){
-		var
-			curLine = 0
-			buffer=""
+	format_list(list/l, amount = 3, spacing = 23, EXTRA = FALSE)
+	{
+		var/curLine = 0
+		var/text = ""
 
-		for(var/listEnt in l){
-			if(curLine != amount){
-				buffer += listEnt
-			}
-			else{
-				if(EXTRA) buffer += "\n"
-				buffer += "\n[listEnt]"
+		for (var/listEnt in l)
+		{
+			// Add item
+			text += listEnt
+
+			// Pad with spaces based on visual length
+			var/visual_length = length(rStrip_Escapes(listEnt))
+			var/pad = spacing - (2 * visual_length - length(listEnt))
+			if (pad > 0)
+				for (var/i = 1 to pad)
+					text += " "
+
+			// Move to next line?
+			curLine++
+			if (curLine >= amount)
+			{
+				if (EXTRA) text += "\n"
+				text += "\n"
 				curLine = 0
 			}
-
-			for(var/newSpace = 1 to (spacing-(length(rStrip_Escapes(listEnt))*2-length(listEnt)))) buffer += " "
-
-			curLine++
 		}
 
-		return buffer
+		return text
 	}

@@ -1,20 +1,27 @@
 proc
-	compressMap(list/mapBuffer=list(),mapCompression){
-		switch(mapCompression){
-			if(TRUE){
-				var
-					lastDisplay = NULL;
+	compressMap(list/mapBuffer = list(), mapCompression)
+	{
+		if (!mapCompression)
+			return mapBuffer
 
-				for(var/display=1,display<mapBuffer.len,display++){
-					if(mapBuffer[display] == lastDisplay && length(mapBuffer[display]) > 1){
-						mapBuffer[display] = copytext(mapBuffer[display],3,length(mapBuffer[display])-1) + "{x"
-						mapBuffer[display-1] = copytext(mapBuffer[display-1],1,length(mapBuffer[display-1])-1)
-					}else{
-						lastDisplay = mapBuffer[display]
-						continue
-					}
-				}
+		var/lastDisplay = null
+
+		for (var/display = 1; display < mapBuffer.len; display++)
+		{
+			var/current = mapBuffer[display]
+			if (current == lastDisplay && length(current) > 1)
+			{
+				var/currentLen = length(current)
+				mapBuffer[display] = copytext(current, 3, currentLen - 1) + "{x"
+
+				var/prev = mapBuffer[display - 1]
+				mapBuffer[display - 1] = copytext(prev, 1, length(prev) - 1)
+			}
+			else
+			{
+				lastDisplay = current
 			}
 		}
-		return mapBuffer;
+
+		return mapBuffer
 	}
