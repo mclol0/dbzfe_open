@@ -36,6 +36,7 @@ mob
 		insideMedPod = FALSE // Are we inside a medpod
 		lastTell = NULL // Last person we send a tell to. Used for reply
 		canReceiveItems = FALSE
+		list/skillExp = list()
 
 		/* NEW Bonus Stats */
 		bonus_ki = 0; // Ki aka powerlevel mod
@@ -1735,16 +1736,16 @@ mob
 				}
 			}
 
-			if(currpl >= (m.currpl * 1.60)) {
+			if(currpl >= (m.currpl * game.settings.map["veryWeakModifier"])) {
 				return "{yVERY WEAK{x";
 			}
-			else if(currpl >= (m.currpl * 1.30)) {
+			else if(currpl >= (m.currpl * game.settings.map["weakModifier"])) {
 				return "{yWEAK{x";
 			}
-			else if(currpl >= (m.currpl * 0.75)) {
+			else if(currpl >= (m.currpl * game.settings.map["equalModifier"])) {
 				return "{BEQUAL{x";
 			}
-			else if(currpl >= (m.currpl * 0.45)) {
+			else if(currpl >= (m.currpl * game.settings.map["strongModifier"])) {
 				return "{RSTRONG{x";
 			} else {
 				return "{rGODLIKE{x";
@@ -1790,16 +1791,16 @@ mob
 				}
 			}
 
-			if(currpl >= (m.currpl * 1.60)) {
+			if(currpl >= (m.currpl * game.settings.map["veryWeakModifier"])) {
 				return "{yVERY WEAK{x";
 			}
-			else if(currpl >= (m.currpl * 1.30)) {
+			else if(currpl >= (m.currpl * game.settings.map["weakModifier"])) {
 				return "{yWEAK{x";
 			}
-			else if(currpl >= (m.currpl * 0.75)) {
+			else if(currpl >= (m.currpl * game.settings.map["equalModifier"])) {
 				return "{BEQUAL{x";
 			}
-			else if(currpl >= (m.currpl * 0.45)) {
+			else if(currpl >= (m.currpl * game.settings.map["strongModifier"])) {
 				return "{RSTRONG{x";
 			} else {
 				return "{rGODLIKE{x";

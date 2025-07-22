@@ -24,6 +24,12 @@ Settings
 		// Combat
 		map["fightStunChance"] = 22.00
 		map["mobFightStunChance"] = 10.00
+
+		// Power Tiers modifiers
+		map["veryWeakModifier"] = 1.6
+		map["weakModifier"] = 1.3
+		map["equalModifier"] = 0.75
+		map["strongModifier"] = 0.45
 	}
 
 	proc

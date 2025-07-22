@@ -44,6 +44,7 @@ world
 		game.updateRanking();
 		houseSystem.loadSystemData();
 		helpSystem.loadSystem();
+		ensureSkillExpColumn()
 
 		if(fexists(file("copyover/"))){
 			game.logger.info("Recovering from a copyover.");

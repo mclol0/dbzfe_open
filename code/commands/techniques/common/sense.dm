@@ -9,6 +9,7 @@ Command/Technique
 		iCommand = FALSE;
 		tType = UTILITY;
 		canUseWhileRESTING = TRUE;
+		var/cdTime = 1 SECONDS;
 		helpCategory = "Utility"
 		helpDescription = "Sense the energy of a specific target, or of everyone in a given direction."
 
@@ -51,7 +52,7 @@ Command/Technique
 				for(var/mob/m in user.zMobs()){
 					if(a_get_dir(user,m) in argument){
 						if(!m.canSense(user)){ continue; }
-						buffer += format_text("[user.enCheck(m,TRUE)][user.checkSkill(m,TRUE)]<al26>[m.raceColor(m.name)]</a><al16>{D[uppertext(game.dir2text(a_get_dir(user,m)))]{x</a><al17>{D[coord(m:x,m:loc.loc:getMaxX())]{x.{D[coord(m:y,m:loc.loc:getMaxY())]{x</a><al32>([user.powerMark(m)])</a>\n");
+						buffer += format_text("[user.enCheck(m,TRUE)][user.checkSkill(m,TRUE)]<al26>[m.raceColor(m.name)]</a><al16>{D[uppertext(game.dir2text(a_get_dir(user,m)))]{x</a><al17>{D[coord(m:x,m:loc.loc:getMaxX())]{x.{D[coord(m:y,m:loc.loc:getMaxY())]{x</a><al32>([skillMasteryFormatSensePower(user, m)])</a>\n");
 						c++;
 					}
 				}
@@ -64,9 +65,9 @@ Command/Technique
 				if(!argument:canSense(user)){ syntax(user,getSyntax());;return FALSE}
 
 				if(user.loc == argument:loc){
-					buffer += "You sense [user.enCheck(argument)][user.checkSkill(argument)][argument:raceColor(argument:name)] ([user.powerMark(argument)]) [game.dir2text(a_get_dir(user,argument))].\n"
+					buffer += "You sense [user.enCheck(argument)][user.checkSkill(argument)][argument:raceColor(argument:name)] ([skillMasteryFormatSensePower(user, argument)]) [game.dir2text(a_get_dir(user,argument))].\n"
 				}else{
-					buffer += "You sense [user.enCheck(argument)][user.checkSkill(argument)][argument:raceColor(argument:name)] ([user.powerMark(argument)]) to the [game.dir2text(a_get_dir(user,argument))].\n"
+					buffer += "You sense [user.enCheck(argument)][user.checkSkill(argument)][argument:raceColor(argument:name)] ([skillMasteryFormatSensePower(user, argument)]) to the [game.dir2text(a_get_dir(user,argument))].\n"
 				}
 				send(implodetext(buffer,""),user)
 			}else{
@@ -74,7 +75,7 @@ Command/Technique
 
 				for(var/mob/m in user.zMobs()){
 					if(!m.canSense(user)){ continue; }
-					buffer += format_text("[user.enCheck(m,TRUE)][user.checkSkill(m,TRUE)]<al26>[m.raceColor(m.name)]</a><al16>{D[uppertext(game.dir2text(a_get_dir(user,m)))]{x</a><al17>{D[coord(m:x,m:loc.loc:getMaxX())]{x.{D[coord(m:y,m:loc.loc:getMaxY())]{x</a><al32>([user.powerMark(m)])</a>\n");
+					buffer += format_text("[user.enCheck(m,TRUE)][user.checkSkill(m,TRUE)]<al26>[m.raceColor(m.name)]</a><al16>{D[uppertext(game.dir2text(a_get_dir(user,m)))]{x</a><al17>{D[coord(m:x,m:loc.loc:getMaxX())]{x.{D[coord(m:y,m:loc.loc:getMaxY())]{x</a><al32>([skillMasteryFormatSensePower(user, m)])</a>\n");
 					c++;
 				}
 
@@ -82,4 +83,7 @@ Command/Technique
 
 				send(implodetext(buffer,""),user)
 			}
+
+			skillMasteryGainExp(user, "sense", 1)
+			game.addCooldown(user.name,internal_name,cdTime);
 		}

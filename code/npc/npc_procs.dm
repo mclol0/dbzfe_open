@@ -273,16 +273,16 @@ mob
 
 				if(isplayer(killer) && isAndroid(killer)){
 					var/gainMod = 0;
-					if(killer.maxpl >= (maxpl * 1.60)) {
+					if(killer.maxpl >= (maxpl * game.settings.map["veryWeakModifier"])) {
 						gainMod = game.settings.veryWeakRandGain()
 					}
-					else if(killer.maxpl >= (maxpl * 1.30)) {
+					else if(killer.maxpl >= (maxpl * game.settings.map["weakModifier"])) {
 						gainMod = game.settings.weakRandGain()
 					}
-					else if(killer.maxpl >= (maxpl * 0.75)) {
+					else if(killer.maxpl >= (maxpl * game.settings.map["equalModifier"])) {
 						gainMod = game.settings.equalRandGain()
 					}
-					else if(killer.maxpl >= (maxpl * 0.45)) {
+					else if(killer.maxpl >= (maxpl * game.settings.map["strongModifier"])) {
 						gainMod = game.settings.strongRandGain()
 					} else {
 						gainMod = game.settings.godlikeRandGain()

@@ -861,6 +861,7 @@ Combat related defines
 #include "code\questSystem\procs\questCheck.dm"
 #include "code\questSystem\procs\updateQuest.dm"
 #include "code\questSystem\procs\updateVariable.dm"
+#include "code\skillMastery\main.dm"
 #include "code\spacepod\movement.dm"
 #include "code\spacepod\spacePod.dm"
 #include "code\store-v2\commands.dm"
