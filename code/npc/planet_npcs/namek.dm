@@ -89,7 +89,7 @@ mob
 				curreng = 100
 				maxeng = 100
 
-				dropList = list(/obj/item/HEAVY_NAMEKIAN_SCARF,/obj/item/SOFT_NAMEKIAN_SHOES,/obj/item/HEAVY_WRISTBAND,/obj/item/LIGHT_TURBAN);
+				dropList = list(/obj/item/HEAVY_NAMEKIAN_SCARF,/obj/item/SOFT_NAMEKIAN_SHOES,/obj/item/HEAVY_WRISTBAND,/obj/item/LIGHT_TURBAN, /obj/item/NAMEKIAN_ELDER_ROBES);
 
 				visuals = list("skin_color" = "{gGreen{x",
 								"eye_color" = "{DBlack{x",
@@ -120,7 +120,7 @@ mob
 				techniques = list(/Command/Technique/elbow, /Command/Technique/shyouken, /Command/Technique/blast, /Command/Technique/solar_flare,
 						/Command/Technique/hammer, /Command/Technique/uppercut, /Command/Technique/destructodisc, /Command/Technique/zanzoken)
 
-				dropList = list(/obj/item/HEAVY_RED_SASH);
+				dropList = list(/obj/item/HEAVY_RED_SASH, /obj/item/KRILLINS_DESTRUCTO_DISC_BRACERS);
 
 				visuals = list("skin_color" = "{yTan{x",
 								"eye_color" = "{DBlack{x",
@@ -366,6 +366,7 @@ mob
 				randomRespawn = FALSE;
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/hammer, /Command/Technique/uppercut, /Command/Technique/zanzoken, /Command/Technique/telekinesis)
 				teachShow = list("telekinesis");
+				dropList = list(/obj/item/DENDE_HEALING_STAFF)
 
 				visuals = list("skin_color" = "{gGreen{x",
 								"eye_color" = "{DBlack{x",
@@ -534,7 +535,7 @@ mob
 				maxeng = 100
 				techniques = list(/Command/Technique/elbow, /Command/Technique/hammer, /Command/Technique/uppercut, /Command/Technique/specialbeamcannon, /Command/Technique/zanzoken)
 				teach = list("special beam cannon","genie heal","energy mine","bio absorb", "supernamek")
-				dropList = list(/obj/item/HEAVY_TURBAN,/obj/item/PICCOLOS_WEIGHTED_CAPE)
+				dropList = list(/obj/item/HEAVY_TURBAN,/obj/item/PICCOLOS_WEIGHTED_CAPE, /obj/item/PICCOLOS_WEIGHTED_TRAINING_GI)
 
 				visuals = list("skin_color" = "{gGreen{x",
 								"eye_color" = "{DBlack{x",

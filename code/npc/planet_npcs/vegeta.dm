@@ -12,7 +12,7 @@ mob
 				maxeng = 100
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/zenkai, /Command/Technique/hammer,
 						/Command/Technique/uppercut)
-				dropList = list(/obj/item/SAIYAN_BATTLE_ARMOR, /obj/item/SAIYAN_BRACERS)
+				dropList = list(/obj/item/SAIYAN_BATTLE_ARMOR, /obj/item/SAIYAN_BRACERS, /obj/item/VEGETAS_SAIYAN_PRIDE_ARMOR, /obj/item/SAIYAN_TAIL_BELT)
 
 				visuals = list("skin_color" = "{yTan{x",
 								"eye_color" = "{DBlack{x",
@@ -44,7 +44,7 @@ mob
 				randomRespawn = FALSE;
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/zenkai, /Command/Technique/hammer,
 						/Command/Technique/uppercut,/Command/Technique/final_flash)
-				dropList = list(/obj/item/SAIYAN_POWER_KNEE_PADS, /obj/item/SAIYAN_POWER_CAPE)
+				dropList = list(/obj/item/SAIYAN_POWER_KNEE_PADS, /obj/item/SAIYAN_POWER_CAPE, /obj/item/SUPER_SAIYAN_4_WRISTBANDS, /obj/item/BARDOCKS_BATTLE_WORN_HEADBAND)
 
 				visuals = list("skin_color" = "{yTan{x",
 								"eye_color" = "{DBlack{x",
@@ -149,7 +149,7 @@ mob
 						/Command/Technique/uppercut, /Command/Technique/galick_gun)
 				alliedType = list(/mob/NPA/vegeta/Royal_Guard)
 				randomRespawn = FALSE;
-				dropList = list(/obj/item/KING_VEGETA_MEDALLION,/obj/item/SAIYAN_BATTLE_ARMOR,/obj/item/WHITE_BOOTS,/obj/item/WHITE_GLOVES)
+				dropList = list(/obj/item/KING_VEGETA_MEDALLION,/obj/item/SAIYAN_BATTLE_ARMOR,/obj/item/WHITE_BOOTS,/obj/item/WHITE_GLOVES, /obj/item/VEGETAS_SAIYAN_PRIDE_ARMOR)
 
 
 				visuals = list("skin_color" = "{yTan{x",

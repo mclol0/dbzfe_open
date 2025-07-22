@@ -256,6 +256,7 @@ mob
 				maxeng = 170
 				techniques = list(/Command/Technique/elbow, /Command/Technique/hammer, /Command/Technique/uppercut, /Command/Technique/tail_whip,
 						/Command/Technique/eye_laser, /Command/Technique/death_beam, /Command/Technique/blast)
+				dropList = list(/obj/item/FRIEZAS_BATTLE_ARMOR_FRAGMENTS)
 
 				visuals = list("skin_color" = "{wWhite{x",
 								"eye_color" = "{RRed{x",

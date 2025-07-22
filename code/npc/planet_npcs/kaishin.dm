@@ -474,7 +474,7 @@ mob
 				bonus_str = 1300;
 				teachShow = list("mystic");
 				teachDelayed = list("npc_mystic" = list("mystic"));
-				dropList = list(/obj/item/CRIMSON_EARRINGS,/obj/item/GODLY_FLAME_GLOVES,/obj/item/GODLY_FLAME_BOOTS);
+				dropList = list(/obj/item/CRIMSON_EARRINGS,/obj/item/GODLY_FLAME_GLOVES,/obj/item/GODLY_FLAME_BOOTS, /obj/item/SUPREME_KAIS_POTARA_EARRINGS);
 				techniques = list(/Command/Technique/elbow,/Command/Technique/blast,/Command/Technique/shyouken,/Command/Technique/hammer,/Command/Technique/uppercut,/Command/Technique/gekiretsu,/Command/Technique/kizan,/Command/Technique/pulse)
 
 				visuals = list("skin_color" = "{CBlue{x",

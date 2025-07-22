@@ -85,6 +85,7 @@ mob
 				maxpl = 12000
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/hammer, /Command/Technique/uppercut)
 				teach = list("spirit bomb","kaio heal");
+				dropList = list(/obj/item/KING_KAIS_ANTENNA_HEADBAND)
 
 				visuals = list("skin_color" = "{CBlue{x",
 								"eye_color" = "{DBlack{x",
