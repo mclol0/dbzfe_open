@@ -986,49 +986,178 @@ mob
 
 			emitPower(src,ov_out(1,20,src));
 
-			if(viewer == SELF){
-				if(num >= 1e+011){
-					send(raceColor("Seismic activity, the blinding aura and your roaring voice are something to behold; something wicked this way comes!"),src)
-					emitMessage(src,ov_out(16,256,src),"{DYou feel the planet shake...{x",2.5 MINUTES);
-				}else if(num >= 1e+010){
-					send(raceColor("The clouds start to rip open with the amount of power engulfing you!"),src)
-				}else if(num >= 1000000000){
-					send(raceColor("The sky begins to darken against the brightness of your aura as the clouds swirl around you overhead!"),src)
-					emitMessage(src,ov_out(16,256,src),"{DThe sky darkens...{x",2.5 MINUTES);
-				}else if(num >= 100000000){
-					send(raceColor("The ground quakes as violent wind whips away from you!  The aura surrounding you flares as it grows in intensity!"),src)
-					emitMessage(src,ov_out(16,50,src),"{rThe ground quakes...{x",2.5 MINUTES);
-				}else if(num >= 10000000){
-					send(raceColor("A crater begins to form beneath your feet as your aura brightens immensely."),src)
-				}else if(num >= 1000000){
-					send(raceColor("Dust scatters throughout the air from large rocks floating up and disintegrating around you."),src)
-				}else if(num >= 100000){
-					send(raceColor("The ground trembles faintly as rocks start to break away and lift into the air."),src)
-				}else if(num >= 10000){
-					send(raceColor("Small pebbles float up into the air and disintegrate as a faint aura forms around you."),src)
-				}else if(num < 10000){
-					send(raceColor("Sweat rolls down your brow as you begin to focus."),src)
-				}
+			// Cache commonly used values for performance
+			var/others = _ohearers(0,src)
+			var/sex_he = determineSex(1)
+			var/sex_him = determineSex(2) 
+			var/sex_they = determineSex(3)
+
+			// Determine power level tier and messages
+			var/self_msg = ""
+			var/other_msg = ""
+			var/area_msg = ""
+			var/area_range = 0
+			var/area_duration = 0
+
+			if(num >= 1e+015){
+				self_msg = "Reality itself bends around your incomprehensible power! The fabric of existence warps as universes tremble before your divine might!"
+				other_msg = "Reality warps around [name] as [sex_he] transcends mortal comprehension! The very laws of physics seem to break down!"
+				area_msg = "{WREALITY FRACTURES...{x"
+				area_range = 512
+				area_duration = 5 MINUTES
+			}else if(num >= 5e+014){
+				self_msg = "Your power eclipses that of angels! Stars begin to collapse in distant galaxies as your energy ripples through the cosmos!"
+				other_msg = "[name]'s power rivals that of cosmic entities! Distant stars flicker and die as [sex_him] energy spreads across the universe!"
+				area_msg = "{WTHE COSMOS SHUDDERS...{x"
+				area_range = 400
+				area_duration = 4.5 MINUTES
+			}else if(num >= 1e+014){
+				self_msg = "Galaxies spiral faster in your presence! Your power threatens to tear holes in the dimensional barrier itself!"
+				other_msg = "Galaxies visibly accelerate their rotation as [name]'s power reaches across space-time itself!"
+				area_msg = "{WGALAXIES SHIFT...{x"
+				area_range = 350
+				area_duration = 4 MINUTES
+			}else if(num >= 5e+013){
+				self_msg = "Solar systems in nearby sectors begin to feel your influence! Your aura creates gravitational anomalies that bend light itself!"
+				other_msg = "[name]'s power creates gravitational distortions that bend light around [sex_him]! Solar systems tremble!"
+				area_msg = "{YLIGHT ITSELF BENDS...{x"
+				area_range = 300
+				area_duration = 4 MINUTES
+			}else if(num >= 1e+013){
+				self_msg = "Your power transcends planetary limits! The solar system's gravity wells fluctuate as your energy radiates outward!"
+				other_msg = "The entire solar system feels [name]'s power! Planetary orbits begin to wobble slightly!"
+				area_msg = "{RTHE SOLAR SYSTEM TREMBLES...{x"
+				area_range = 280
+				area_duration = 3.5 MINUTES
+			}else if(num >= 5e+012){
+				self_msg = "Moons in orbit shift their paths! Your energy signature can be detected from the edge of the solar system!"
+				other_msg = "[name]'s power reaches astronomical levels! Orbital mechanics begin to destabilize!"
+				area_msg = "{RMOONS SHIFT THEIR ORBITS...{x"
+				area_range = 260
+				area_duration = 3.5 MINUTES
+			}else if(num >= 1e+012){
+				self_msg = "Your power resonates through the planet's core! Tectonic plates groan under the immense pressure of your aura!"
+				other_msg = "[name]'s power penetrates to the planet's core! The very foundations of the world shake!"
+				area_msg = "{rTHE PLANET'S CORE RESONATES...{x"
+				area_range = 240
+				area_duration = 3 MINUTES
+			}else if(num >= 5e+011){
+				self_msg = "Continental drift accelerates beneath your feet! Your power creates aurora displays in the upper atmosphere!"
+				other_msg = "Continental plates shift as [name]'s power reaches geological scales! Aurora lights dance overhead!"
+				area_msg = "{GCONTINENTS SHIFT...{x"
+				area_range = 220
+				area_duration = 3 MINUTES
+			}else if(num >= 1e+011){
+				self_msg = "Seismic activity, the blinding aura and your roaring voice are something to behold; something wicked this way comes!"
+				other_msg = "Seismic activity, a blinding flash, and [name]'s roaring voice are something to behold; something wicked this way comes!"
+				area_msg = "{DYou feel the planet shake...{x"
+				area_range = 256
+				area_duration = 2.5 MINUTES
+			}else if(num >= 5e+010){
+				self_msg = "Weather patterns worldwide begin to shift! Your energy creates electromagnetic storms in the ionosphere!"
+				other_msg = "[name]'s power affects global weather patterns! Lightning dances between [sex_him] fingers!"
+				area_msg = "{CWEATHER PATTERNS SHIFT GLOBALLY...{x"
+				area_range = 200
+				area_duration = 2.5 MINUTES
+			}else if(num >= 1e+010){
+				self_msg = "The clouds start to rip open with the amount of power engulfing you!"
+				other_msg = "The clouds start to rip open with the amount of power engulfing [name]!"
+				area_msg = "{CCLOUDS RIP APART...{x"
+				area_range = 180
+				area_duration = 2 MINUTES
+			}else if(num >= 5e+009){
+				self_msg = "The atmosphere itself begins to glow! Your power creates a visible distortion in the air for miles around!"
+				other_msg = "The atmosphere glows around [name]! [sex_him] power creates visible distortions for miles!"
+				area_msg = "{YTHE ATMOSPHERE GLOWS...{x"
+				area_range = 160
+				area_duration = 2 MINUTES
+			}else if(num >= 1e+009){
+				self_msg = "The sky begins to darken against the brightness of your aura as the clouds swirl around you overhead!"
+				other_msg = "The sky begins to darken against the brightness of [name]'s aura as the clouds swirl around [sex_him] overhead!"
+				area_msg = "{DThe sky darkens...{x"
+				area_range = 256
+				area_duration = 2.5 MINUTES
+			}else if(num >= 5e+008){
+				self_msg = "Mountains in the distance visibly shake! Your power creates pressure waves that flatten forests!"
+				other_msg = "Distant mountains shake as [name]'s power creates devastating pressure waves!"
+				area_msg = "{rMOUNTAINS TREMBLE...{x"
+				area_range = 140
+				area_duration = 1.5 MINUTES
+			}else if(num >= 1e+008){
+				self_msg = "The ground quakes as violent wind whips away from you!  The aura surrounding you flares as it grows in intensity!"
+				other_msg = "The ground quakes as violent wind whips away from [name]!  The aura surrounding [sex_him] flares as it grows in intensity!"
+				area_msg = "{rThe ground quakes...{x"
+				area_range = 50
+				area_duration = 2.5 MINUTES
+			}else if(num >= 5e+007){
+				self_msg = "Massive boulders float effortlessly around you! Your aura creates a shimmering heat haze that distorts vision!"
+				other_msg = "Massive boulders float around [name] like they're weightless! Heat haze distorts [sex_him] image!"
+				area_msg = "{rBOULDERS FLOAT IN THE AIR...{x"
+				area_range = 45
+				area_duration = 1.5 MINUTES
+			}else if(num >= 1e+007){
+				self_msg = "A crater begins to form beneath your feet as your aura brightens immensely."
+				other_msg = "A crater begins to form beneath [name]'s feet as [sex_he] aura brightens immensely."
+				area_msg = "{yA CRATER FORMS...{x"
+				area_range = 40
+				area_duration = 1 MINUTE
+			}else if(num >= 5e+006){
+				self_msg = "The air around you begins to ionize! Small lightning bolts dance between your fingers as your power surges!"
+				other_msg = "The air ionizes around [name]! Lightning crackles between [sex_him] fingers!"
+				area_msg = "{cLIGHTNING CRACKLES...{x"
+				area_range = 35
+				area_duration = 1 MINUTE
+			}else if(num >= 1e+006){
+				self_msg = "Dust scatters throughout the air from large rocks floating up and disintegrating around you."
+				other_msg = "Dust scatters throughout the air from large rocks floating up and disintegrating around [name]."
+				area_msg = "{yDUST CLOUDS FORM...{x"
+				area_range = 30
+				area_duration = 45 SECONDS
+			}else if(num >= 5e+005){
+				self_msg = "Your aura becomes visible to the naked eye! Stone and metal begin to crack under the pressure!"
+				other_msg = "[name]'s aura becomes blindingly visible! Stone and metal crack under the pressure!"
+				area_msg = "{YAURA BLAZES BRIGHTLY...{x"
+				area_range = 25
+				area_duration = 30 SECONDS
+			}else if(num >= 1e+005){
+				self_msg = "The ground trembles faintly as rocks start to break away and lift into the air."
+				other_msg = "The ground trembles beneath [name] as rocks start to break away and lift into the air."
+				area_msg = "{yROCKS LIFT INTO THE AIR...{x"
+				area_range = 20
+				area_duration = 30 SECONDS
+			}else if(num >= 5e+004){
+				self_msg = "Your power creates a faint wind! Loose debris swirls around you in a growing vortex!"
+				other_msg = "Wind swirls around [name] as debris forms a vortex around [sex_him]!"
+				area_msg = "{cWIND SWIRLS...{x"
+				area_range = 15
+				area_duration = 20 SECONDS
+			}else if(num >= 1e+004){
+				self_msg = "Small pebbles float up into the air and disintegrate as a faint aura forms around you."
+				other_msg = "Small pebbles float up into the air and disintegrate as a faint aura forms around [name]."
+			}else if(num >= 5e+003){
+				self_msg = "Your energy begins to manifest visibly! The air shimmers with heat around your body!"
+				other_msg = "[name]'s energy manifests visibly! The air shimmers with heat around [sex_him]!"
+			}else if(num >= 1e+003){
+				self_msg = "You feel the power building within you! Your muscles tense as energy courses through your veins!"
+				other_msg = "[name]'s muscles visibly tense as power builds within [sex_him]!"
+			}else if(num >= 500){
+				self_msg = "Your heart pounds as you focus your inner energy! Adrenaline surges through your system!"
+				other_msg = "[name]'s breathing becomes heavy as [sex_they] focus [sex_him] energy!"
 			}else{
-				if(num >= 1e+011){
-					send(raceColor("Seismic activity, a blinding flash, and [name]'s roaring voice are something to behold; something wicked this way comes!"),_ohearers(0,src))
-				}else if(num >= 1e+010){
-					send(raceColor("The clouds start to rip open with the amount of power engulfing [name]!"),_ohearers(0,src))
-				}else if(num >= 1000000000){
-					send(raceColor("The sky begins to darken against the brightness of [name]'s aura as the clouds swirl around [determineSex(2)] overhead!"),_ohearers(0,src))
-				}else if(num >= 100000000){
-					send(raceColor("The ground quakes as violent wind whips away from [name]!  The aura surrounding [determineSex(2)] flares as it grows in intensity!"),_ohearers(0,src))
-				}else if(num >= 10000000){
-					send(raceColor("A crater begins to form beneath [name]'s feet as [determineSex(1)] aura brightens immensely."),_ohearers(0,src))
-				}else if(num >= 1000000){
-					send(raceColor("Dust scatters throughout the air from large rocks floating up and disintegrating around [name]."),_ohearers(0,src))
-				}else if(num >= 100000){
-					send(raceColor("The ground trembles beneath [name] as rocks start to break away and lift into the air."),_ohearers(0,src))
-				}else if(num >= 10000){
-					send(raceColor("Small pebbles float up into the air and disintegrate as a faint aura forms around [name]."),_ohearers(0,src))
-				}else if(num < 10000){
-					send(raceColor("Sweat rolls down [name]'s brow as [determineSex(3)] begin to focus!"),_ohearers(0,src))
-				}
+				self_msg = "Sweat rolls down your brow as you begin to focus."
+				other_msg = "Sweat rolls down [name]'s brow as [sex_they] begin to focus!"
+			}
+
+			// Send messages efficiently
+			if(viewer == SELF){
+				send(raceColor(self_msg), src)
+			}else{
+				send(raceColor(other_msg), others)
+			}
+
+			// Send area message if applicable
+			if(area_msg && area_range > 0 && area_duration > 0){
+				emitMessage(src, ov_out(16, area_range, src), area_msg, area_duration)
 			}
 		}
 
