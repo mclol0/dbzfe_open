@@ -13,6 +13,8 @@ mob
 				maxeng = 100
 				currpl = 7500
 				maxpl = 7500
+				bonus_str = 45
+				bonus_arm = 35
 				randomRespawn = FALSE;
 				teach = list("kaioken","gekiretsu")
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/hammer, /Command/Technique/uppercut,
@@ -49,6 +51,8 @@ mob
 				maxeng = 100
 				currpl = 7500
 				maxpl = 7500
+				bonus_str = 50
+				bonus_arm = 40
 				randomRespawn = FALSE;
 				//teach = list("kaioken","gekiretsu")
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/hammer, /Command/Technique/uppercut,
@@ -83,6 +87,8 @@ mob
 				maxeng = 100
 				currpl = 12000
 				maxpl = 12000
+				bonus_str = 80
+				bonus_arm = 65
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/hammer, /Command/Technique/uppercut)
 				teach = list("spirit bomb","kaio heal");
 				dropList = list(/obj/item/KING_KAIS_ANTENNA_HEADBAND)

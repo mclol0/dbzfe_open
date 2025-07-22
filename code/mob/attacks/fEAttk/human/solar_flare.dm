@@ -23,7 +23,7 @@ fEAttk
 
 			send("{R*{x You were blinded by [mobRef.raceColor(mobRef.name)]'s [cRef:internal_name]!",targetRef,TRUE);
 
-			if(prob(stunChance)){
+			if(decimal_prob(stunChance)){
 				stunned(targetRef,mobRef,(world.time + 45))
 			}
 		}

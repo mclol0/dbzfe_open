@@ -9,7 +9,7 @@ proc
 		send("{R*{x {CYou are stunned!{x",user)
 		send("{B*{x {CTECH BLOCK bonus!{x {C[user.raceColor(user.name)]{x{C is stunned!{x",target)
 		send("{W*{x {CTECH BLOCK bonus!{x {C[user.raceColor(user.name)]{x{C is stunned!{x",a_oview_extra(0,user,target))
-		if(prob(fightTechGainChance)) {
+		if(decimal_prob(fightTechGainChance)) {
 			if(istype(user,/mob/NPA) && user:difficultyLevel == EVENT_MOB) {
 				target.gainPL(ret_percent((techGainPercent / 10),target.getMaxPL()),user)
 			} else {
@@ -21,7 +21,7 @@ proc
 		user.barrier = FALSE;
 		user.cancelKi();
 
-		if(prob(comboChance)){
+		if(decimal_prob(comboChance)){
 			target:fCombat.buildCombo(user);
 		}
 
@@ -34,7 +34,7 @@ proc
 						comboPercent = (comboGainPercent*comboCount)
 						comboGain = ret_percent(comboPercent,target.getMaxPL())
 					send("{B[comboCount]{x {Rhit combo!{x",target)
-					if(prob(fightComboGainChance)) {
+					if(decimal_prob(fightComboGainChance)) {
 						if(istype(user,/mob/NPA) && user:difficultyLevel == EVENT_MOB) {
 							target.gainPL((comboGain / 6),user)
 						} else {
@@ -78,7 +78,7 @@ proc
 		send("{B*{x [user.raceColor(user.name)]{x{C stumbles and loses [user.determineSex(1)] balance! {C[user.raceColor(user.name)]{x{C is stunned!{x",target)
 		send("{W*{x [user.raceColor(user.name)]{x{C stumbles and loses [user.determineSex(1)] balance! {C[user.raceColor(user.name)]{x{C is stunned!{x",a_oview_extra(0,user,target))
 
-		if(prob(fightTechGainChance)) {
+		if(decimal_prob(fightTechGainChance)) {
 			if(istype(user,/mob/NPA) && user:difficultyLevel == EVENT_MOB) {
 				target.gainPL(ret_percent((techGainPercent / 10),target.getMaxPL()),user)
 			} else {
@@ -91,7 +91,7 @@ proc
 		user.barrier = FALSE;
 		user.cancelKi();
 
-		if(prob(comboChance)){
+		if(decimal_prob(comboChance)){
 			target:fCombat.buildCombo(user);
 		}
 
@@ -104,7 +104,7 @@ proc
 						comboPercent = (comboGainPercent*comboCount)
 						comboGain = ret_percent(comboPercent,target.getMaxPL())
 					send("{B[comboCount]{x {Rhit combo!{x",target)
-					if(prob(fightComboGainChance)) {
+					if(decimal_prob(fightComboGainChance)) {
 						if(istype(user,/mob/NPA) && user:difficultyLevel == EVENT_MOB) {
 							target.gainPL((comboGain / 6),user)
 						} else {

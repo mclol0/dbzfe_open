@@ -9,6 +9,8 @@ mob
 				difficultyLevel = EASY;
 				curreng = 100
 				maxeng = 100
+				bonus_str = 20
+				bonus_arm = 15
 
 				visuals = list("skin_color" = "{mPurple{x",
 								"eye_color" = "{RRed{x",
@@ -34,6 +36,8 @@ mob
 				difficultyLevel = MEDIUM;
 				curreng = 100
 				maxeng = 100
+				bonus_str = 45
+				bonus_arm = 35
 
 				dropList = list(/obj/item/HEAVY_NAMEKIAN_SCARF,/obj/item/SOFT_NAMEKIAN_SHOES);
 
@@ -60,6 +64,8 @@ mob
 				difficultyLevel = MEDIUM;
 				curreng = 100
 				maxeng = 100
+				bonus_str = 50
+				bonus_arm = 40
 
 				teach = list("fury");
 
@@ -120,7 +126,7 @@ mob
 				techniques = list(/Command/Technique/elbow, /Command/Technique/shyouken, /Command/Technique/blast, /Command/Technique/solar_flare,
 						/Command/Technique/hammer, /Command/Technique/uppercut, /Command/Technique/destructodisc, /Command/Technique/zanzoken)
 
-				dropList = list(/obj/item/HEAVY_RED_SASH, /obj/item/KRILLINS_DESTRUCTO_DISC_BRACERS);
+				dropList = list(/obj/item/HEAVY_RED_SASH, /obj/item/KRILLINS_DESTRUCTO_DISC_BRACERS,/obj/item/SENZU_BEAN_POUCH);
 
 				visuals = list("skin_color" = "{yTan{x",
 								"eye_color" = "{DBlack{x",
@@ -145,7 +151,7 @@ mob
 				techniques = list(/Command/Technique/elbow, /Command/Technique/shyouken, /Command/Technique/blast, /Command/Technique/solar_flare,
 						/Command/Technique/hammer, /Command/Technique/uppercut, /Command/Technique/masenko, /Command/Technique/zanzoken)
 
-				dropList = list(/obj/item/HEAVY_WRISTBAND,/obj/item/HEAVY_RED_SASH);
+				dropList = list(/obj/item/HEAVY_WRISTBAND,/obj/item/HEAVY_RED_SASH,/obj/item/GOHAN_SCHOLAR_SPECTACLES);
 
 				visuals = list("skin_color" = "{yTan{x",
 								"eye_color" = "{DBlack{x",
@@ -240,6 +246,7 @@ mob
 				randomRespawn = FALSE;
 				teach = list("zanzoken")
 				techniques = list(/Command/Technique/elbow, /Command/Technique/hammer, /Command/Technique/uppercut, /Command/Technique/zanzoken)
+				dropList = list(/obj/item/CAPTAIN_GINYUS_BODY_CHANGING_MEDALLION)
 
 				visuals = list("skin_color" = "{gGreen{x",
 								"eye_color" = "{DBlack{x",
@@ -313,6 +320,8 @@ mob
 				maxpl = 23000
 				curreng = 100
 				maxeng = 100
+				bonus_str = 55
+				bonus_arm = 45
 				alliedType = list(/mob/NPA/namek/Dodoria)
 				randomRespawn = FALSE;
 				techniques = list(/Command/Technique/elbow, /Command/Technique/hammer, /Command/Technique/uppercut, /Command/Technique/zanzoken)
@@ -337,6 +346,8 @@ mob
 				maxpl = 40000
 				curreng = 100
 				maxeng = 100
+				bonus_str = 60
+				bonus_arm = 50
 				alliedType = list(/mob/NPA/namek/Guldo)
 				randomRespawn = FALSE;
 				teach = list("throw","gack","erasercannon")

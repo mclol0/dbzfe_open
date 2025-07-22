@@ -28,7 +28,7 @@ atkDatum/rocketpunch
 			send("{R*{x [user.raceColor(user.name)] tries to hit you with a [name]!",target)
 			send("{W*{x [user.raceColor(user.name)] tries to hit [target.raceColor(target.name)] with a [name]!",a_oview_extra(0,user,target))
 		}
-		if(user.fCombat.doDamage(target,minDmg,maxDmg,"rocketpunch",command) && !target.unconscious && !target.stunned && prob(stunChance)) {
+		if(user.fCombat.doDamage(target,minDmg,maxDmg,"rocketpunch",command) && !target.unconscious && !target.stunned && decimal_prob(stunChance)) {
 			send("{B*{x {CYou detonate your rocketpunch in [target.raceColor(target.name)]{C's face, causing [target.determineSex(1)] to flinch!{x",user)
 			send("{B*{x {C[user.raceColor(user.name)]{C detonates their rocketpunch in your face!{x",target)
 			send("{B*{x {C[user.raceColor(user.name)]{C detonates their rocketpunch in [target.raceColor(target.name)]{C's face, causing [target.determineSex(1)] to flinch!{x",a_oview_extra(0,user,target))

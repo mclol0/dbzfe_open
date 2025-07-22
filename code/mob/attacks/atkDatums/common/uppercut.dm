@@ -38,6 +38,6 @@ atkDatum/uppercut
 				target.density = FALSE;
 			}
 
-			if(!target.stunned && prob(stunChance)) { stunned(target,user,comboChance=comboChance); }
+			if(!target.stunned && decimal_prob(stunChance)) { stunned(target,user,comboChance=comboChance); }
 		}
 	}

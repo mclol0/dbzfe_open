@@ -13,10 +13,11 @@ mob
 				maxpl = 675.00e+06;
 				curreng = 350
 				maxeng = 350
-				bonus_str = 650;
-				bonus_arm = 650;
+				bonus_str = 350;
+				bonus_arm = 300;
 				techniques = list(/Command/Technique/elbow,/Command/Technique/hammer,/Command/Technique/uppercut,/Command/Technique/kizan,
 								/Command/Technique/zanzoken,/Command/Technique/shyouken,/Command/Technique/drain,/Command/Technique/gack, /Command/Technique/timeskip)
+				dropList = list(/obj/item/CAULIFLA_SPIKY_HAIR_CLIP,/obj/item/FROST_POISON_NEEDLE_BRACER)
 
 				visuals = list("skin_color" = "{mPale Purple{x",
 								"eye_color" = "{GGreen{x",
@@ -44,10 +45,11 @@ mob
 				maxpl = 675.00e+09;
 				curreng = 350
 				maxeng = 350
-				bonus_str = 850;
-				bonus_arm = 750;
+				bonus_str = 400;
+				bonus_arm = 350;
 				techniques = list(/Command/Technique/elbow,/Command/Technique/hammer,/Command/Technique/uppercut,/Command/Technique/kizan,
 								/Command/Technique/zanzoken,/Command/Technique/shyouken,/Command/Technique/drain, /Command/Technique/gack, /Command/Technique/timeskip)
+				dropList = list(/obj/item/KALE_BERSERKER_BANDS,/obj/item/RIBRIANNE_LOVE_HEART_NECKLACE)
 
 				visuals = list("skin_color" = "{mPale Purple{x",
 								"eye_color" = "{GGreen{x",
@@ -76,8 +78,8 @@ mob
 				maxpl = 675.00e+011;
 				curreng = 400
 				maxeng = 400
-				bonus_str = 1050;
-				bonus_arm = 950;
+				bonus_str = 420;
+				bonus_arm = 360;
 				techniques = list(/Command/Technique/elbow,/Command/Technique/hammer,/Command/Technique/uppercut,/Command/Technique/kizan,
 								/Command/Technique/zanzoken,/Command/Technique/shyouken, /Command/Technique/gack, /Command/Technique/timeskip)
 
@@ -108,8 +110,8 @@ mob
 				maxpl = 675.00e+012;
 				curreng = 600
 				maxeng = 600
-				bonus_str = 1250;
-				bonus_arm = 1150;
+				bonus_str = 450;
+				bonus_arm = 400;
 				techniques = list(/Command/Technique/elbow,/Command/Technique/hammer,/Command/Technique/uppercut,/Command/Technique/kizan,
 								/Command/Technique/zanzoken,/Command/Technique/shyouken,/Command/Technique/drain,/Command/Technique/gack, /Command/Technique/timeskip)
 
@@ -140,8 +142,8 @@ mob
 				maxpl = 675.00e+012;
 				curreng = 600
 				maxeng = 600
-				bonus_str = 1550;
-				bonus_arm = 1350;
+				bonus_str = 480;
+				bonus_arm = 420;
 				randomRespawn = FALSE;
 				techniques = list(/Command/Technique/elbow,/Command/Technique/hammer,/Command/Technique/uppercut,/Command/Technique/kizan,
 								/Command/Technique/zanzoken,/Command/Technique/shyouken,/Command/Technique/drain, /Command/Technique/pulse, /Command/Technique/gack, /Command/Technique/timeskip)
@@ -171,12 +173,12 @@ mob
 				difficultyLevel = GOD;
 				curreng = 599
 				maxeng = 599
-				bonus_arm = 2400;
-				bonus_str = 2600;
+				bonus_str = 450;
+				bonus_arm = 380;
 				randomRespawn = FALSE;
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/zenkai, /Command/Technique/hammer,
 						/Command/Technique/uppercut,/Command/Technique/spiritwave, /Command/Technique/soulspear)
-				dropList = list(/obj/item/CORRUPTED_SIGIL)
+				dropList = list(/obj/item/CORRUPTED_SIGIL,/obj/item/JIREN_PRIDE_TROOPER_UNIFORM,/obj/item/GOKU_BLACK_ROSE_SCYTHE)
 
 				visuals = list("skin_color" = "{DBlack{x",
 								"eye_color" = "{DBlack{x",
@@ -205,10 +207,10 @@ mob
 				maxpl = 4675.00e+015;
 				curreng = 900
 				maxeng = 900
-				bonus_str = 2750;
-				bonus_arm = 2250;
+				bonus_str = 500;
+				bonus_arm = 400;
 				randomRespawn = FALSE;
-				dropList = list(/obj/item/LEVIATHAN_LEGGINGS)
+				dropList = list(/obj/item/LEVIATHAN_LEGGINGS,/obj/item/ZAMASU_IMMORTAL_HALO,/obj/item/ZENO_OMNIPOTENT_BUTTON)
 				techniques = list(/Command/Technique/elbow,/Command/Technique/hammer,/Command/Technique/uppercut,/Command/Technique/kizan,
 								/Command/Technique/zanzoken,/Command/Technique/shyouken,/Command/Technique/drain, /Command/Technique/pulse, /Command/Technique/eye_laser, /Command/Technique/gack, /Command/Technique/timeskip)
 

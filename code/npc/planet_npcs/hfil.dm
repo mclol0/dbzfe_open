@@ -13,8 +13,11 @@ mob
 				maxeng = 100
 				currpl = 12000
 				maxpl = 12000
+				bonus_str = 80
+				bonus_arm = 65
 				teach = list("stonespit")
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/hammer, /Command/Technique/uppercut)
+				dropList = list(/obj/item/DABURAS_DEMONIC_CROWN,/obj/item/BABIDIS_MAJIN_EMBLEM)
 
 				visuals = list("skin_color" = "{RRed{x",
 								"eye_color" = "{DBlack{x",
@@ -43,10 +46,12 @@ mob
 				difficultyLevel = MEDIUM
 				curreng = 100
 				maxeng = 100
+				bonus_str = 45
+				bonus_arm = 35
 				randomRespawn = FALSE;
 				teach = list("flameslash")
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast)
-				dropList = list(/obj/item/BLUE_DEMON_GI,/obj/item/BLUE_DEMON_PANTS,/obj/item/HFILFIRE_HORNS)
+				dropList = list(/obj/item/BLUE_DEMON_GI,/obj/item/BLUE_DEMON_PANTS,/obj/item/HFILFIRE_HORNS,/obj/item/CHAIOTZU_EMPEROR_HAT)
 
 				visuals = list("skin_color" = "{RRed{x",
 								"eye_color" = "{RRed{x",
@@ -77,7 +82,7 @@ mob
 				randomRespawn = FALSE;
 				teach = list("hellfirelance")
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast,/Command/Technique/hammer, /Command/Technique/uppercut)
-				dropList = list(/obj/item/DEMONIC_BREASTPLATE,/obj/item/METAL_ARMPLATE,/obj/item/CRIMSON_HFIL_EARRING,/obj/item/HFILFIRE_HORNS)
+				dropList = list(/obj/item/DEMONIC_BREASTPLATE,/obj/item/METAL_ARMPLATE,/obj/item/CRIMSON_HFIL_EARRING,/obj/item/HFILFIRE_HORNS,/obj/item/GARLIC_JR_IMMORTALITY_CROWN)
 
 				visuals = list("skin_color" = "{RRed{x",
 								"eye_color" = "{RRed{x",

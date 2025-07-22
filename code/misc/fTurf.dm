@@ -60,9 +60,9 @@ turf
 		New(){
 			..()
 
-			if(prob(2)){
+			if(decimal_prob(2)){
 				display = pick(list("{Y*{x","{B*{x","{R*{x","{Y.{x","{B.{x","{G.{x","{G*{x","{r.{x","{y.{x","{r*{x","{m*{x"));
-			}else if(prob(6)){
+			}else if(decimal_prob(6)){
 				display = "{W.{x";
 			}else{
 				display = " ";

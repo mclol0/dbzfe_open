@@ -29,7 +29,7 @@ atkDatum/tail_whip
 			send("{R*{x [user.raceColor(user.name)] tries to hit you with a [name]!",target)
 			send("{W*{x [user.raceColor(user.name)] tries to hit [target.raceColor(target.name)] with a [name]!",a_oview_extra(0,user,target))
 		}
-		if(user.fCombat.doDamage(target,minDmg,maxDmg,"tailwhip",command) && !target.unconscious && !target.stunned && prob(throwChance)){
+		if(user.fCombat.doDamage(target,minDmg,maxDmg,"tailwhip",command) && !target.unconscious && !target.stunned && decimal_prob(throwChance)){
 			var/sendDir = game.dirRev(user.dir);
 
 			if(game.dir2text_map(sendDir) in target.Exits(TRUE)){

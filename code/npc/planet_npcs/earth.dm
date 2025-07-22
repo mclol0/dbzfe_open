@@ -26,7 +26,7 @@ mob
 							"say Stop wasting my time. Go away!",
 							"say I don't have time for you. If you are not an android, get out of here!"
 						)
-						
+
 						idleActions = list(
 							"say Where did I leave that extra arm...",
 							"say I need to find more android parts to upgrade my creations.",
@@ -107,7 +107,7 @@ mob
 							possibleActions += unknownDialog
 						}
 
-						if (prob(game.settings.get("npcIdleActionProbability"))) {
+						if (decimal_prob(game.settings.get("npcIdleActionProbability"))) {
 							var/action = pick(possibleActions)
 							alaparser.parse(src, action, list())
 						}
@@ -515,7 +515,7 @@ mob
 				teachDelayed = list("Spirit Burst" = list("spirit_burst" ,"kiaihou","tri-beam","shyouken"));
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/shyouken,
 						/Command/Technique/hammer, /Command/Technique/uppercut, /Command/Technique/tri_beam)
-				dropList = list(/obj/item/THE_THIRD_EYE, /obj/item/TIENS_THIRD_EYE_HEADBAND);
+				dropList = list(/obj/item/THE_THIRD_EYE);
 
 				visuals = list("skin_color" = "{yTan{x",
 								"eye_color" = "{DBlack{x",
@@ -589,7 +589,7 @@ mob
 				teach = list("wolf fang fist")
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/shyouken, /Command/Technique/hammer,
 						/Command/Technique/uppercut, /Command/Technique/kamehameha, /Command/Technique/wolf_fang_fist)
-				dropList = list(/obj/item/BLACK_SASH,/obj/item/YAMCHAS_DESERT_MASK, /obj/item/YAMCHAS_WOLF_FANG_GAUNTLETS)
+				dropList = list(/obj/item/BLACK_SASH,/obj/item/YAMCHAS_DESERT_MASK)
 
 				visuals = list("skin_color" = "{yTan{x",
 								"eye_color" = "{DBlack{x",
@@ -616,7 +616,7 @@ mob
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/eye_laser,/Command/Technique/hikou,
 						/Command/Technique/hammer, /Command/Technique/uppercut)
 
-				dropList = list(/obj/item/HEAVY_METAL_CHESTPLATE, /obj/item/ANDROID_PART/ANDROID_SERVO, /obj/item/ANDROID_16S_BIRD_LOVING_INSIGNIA)
+				dropList = list(/obj/item/HEAVY_METAL_CHESTPLATE, /obj/item/ANDROID_PART/ANDROID_SERVO)
 
 				visuals = list("skin_color" = "{yTan{x",
 								"eye_color" = "{CBlue{x",
@@ -751,13 +751,13 @@ mob
 								"hair_color" = "None",
 								"height" = "Tiny",
 								"build" = "Monstrous")
-				
+
 				event(mob/killer, Command/Technique/tech){
 					if(istype(killer,/mob/Player/Spirit) && tech.internal_name == "purify") {
 						killer.learnSkill("perception",TRUE)
 					}
 
-				}					
+				}
 
 
 			Misokatsun
@@ -771,7 +771,7 @@ mob
 				maxeng = 120
 				bonus_arm = 50;
 				randomRespawn = FALSE;
-				
+
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/hammer,/Command/Technique/hammer, /Command/Technique/barrage, /Command/Technique/uppercut)
 				visuals = list("skin_color" = "{YOrange{x",
 								"eye_color" = "{DBlack{x",
@@ -799,7 +799,7 @@ mob
 				bonus_arm = 75;
 				bonus_sta = 75;
 				randomRespawn = FALSE;
-				
+
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/hammer,/Command/Technique/hammer, /Command/Technique/barrage, /Command/Technique/uppercut)
 				visuals = list("skin_color" = "{gDark Green{x",
 								"eye_color" = "{DBlack{x",
@@ -930,7 +930,7 @@ mob
 				curreng = 100
 				maxeng = 100
 				teach = list("final flash");
-				dropList = list(/obj/item/CELLS_CHITINOUS_WING_PLATES,/obj/item/CELLS_CHITINOUS_FOOT_PLATES, /obj/item/CELLS_PERFECT_FORM_EXOSKELETON);
+				dropList = list(/obj/item/CELLS_CHITINOUS_WING_PLATES,/obj/item/CELLS_CHITINOUS_FOOT_PLATES);
 				techniques = list(/Command/Technique/tail_stab,/Command/Technique/elbow,
 									/Command/Technique/blast,
 									/Command/Technique/eye_laser, /Command/Technique/hammer, /Command/Technique/uppercut, /Command/Technique/kamehameha)
@@ -1257,8 +1257,8 @@ mob
 							killer.form = "Shadow";
 							send("{YYou've {WTranscended{Y into a new spiritual form, '{wShadow{Y'",killer)
 						}
-					}	
-				}							
+					}
+				}
 
 			Kid_Trunks
 				name = "Kid Trunks"
@@ -1396,7 +1396,7 @@ mob
 				techniques = list(/Command/Technique/elbow,/Command/Technique/hammer,/Command/Technique/uppercut,/Command/Technique/final_flash,
 						/Command/Technique/galick_gun,/Command/Technique/kamehameha, /Command/Technique/super_kamehameha, /Command/Technique/zanzoken)
 				dropList = list(/obj/item/WHITE_FUSION_BOOTS,/obj/item/DEMON_PRINCE_GLOVES,/obj/item/POTARA_FUSION_EARRINGS,/obj/item/SUPER_DRAGON_GI,
-							/obj/item/ORANGE_FUSION_PANTS, /obj/item/VEGITO_POTARA_FUSION_BOOTS)
+							/obj/item/ORANGE_FUSION_PANTS)
 
 				visuals = list("skin_color" = "{yTan{x",
 								"eye_color" = "{DBlack{x",
@@ -1485,7 +1485,6 @@ mob
 				teach = list("ssjg")
 				techniques = list(/Command/Technique/elbow,/Command/Technique/hammer,/Command/Technique/uppercut,/Command/Technique/final_flash,
 								/Command/Technique/zanzoken,/Command/Technique/drain,/Command/Technique/eye_laser)
-				dropList = list(/obj/item/BEERUS_DESTRUCTOR_EARRINGS, /obj/item/ULTRA_INSTINCT_AURA_CLOAK)
 
 				visuals = list("skin_color" = "{mPurple{x",
 								"eye_color" = "{DBl{x{Ya{x{Dck{x",
@@ -1512,7 +1511,6 @@ mob
 				teach = list("ultrainstinctomen")
 				techniques = list(/Command/Technique/elbow,/Command/Technique/hammer,/Command/Technique/uppercut,/Command/Technique/kizan,
 								/Command/Technique/zanzoken,/Command/Technique/drain,/Command/Technique/shyouken)
-				dropList = list(/obj/item/WHIS_ANGEL_STAFF_REPLICA, /obj/item/VADOS_ANGEL_RING, /obj/item/GRAND_PRIEST_DIVINE_ROBES)
 
 				visuals = list("skin_color" = "{CPale Blue{x",
 								"eye_color" = "{mPurple{x",
@@ -1608,7 +1606,6 @@ mob
 				bonus_arm = 1000;
 				techniques = list(/Command/Technique/timeskip, /Command/Technique/fury, /Command/Technique/elbow,/Command/Technique/hammer,/Command/Technique/uppercut,/Command/Technique/kizan,
 								/Command/Technique/zanzoken,/Command/Technique/drain,/Command/Technique/shyouken)
-				dropList = list(/obj/item/HIT_TIME_SKIP_GAUNTLETS)
 
 				visuals = list("skin_color" = "{mPurple{x",
 								"eye_color" = "{RRed{x",
@@ -1812,7 +1809,7 @@ mob
 				difficultyLevel = MEDIUM;
 				curreng = 100
 				maxeng = 100
-				
+
 				New(){
 					maxpl = rand(1800, 2800)
 					currpl = maxpl

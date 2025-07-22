@@ -19,7 +19,7 @@ Settings
 		map["lcExchangeReward"] = 0.75
 
 		// NPC liveliness
-		map["npcIdleActionProbability"] = 23
+		map["npcIdleActionprobability"] = 23
 
 		// Combat
 		map["fightStunChance"] = 22.00
@@ -29,7 +29,7 @@ Settings
 	proc
 		veryWeakMinGain()
 			return map["lcVeryWeakMinGain"] / _divider
-		
+
 		veryWeakMaxGain()
 			return map["lcVeryWeakMaxGain"] / _divider
 
@@ -59,7 +59,7 @@ Settings
 
 		veryWeakRandGain()
 			return rand(map["lcVeryWeakMinGain"], map["lcVeryWeakMaxGain"]) / _divider
-			
+
 		weakRandGain()
 			return rand(map["lcWeakMinGain"], map["lcWeakMaxGain"]) / _divider
 
@@ -67,7 +67,7 @@ Settings
 			return rand(map["lcEqualMinGain"], map["lcEqualMaxGain"]) / _divider
 
 		strongRandGain()
-			return rand(map["lcStrongMinGain"], map["lcStrongMaxGain"]) / _divider	
+			return rand(map["lcStrongMinGain"], map["lcStrongMaxGain"]) / _divider
 
 		godlikeRandGain()
 			return rand(map["lcGodlikeMinGain"], map["lcGodlikeMaxGain"]) / _divider

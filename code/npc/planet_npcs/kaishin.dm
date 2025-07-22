@@ -10,6 +10,8 @@ mob
 				difficultyLevel = MEDIUM
 				curreng = 100
 				maxeng = 100
+				bonus_str = 45
+				bonus_arm = 35
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/kizan)
 
 				visuals = list("skin_color" = "{CBlue{x",
@@ -36,6 +38,8 @@ mob
 				difficultyLevel = MEDIUM
 				curreng = 100
 				maxeng = 100
+				bonus_str = 50
+				bonus_arm = 40
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/kizan, /Command/Technique/gekiretsu)
 
 				visuals = list("skin_color" = "{CBlue{x",
@@ -62,6 +66,8 @@ mob
 				difficultyLevel = VERY_HARD
 				curreng = 100
 				maxeng = 100
+				bonus_str = 180
+				bonus_arm = 140
 				teach = list("timeskip");
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/kizan, /Command/Technique/gekiretsu)
 

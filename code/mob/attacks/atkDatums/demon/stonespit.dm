@@ -26,7 +26,7 @@ atkDatum/stonespit
 			user._doEnergy(-getCost(),TRUE)
 			send("{R* You spit a wad of medusa stone at [target.raceColor(target.name)]!{x",user,TRUE);
 			send("{C[user.raceColor(user.name)] spits a wad of medusa stone at you!{x",target,TRUE);
-			if(prob(stunChance)){
+			if(decimal_prob(stunChance)){
 				stunned(target,user,(world.time + 40))
 				game.addCooldown(user.name,command.internal_name, cdTime);
 				send("{B* Your medusa spit turns {x[target.raceColor(target.name)]{B to stone!{x",user,TRUE);

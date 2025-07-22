@@ -31,7 +31,7 @@ atkDatum/tail_stab
 			send("{R*{x [user.raceColor(user.name)] thrusts their tail towards your [area]!",target)
 			send("{W*{x [user.raceColor(user.name)] thrusts their tail towards [target.raceColor(target.name)]'s [area]!",a_oview_extra(0,user,target))
 		}
-		if(user.fCombat.doDamage(target,minDmg,maxDmg,"tailstab",command) && !target.unconscious && prob(bleedChance)){
+		if(user.fCombat.doDamage(target,minDmg,maxDmg,"tailstab",command) && !target.unconscious && decimal_prob(bleedChance)){
 			target._doEnergy(-2);
 			target.bleedDamage(user);
 		}

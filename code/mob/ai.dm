@@ -8,39 +8,39 @@ mob
 					}
 
 					if(EASY){
-						return 75;
+						return 800;
 					}
 
 					if(MEDIUM){
-						return 150;
+						return 1400;
 					}
 
 					if(HARD){
-						return 400;
-					}
-
-					if(VERY_HARD){
-						return 1000;
-					}
-
-					if(INSANE){
 						return 2200;
 					}
 
+					if(VERY_HARD){
+						return 2800;
+					}
+
+					if(INSANE){
+						return 3200;
+					}
+
 					if(FUSION){
-						return 2500;
+						return 3800;
 					}
 
 					if(GOD){
-						return 2650;
+						return 4800;
 					}
 
 					if(HEROIC){
-						return 2625;
+						return 5200;
 					}
 
 					if(EVENT_MOB){
-						return 3000;
+						return 6000;
 					}
 				}
 
@@ -55,39 +55,39 @@ mob
 					}
 
 					if(EASY){
-						return 75;
+						return 650;
 					}
 
 					if(MEDIUM){
-						return 250;
-					}
-
-					if(HARD){
-						return 500;
-					}
-
-					if(VERY_HARD){
-						return 700;
-					}
-
-					if(INSANE){
 						return 1100;
 					}
 
+					if(HARD){
+						return 1700;
+					}
+
+					if(VERY_HARD){
+						return 2200;
+					}
+
+					if(INSANE){
+						return 2600;
+					}
+
 					if(FUSION){
-						return 1200;
+						return 3100;
 					}
 
 					if(GOD){
-						return 1400;
+						return 4200;
 					}
 
 					if(HEROIC){
-						return 1450;
+						return 4600;
 					}
 
 					if(EVENT_MOB){
-						return 1650;
+						return 5200;
 					}
 				}
 
@@ -297,7 +297,7 @@ aiDatum
 					alaparser.parse(mobRef, "wake", list());
 				}
 
-				if(prob(20) && mobRef && mobRef.fCombat.lastTarget && !mobRef.checkTargeted() && length(mobRef.kiAttks) > 0 && mobRef.curreng > 40 && !cooldownLen(mobRef.name) && mobRef.difficultyLevel > EASY || prob(40) && mobRef && mobRef.fCombat.lastTarget && mobRef.fCombat.lastTarget:kiAttk && !mobRef.checkTargeted() && length(mobRef.kiAttks) > 0 && mobRef.curreng > 40 && !cooldownLen(mobRef.name) && mobRef.difficultyLevel > EASY){
+				if(decimal_prob(20) && mobRef && mobRef.fCombat.lastTarget && !mobRef.checkTargeted() && length(mobRef.kiAttks) > 0 && mobRef.curreng > 40 && !cooldownLen(mobRef.name) && mobRef.difficultyLevel > EASY || decimal_prob(40) && mobRef && mobRef.fCombat.lastTarget && mobRef.fCombat.lastTarget:kiAttk && !mobRef.checkTargeted() && length(mobRef.kiAttks) > 0 && mobRef.curreng > 40 && !cooldownLen(mobRef.name) && mobRef.difficultyLevel > EASY){
 					/* GOTO DIFF ROOM? */
 					var/dir = pick("n","s","e","w");
 					if(mobRef.density){ alaparser.parse(mobRef, "fly", list()); }
@@ -365,22 +365,22 @@ aiDatum
 						if(mobRef.density && mobRef.fCombat.lastTarget:density || !mobRef.density && !mobRef.fCombat.lastTarget:density){
 
 							if(mobRef && mobRef.fCombat.lastTarget && mobRef.fCombat.lastTarget:stunned){
-								if((locate(/Command/Technique/blast) in mobRef.techniques) && prob(25)){
+								if((locate(/Command/Technique/blast) in mobRef.techniques) && decimal_prob(25)){
 									alaparser.parse(mobRef, "blast [mobRef.fCombat.lastTarget:name]", list());
 									while(mobRef.kiAttk){sleep(world.tick_lag)}
-								}else if((locate(/Command/Technique/drain) in mobRef.techniques) && prob(60)){
+								}else if((locate(/Command/Technique/drain) in mobRef.techniques) && decimal_prob(60)){
 									alaparser.parse(mobRef, "drain [mobRef.fCombat.lastTarget:name]", list());
 									while(mobRef.atkDat){sleep(world.tick_lag)}
-								}else if((locate(/Command/Technique/self_destruct) in mobRef.techniques) && prob(50) && percent(mobRef.currpl,mobRef.getMaxPL()) <= 30.00){
+								}else if((locate(/Command/Technique/self_destruct) in mobRef.techniques) && decimal_prob(50) && percent(mobRef.currpl,mobRef.getMaxPL()) <= 30.00){
 									alaparser.parse(mobRef, "selfdestruct [mobRef.fCombat.lastTarget:name]", list());
 									while(mobRef.atkDat){sleep(world.tick_lag)}
-								}else if((locate(/Command/Technique/fury) in mobRef.techniques) && prob(50)){
+								}else if((locate(/Command/Technique/fury) in mobRef.techniques) && decimal_prob(50)){
 									alaparser.parse(mobRef, "fury [mobRef.fCombat.lastTarget:name]", list());
 									while(mobRef.atkDat){sleep(world.tick_lag)}
-								}else if(!mobRef.fCombat.lastTarget:density && (locate(/Command/Technique/hammer) in mobRef.techniques) && prob(75) && !mobRef.fCombat.comboList["[mobRef.fCombat.lastTarget:ID]"]){
+								}else if(!mobRef.fCombat.lastTarget:density && (locate(/Command/Technique/hammer) in mobRef.techniques) && decimal_prob(75) && !mobRef.fCombat.comboList["[mobRef.fCombat.lastTarget:ID]"]){
 									alaparser.parse(mobRef, "hammer [mobRef.fCombat.lastTarget:name]", list());
 									while(mobRef.atkDat){sleep(world.tick_lag)}
-								}else if((locate(/Command/Technique/siphon) in mobRef.techniques) && prob(60)){
+								}else if((locate(/Command/Technique/siphon) in mobRef.techniques) && decimal_prob(60)){
 									alaparser.parse(mobRef, "siphon [mobRef.fCombat.lastTarget:name]", list());
 									while(mobRef.atkDat){sleep(world.tick_lag)}
 								}
@@ -443,7 +443,7 @@ aiDatum
 								alaparser.parse(mobRef, "revert", list());
 							}
 
-							if(!FAKING && prob(mobRef.fakeChance) && !mobRef.fCombat.lastTarget:stunned && !mobRef.fCombat.lastTarget:checkLocked(TRUE) && percent(mobRef.curreng,mobRef.getMaxEN()) > 30){
+							if(!FAKING && decimal_prob(mobRef.fakeChance) && !mobRef.fCombat.lastTarget:stunned && !mobRef.fCombat.lastTarget:checkLocked(TRUE) && percent(mobRef.curreng,mobRef.getMaxEN()) > 30){
 								FAKING = TRUE;
 								fakeTime = world.time;
 								cFake = rand(2,fakeCount);

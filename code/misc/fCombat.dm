@@ -155,7 +155,7 @@ fCombat
 		}
 
 		checkUIAttack(mob/attacker, mob/defender){
-			if(prob(fightUIAttack)){
+			if(decimal_prob(fightUIAttack)){
 				if(attacker.form == "Ultra Instinct"){
 					send("{R*{x{C [attacker.raceColor(attacker.name)] has maneuvered through your defense!", defender)
 					send("{B*{x{C You have maneuvered through [defender.raceColor(defender.name)]'s defense!", attacker)
@@ -209,7 +209,7 @@ fCombat
 					send("{W*{x [user.raceColor(user.name)]'s [attack] misses [target.raceColor(target.name)]!",a_oview_extra(0,user,target))
 					return TRUE;
 				}else if((target.form in list("Ultra Instinct", "Ultra Instinct Omen")) && !c.canFinish && !target.resting && !target.sleeping){
-					if(prob(isplayer(user) ? game.settings.get("mobfightStunChance") : game.settings.get("fightStunChance")) && c.tType == MELEE && c.canSTUN){stumble(user,target)}
+					if(decimal_prob(isplayer(user) ? game.settings.get("mobfightStunChance") : game.settings.get("fightStunChance")) && c.tType == MELEE && c.canSTUN){stumble(user,target)}
 					target._doEnergy(-4);
 					send("{B*{x [user.raceColor(target.name)] instinctively dodges your [attack]! [target.raceColor(target.name)]!",user)
 					send("{R*{x You instinctively dodge [user.raceColor(user.name)]'s [attack]!",target)
@@ -219,10 +219,10 @@ fCombat
 
 
 				if((PARRY_HIGH in c.defenses) || (PARRY_LOW in c.defenses)){
-					if(isnpc(target) && (PARRY_HIGH in c.defenses) && prob(target:defenceChance) && !(target:getStatus() in list("unconscious","stunned","sleeping"))){
+					if(isnpc(target) && (PARRY_HIGH in c.defenses) && decimal_prob(target:defenceChance) && !(target:getStatus() in list("unconscious","stunned","sleeping"))){
 						alaparser.parse(target, "parry high", list());
 					}
-					if(isnpc(target) && (PARRY_LOW in c.defenses) && prob(target:defenceChance) && !(target:getStatus() in list("unconscious","stunned","sleeping"))){
+					if(isnpc(target) && (PARRY_LOW in c.defenses) && decimal_prob(target:defenceChance) && !(target:getStatus() in list("unconscious","stunned","sleeping"))){
 						alaparser.parse(target, "parry low", list());
 					}
 
@@ -237,8 +237,8 @@ fCombat
 							send("{B*{x You tech block [user.raceColor(user.name)]'s [attack]!",target)
 							send("{R*{x [target.raceColor(target.name)] tech blocked your [attack]!",user)
 							send("{W*{x [target.raceColor(target.name)] tech blocked [user.raceColor(user.name)]'s [attack]!",a_oview_extra(0,target,user))
-							if(prob(isplayer(user) ? game.settings.get("mobFightStunChance") : game.settings.get("fightStunChance")) && c.tType == MELEE && c.canSTUN){stunned(user,target)}
-							if(prob(fightOffenseGainChance) && !user.stunned){ user.gainPL(ret_percent((offenseGainPercent),user.getMaxPL()),target) }
+							if(decimal_prob(isplayer(user) ? game.settings.get("mobFightStunChance") : game.settings.get("fightStunChance")) && c.tType == MELEE && c.canSTUN){stunned(user,target)}
+							if(decimal_prob(fightOffenseGainChance) && !user.stunned){ user.gainPL(ret_percent((offenseGainPercent),user.getMaxPL()),target) }
 							target.atkDat:defense = FALSE;
 							return TRUE;
 						}else{
@@ -248,7 +248,7 @@ fCombat
 				}
 
 				if((DEFLECT in c.defenses)){
-					if(isnpc(target) && (DEFLECT in c.defenses) && prob(target:defenceKiChance) && !(target:getStatus() in list("unconscious","stunned","sleeping"))){
+					if(isnpc(target) && (DEFLECT in c.defenses) && decimal_prob(target:defenceKiChance) && !(target:getStatus() in list("unconscious","stunned","sleeping"))){
 						alaparser.parse(target, "deflect", list());
 					}
 
@@ -270,10 +270,10 @@ fCombat
 				}
 
 				if((DODGE_LEFT in c.defenses) || (DODGE_RIGHT in c.defenses)){
-					if(isnpc(target) && (DODGE_LEFT in c.defenses) && prob(target:defenceKiChance) && !(target:getStatus() in list("unconscious","stunned","sleeping"))){
+					if(isnpc(target) && (DODGE_LEFT in c.defenses) && decimal_prob(target:defenceKiChance) && !(target:getStatus() in list("unconscious","stunned","sleeping"))){
 						alaparser.parse(target, "dodge left", list());
 					}
-					if(isnpc(target) && (DODGE_RIGHT in c.defenses) && prob(target:defenceKiChance) && !(target:getStatus() in list("unconscious","stunned","sleeping"))){
+					if(isnpc(target) && (DODGE_RIGHT in c.defenses) && decimal_prob(target:defenceKiChance) && !(target:getStatus() in list("unconscious","stunned","sleeping"))){
 						alaparser.parse(target, "dodge right", list());
 					}
 					if((DODGE_LEFT in c.defenses) && target.chkDef(/atkDatum/dodge_left) || (DODGE_RIGHT in c.defenses) && target.chkDef(/atkDatum/dodge_right)){
@@ -291,7 +291,7 @@ fCombat
 				}
 
 				if((DUCK in c.defenses)){
-					if(isnpc(target) && (DUCK in c.defenses) && prob(target:defenceChance) && !(target:getStatus() in list("unconscious","stunned","sleeping"))){
+					if(isnpc(target) && (DUCK in c.defenses) && decimal_prob(target:defenceChance) && !(target:getStatus() in list("unconscious","stunned","sleeping"))){
 						alaparser.parse(target, "duck", list());
 					}
 					if(target.chkDef(/atkDatum/duck) && !checkUIAttack(user,target)){
@@ -305,7 +305,7 @@ fCombat
 				}
 
 				if((JUMP in c.defenses)){
-					if(isnpc(target) && (JUMP in c.defenses) && prob(target:defenceChance) && !(target:getStatus() in list("unconscious","stunned","sleeping"))){
+					if(isnpc(target) && (JUMP in c.defenses) && decimal_prob(target:defenceChance) && !(target:getStatus() in list("unconscious","stunned","sleeping"))){
 						alaparser.parse(target, "jump", list());
 					}
 					if(target.chkDef(/atkDatum/jump) && !checkUIAttack(user,target)){
@@ -337,7 +337,7 @@ fCombat
 				}
 
 				if((ABSORB in c.defenses)){
-					if(isnpc(target) && (ABSORB in c.defenses) && prob(target:defenceKiChance) && !(target:getStatus() in list("unconscious","stunned","sleeping"))){
+					if(isnpc(target) && (ABSORB in c.defenses) && decimal_prob(target:defenceKiChance) && !(target:getStatus() in list("unconscious","stunned","sleeping"))){
 						alaparser.parse(target, "absorb", list());
 					}
 					if(target.chkDef(/atkDatum/absorb)){
@@ -425,7 +425,7 @@ fCombat
 					target._doDamage(-damage)
 					target._doEnergy(-3)
 					if(isplayer(target) && target:spacePod && (target in target:spacePod:passengers)){target:spacePod:destroy(mobRef,c.name)}
-					if(prob((fightOffenseGainChance + 3))){mobRef:gainPL(ret_percent((offenseGainPercent / 2),mobRef:getMaxPL()),target)}
+					if(decimal_prob((fightOffenseGainChance + 3))){mobRef:gainPL(ret_percent((offenseGainPercent / 2),mobRef:getMaxPL()),target)}
 					target.death(mobRef,c)
 				}
 

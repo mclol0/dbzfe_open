@@ -29,7 +29,7 @@ atkDatum/wolf_fang_fist
 			send("{R*{x [user.raceColor(user.name)] tries to hit you with a [name]!",target)
 			send("{W*{x [user.raceColor(user.name)] tries to hit [target.raceColor(target.name)] with a [name]!",a_oview_extra(0,user,target))
 		}
-		if(user.fCombat.doDamage(target,minDmg,maxDmg,"wolf fang fist",command) && !target.unconscious && !target.stunned && prob(stunChance)) {
+		if(user.fCombat.doDamage(target,minDmg,maxDmg,"wolf fang fist",command) && !target.unconscious && !target.stunned && decimal_prob(stunChance)) {
 			stunned(target,user,comboChance=comboChance);
 		}
 	}

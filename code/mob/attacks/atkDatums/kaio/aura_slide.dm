@@ -31,7 +31,7 @@ atkDatum/aura_slide
 				send("{R*{x [user.raceColor(user.name)] tries to hit you with a [name]!",target)
 				send("{W*{x [user.raceColor(user.name)] tries to hit [target.raceColor(target.name)] with a [name]!",a_oview_extra(0,user,target))
 			}
-			if(user.fCombat.doDamage(target,minDmg,maxDmg,"aura slide",command) && !target.unconscious && !target.stunned && prob(bleedChance)) {
+			if(user.fCombat.doDamage(target,minDmg,maxDmg,"aura slide",command) && !target.unconscious && !target.stunned && decimal_prob(bleedChance)) {
 				target.bleedDamage(user);
 			}
 

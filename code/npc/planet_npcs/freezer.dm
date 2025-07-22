@@ -10,6 +10,8 @@ mob
 				difficultyLevel = MEDIUM;
 				curreng = 100
 				maxeng = 100
+				bonus_str = 50
+				bonus_arm = 40
 				techniques = list(/Command/Technique/blast, /Command/Technique/elbow, /Command/Technique/tail_whip)
 				teach = list("blast","summon")
 
@@ -36,6 +38,8 @@ mob
 				difficultyLevel = VERY_EASY;
 				curreng = 100
 				maxeng = 100
+				bonus_str = 3
+				bonus_arm = 5
 
 				teach = list("tailwhip")
 
@@ -277,6 +281,8 @@ mob
 				maxpl = 200000000
 				curreng = 100
 				maxeng = 100
+				bonus_str = 180
+				bonus_arm = 150
 				alliedType = list(/mob/NPA/freezer/Dore, /mob/NPA/freezer/Salza)
 				randomRespawn = FALSE;
 				techniques = list(/Command/Technique/elbow, /Command/Technique/hammer, /Command/Technique/uppercut, /Command/Technique/masenko,
@@ -302,6 +308,8 @@ mob
 				maxpl = 225000000
 				curreng = 100
 				maxeng = 100
+				bonus_str = 180
+				bonus_arm = 150
 				alliedType = list(/mob/NPA/freezer/Neiz, /mob/NPA/freezer/Salza)
 				randomRespawn = FALSE;
 				dropList = list(/obj/item/DORES_HELMET)
@@ -339,3 +347,22 @@ mob
 								"hair_color" = "{YBlonde{x",
 								"height" = "Average",
 								"build" = "Toned")
+
+			Frieza
+				name = "Frieza"
+				race = ICER
+				hostile = TRUE
+				sex = MALE
+				alignment = EVIL
+				difficultyLevel = VERY_HARD;
+				randomRespawn = FALSE;
+				currpl = 31000000;
+				maxpl = 31000000;
+				curreng = 200
+				maxeng = 200
+				bonus_str = 200
+				bonus_arm = 160
+				teachShow = list("summon");
+				techniques = list(/Command/Technique/elbow,/Command/Technique/blast, /Command/Technique/eye_laser,
+						/Command/Technique/hammer, /Command/Technique/uppercut, /Command/Technique/tail_whip, /Command/Technique/death_beam)
+				dropList = list(/obj/item/FRIEZAS_BATTLE_ARMOR_FRAGMENTS,/obj/item/COOLER_MECHA_SHOULDER_PADS)

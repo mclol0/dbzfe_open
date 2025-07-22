@@ -15,6 +15,7 @@ mob
 				zenni = 2500000;
 				shopSale = FALSE;
 				isStore = TRUE
+				dropList = list(/obj/item/SENZU_BEAN_POUCH,/obj/item/KAMI_GUARDIAN_TURBAN)
 
 				visuals = list("skin_color" = "{WWhite{x",
 								"eye_color" = "{wBlack{x",

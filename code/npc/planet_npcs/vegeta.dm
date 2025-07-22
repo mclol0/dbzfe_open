@@ -10,9 +10,11 @@ mob
 				difficultyLevel = MEDIUM;
 				curreng = 100
 				maxeng = 100
+				bonus_str = 50
+				bonus_arm = 40
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/zenkai, /Command/Technique/hammer,
 						/Command/Technique/uppercut)
-				dropList = list(/obj/item/SAIYAN_BATTLE_ARMOR, /obj/item/SAIYAN_BRACERS, /obj/item/VEGETAS_SAIYAN_PRIDE_ARMOR, /obj/item/SAIYAN_TAIL_BELT)
+				dropList = list(/obj/item/SAIYAN_BATTLE_ARMOR, /obj/item/SAIYAN_BRACERS, /obj/item/VEGETAS_SAIYAN_PRIDE_ARMOR, /obj/item/SAIYAN_TAIL_BELT,/obj/item/RADITZS_SCOUTER_HEADPIECE)
 
 				visuals = list("skin_color" = "{yTan{x",
 								"eye_color" = "{DBlack{x",
@@ -39,12 +41,12 @@ mob
 				difficultyLevel = GOD;
 				curreng = 499
 				maxeng = 499
-				bonus_arm = 1500;
-				bonus_str = 2500;
+				bonus_str = 450;
+				bonus_arm = 380;
 				randomRespawn = FALSE;
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/zenkai, /Command/Technique/hammer,
 						/Command/Technique/uppercut,/Command/Technique/final_flash)
-				dropList = list(/obj/item/SAIYAN_POWER_KNEE_PADS, /obj/item/SAIYAN_POWER_CAPE, /obj/item/SUPER_SAIYAN_4_WRISTBANDS, /obj/item/BARDOCKS_BATTLE_WORN_HEADBAND)
+				dropList = list(/obj/item/SAIYAN_POWER_KNEE_PADS, /obj/item/SAIYAN_POWER_CAPE, /obj/item/SUPER_SAIYAN_4_WRISTBANDS, /obj/item/BARDOCKS_BATTLE_WORN_HEADBAND,/obj/item/BROLY_LEGENDARY_SAIYAN_COLLAR)
 
 				visuals = list("skin_color" = "{yTan{x",
 								"eye_color" = "{DBlack{x",
@@ -60,19 +62,6 @@ mob
 					maxpl = pick(755.00e+013,1255.00e+013,1555.00e+013,1955.00e+013,2255.00e+013)
 					currpl = maxpl;
 					..()
-
-					spawn(){
-						var/goTime = (world.time + 60 SECONDS);
-
-						while(src){
-							if(world.time >= goTime){
-								alaparser.parse(src,"say [pick("We've walked this planet for as long as we can remember.","We hold secrets that you can't even imagine.")]",list());
-								goTime = (world.time + 60 SECONDS);
-							}
-
-							sleep(world.tick_lag);
-						}
-					}
 				}
 
 			World_Eater
@@ -178,7 +167,7 @@ mob
 						/Command/Technique/uppercut)
 				alliedType = list(/mob/NPA/vegeta/Tora, /mob/NPA/vegeta/Fasha, /mob/NPA/vegeta/Borgos, /mob/NPA/vegeta/Shugesh)
 				randomRespawn = FALSE;
-				dropList = list(/obj/item/BARDOCKS_HEADBAND,/obj/item/BARDOCKS_BATTLE_ARMOR,/obj/item/FINGERLESS_LEAD_LINED_GLOVES)
+				dropList = list(/obj/item/BARDOCKS_HEADBAND,/obj/item/BARDOCKS_BATTLE_ARMOR,/obj/item/FINGERLESS_LEAD_LINED_GLOVES,/obj/item/CABBA_SAIYAN_CADET_ARMOR)
 
 				visuals = list("skin_color" = "{yTan{x",
 								"eye_color" = "{DBlack{x",
@@ -248,6 +237,8 @@ mob
 				maxpl = 20000
 				curreng = 100
 				maxeng = 100
+				bonus_str = 55
+				bonus_arm = 45
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/zenkai, /Command/Technique/hammer,
 						/Command/Technique/uppercut)
 				alliedType = list(/mob/NPA/vegeta/Tora, /mob/NPA/vegeta/Fasha, /mob/NPA/vegeta/Bardock, /mob/NPA/vegeta/Shugesh)
@@ -272,6 +263,8 @@ mob
 				maxpl = 14500
 				curreng = 100
 				maxeng = 100
+				bonus_str = 50
+				bonus_arm = 40
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/zenkai, /Command/Technique/hammer,
 						/Command/Technique/uppercut)
 				alliedType = list(/mob/NPA/vegeta/Tora, /mob/NPA/vegeta/Fasha, /mob/NPA/vegeta/Borgos, /mob/NPA/vegeta/Bardock)

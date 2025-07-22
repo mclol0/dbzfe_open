@@ -11,9 +11,11 @@ mob
 				difficultyLevel = MEDIUM
 				curreng = 100
 				maxeng = 100
+				bonus_str = 45
+				bonus_arm = 35
 				randomRespawn = FALSE;
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast)
-				dropList = list(/obj/item/HEAVENLY_HALO,/obj/item/WHITE_SPIRIT_GI,/obj/item/WHITE_SPIRIT_PANTS)
+				dropList = list(/obj/item/HEAVENLY_HALO,/obj/item/WHITE_SPIRIT_GI,/obj/item/WHITE_SPIRIT_PANTS,/obj/item/HIRUDEGARN_MUSIC_BOX_CHARM)
 
 				visuals = list("skin_color" = "{WWhite{x",
 								"eye_color" = "None",
@@ -44,7 +46,9 @@ mob
 				maxeng = 100
 				currpl = 6500
 				maxpl = 6500
-				dropList = list(/obj/item/SNAKESKIN_SLEEVES,/obj/item/PRINCESS_SNAKE_EARRINGS)
+				bonus_str = 50
+				bonus_arm = 40
+				dropList = list(/obj/item/SNAKESKIN_SLEEVES,/obj/item/PRINCESS_SNAKE_EARRINGS,/obj/item/JANEMBA_REALITY_SWORD,/obj/item/GOGETA_FUSION_VEST)
 				randomRespawn = FALSE;
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/hammer, /Command/Technique/uppercut)
 

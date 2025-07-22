@@ -775,6 +775,7 @@ Combat related defines
 #include "code\procs\cooldownLen.dm"
 #include "code\procs\coord.dm"
 #include "code\procs\crypto.dm"
+#include "code\procs\decimal_prob.dm"
 #include "code\procs\deleteCharacter.dm"
 #include "code\procs\determine_attacks.dm"
 #include "code\procs\determine_stuff.dm"

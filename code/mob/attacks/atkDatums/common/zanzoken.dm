@@ -32,7 +32,7 @@ atkDatum/zanzoken
 
 			if(user.loc == target.loc && user.density == target.density){
 				send("{W*{x [user.raceColor(user.name)] appears out of nowhere!",a_oview_extra(0,user,target))
-				if (!target.unconscious && !target.stunned && prob(stunChance)){
+				if (!target.unconscious && !target.stunned && decimal_prob(stunChance)){
 					send("{B*{x {CYou knock [target.raceColor(target.name)]{C off guard!{x",user)
 					send("{B*{x {C[user.raceColor(user.name)]{C knocks you off guard!{x",target)
 					send("{B*{x {C[user.raceColor(user.name)]{C knocks [target.raceColor(target.name)]{C off guard!{x",a_oview_extra(0,user,target))
@@ -42,7 +42,7 @@ atkDatum/zanzoken
 				user.density=target.density;
 				user.loc=target.loc;
 				send("{W*{x [user.raceColor(user.name)] appears out of nowhere!",a_oview_extra(0,user,target))
-				if(!target.unconscious && !target.stunned && prob(stunChance)){
+				if(!target.unconscious && !target.stunned && decimal_prob(stunChance)){
 					send("{B*{x {CYou knock [target.raceColor(target.name)]{C off guard!{x",user)
 					send("{B*{x {C[user.raceColor(user.name)]{C knocks you off guard!{x",target)
 					send("{B*{x {C[user.raceColor(user.name)]{C knocks [target.raceColor(target.name)]{C off guard!{x",a_oview_extra(0,user,target))

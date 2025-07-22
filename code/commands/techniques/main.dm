@@ -10,9 +10,9 @@ proc
 				target._doEnergy(1);
 				c.comboCount["[target.ID]"]++;
 				if(c.comboCount["[target.ID]"] > comboL.len){
-					if(prob(fightExtendCombo)){ xTendCombo = TRUE; }
+					if(decimal_prob(fightExtendCombo)){ xTendCombo = TRUE; }
 
-					if(c.mobRef:shyouken && prob(fightShyoukenCombo) || xTendCombo){
+					if(c.mobRef:shyouken && decimal_prob(fightShyoukenCombo) || xTendCombo){
 						send("{B[c.mobRef:fCombat.comboCount["[target.ID]"] - 1]{x {Rhit combo!{x",c.mobRef)
 						c.comboList.Remove("[target.ID]")
 						c.comboCount.Remove("[target.ID]")
