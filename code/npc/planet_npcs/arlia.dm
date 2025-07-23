@@ -13,8 +13,8 @@ mob
 				maxpl = 20.00e+012
 				curreng = 1000
 				maxeng = 1000
-				bonus_str = 380;
-				bonus_arm = 320;
+				bonus_str = 700;
+				bonus_arm = 700;
 				randomRespawn = FALSE;
 				alliedType = list(/mob/NPA/arlia/Lavender,/mob/NPA/arlia/Basil)
 				techniques = list(/Command/Technique/elbow,/Command/Technique/hammer,/Command/Technique/uppercut,/Command/Technique/kizan,
@@ -40,8 +40,8 @@ mob
 				maxpl = 15.00e+012
 				curreng = 1000
 				maxeng = 1000
-				bonus_str = 350;
-				bonus_arm = 300;
+				bonus_str = 700;
+				bonus_arm = 700;
 				randomRespawn = FALSE;
 				alliedType = list(/mob/NPA/arlia/Basil,/mob/NPA/arlia/Bergamo)
 				techniques = list(/Command/Technique/elbow,/Command/Technique/hammer,/Command/Technique/uppercut,/Command/Technique/kizan,
@@ -67,8 +67,8 @@ mob
 				maxpl = 15.00e+012
 				curreng = 1000
 				maxeng = 1000
-				bonus_str = 350;
-				bonus_arm = 300;
+				bonus_str = 700;
+				bonus_arm = 700;
 				randomRespawn = FALSE;
 				alliedType = list(/mob/NPA/arlia/Lavender,/mob/NPA/arlia/Bergamo)
 				techniques = list(/Command/Technique/elbow,/Command/Technique/hammer,/Command/Technique/uppercut,/Command/Technique/kizan,

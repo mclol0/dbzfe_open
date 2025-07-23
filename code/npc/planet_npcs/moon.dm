@@ -14,8 +14,8 @@ mob
 				maxpl = 675.00e+012;
 				curreng = 500
 				maxeng = 500
-				bonus_str = 380;
-				bonus_arm = 320;
+				bonus_str = 950;
+				bonus_arm = 950;
 				randomRespawn = FALSE;
 				techniques = list(/Command/Technique/elbow,/Command/Technique/hammer,/Command/Technique/uppercut,/Command/Technique/kizan,
 								/Command/Technique/zanzoken,/Command/Technique/drain,/Command/Technique/shyouken, /Command/Technique/pulse, /Command/Technique/eye_laser, /Command/Technique/gack)
@@ -42,8 +42,8 @@ mob
 				maxpl = 8225.00e+015;
 				curreng = 500
 				maxeng = 500
-				bonus_str = 420;
-				bonus_arm = 360;
+				bonus_str = 1750;
+				bonus_arm = 1750;
 				randomRespawn = FALSE;
 				techniques = list(/Command/Technique/elbow,/Command/Technique/hammer,/Command/Technique/uppercut,/Command/Technique/kizan,
 								/Command/Technique/zanzoken,/Command/Technique/drain,/Command/Technique/shyouken, /Command/Technique/pulse, /Command/Technique/eye_laser, /Command/Technique/gack)
@@ -69,8 +69,8 @@ mob
 				maxpl = 1825.00e+017;
 				curreng = 600
 				maxeng = 600
-				bonus_str = 450;
-				bonus_arm = 400;
+				bonus_str = 2550;
+				bonus_arm = 2550;
 				randomRespawn = FALSE;
 				dropList = list(/obj/item/DR_MYUU_INSIGNIA, /obj/item/ANDROID_PART/ANDROID_ACTUATOR)
 				techniques = list(/Command/Technique/elbow,/Command/Technique/hammer,/Command/Technique/uppercut,/Command/Technique/kizan,
@@ -97,8 +97,8 @@ mob
 				maxpl = 2825.00e+018;
 				curreng = 700
 				maxeng = 700
-				bonus_str = 480;
-				bonus_arm = 420;
+				bonus_str = 2750;
+				bonus_arm = 2750;
 				randomRespawn = FALSE;
 				dropList = list(/obj/item/NEO_TECH_BLINDFOLD, /obj/item/ANDROID_PART/ANDROID_ARM)
 				techniques = list(/Command/Technique/elbow,/Command/Technique/hammer,/Command/Technique/uppercut,/Command/Technique/kizan,

@@ -41,8 +41,8 @@ mob
 				difficultyLevel = GOD;
 				curreng = 499
 				maxeng = 499
-				bonus_str = 450;
-				bonus_arm = 380;
+				bonus_str = 1500;
+				bonus_arm = 2500;
 				randomRespawn = FALSE;
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/zenkai, /Command/Technique/hammer,
 						/Command/Technique/uppercut,/Command/Technique/final_flash)

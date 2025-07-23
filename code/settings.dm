@@ -19,7 +19,7 @@ Settings
 		map["lcExchangeReward"] = 0.75
 
 		// NPC liveliness
-		map["npcIdleActionprobability"] = 23
+		map["npcIdleActionProbability"] = 23
 
 		// Combat
 		map["fightStunChance"] = 22.00

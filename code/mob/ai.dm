@@ -8,39 +8,39 @@ mob
 					}
 
 					if(EASY){
-						return 800;
+						return 75;
 					}
 
 					if(MEDIUM){
-						return 1400;
+						return 150;
 					}
 
 					if(HARD){
-						return 2200;
+						return 400;
 					}
 
 					if(VERY_HARD){
-						return 2800;
+						return 1000;
 					}
 
 					if(INSANE){
-						return 3200;
+						return 2200;
 					}
 
 					if(FUSION){
-						return 3800;
+						return 2500;
 					}
 
 					if(GOD){
-						return 4800;
+						return 2650;
 					}
 
 					if(HEROIC){
-						return 5200;
+						return 2625;
 					}
 
 					if(EVENT_MOB){
-						return 6000;
+						return 3000;
 					}
 				}
 
@@ -55,39 +55,39 @@ mob
 					}
 
 					if(EASY){
-						return 650;
+						return 75;
 					}
 
 					if(MEDIUM){
-						return 1100;
+						return 250;
 					}
 
 					if(HARD){
-						return 1700;
+						return 500;
 					}
 
 					if(VERY_HARD){
-						return 2200;
+						return 700;
 					}
 
 					if(INSANE){
-						return 2600;
+						return 1100;
 					}
 
 					if(FUSION){
-						return 3100;
+						return 1250;
 					}
 
 					if(GOD){
-						return 4200;
+						return 1400;
 					}
 
 					if(HEROIC){
-						return 4600;
+						return 1550;
 					}
 
 					if(EVENT_MOB){
-						return 5200;
+						return 1700;
 					}
 				}
 
