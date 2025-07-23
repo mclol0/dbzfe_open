@@ -37,7 +37,7 @@ mob
 		lastTell = NULL // Last person we send a tell to. Used for reply
 		canReceiveItems = FALSE
 		list/skillExp = list()
-		sensePL = TRUE
+		sensePL = FALSE
 		sensePLMode = "number"
 
 		/* NEW Bonus Stats */

@@ -2,6 +2,7 @@ Settings
 	var
 		list/map = list()
 		_divider = 100
+		skillMasteryEnabled = TRUE
 
 	New() {
 		// Android LC values

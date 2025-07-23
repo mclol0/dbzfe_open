@@ -16,13 +16,13 @@ var/list/skillMastery_level_names = list(
 // Experience thresholds for each level (adjust as needed)
 var/list/skillMastery_exp_thresholds = list(
     0,      // Novice
-    50,    // Beginner
-    150,    // Adept
-    300,    // Skilled
-    600,   // Expert
-    800,   // Elite
-    1000,   // Master
-    1200   // Grandmaster
+    40,    // Beginner
+    80,    // Adept
+    120,    // Skilled
+    160,   // Expert
+    200,   // Elite
+    240,   // Master
+    280   // Grandmaster
 )
 
 // Color codes for each mastery level (1-based index)
@@ -88,6 +88,7 @@ proc/skillMasteryNextExp(level as num) {
 
 // Call this to add exp to a player's skill
 proc/skillMasteryGainExp(mob/player, skill as text, amount as num) {
+    if(!game.settings.skillMasteryEnabled) return
     if(!player || !isnum(amount) || amount <= 0 || !istext(skill)) return
     if(player.skillExp == NULL) player.skillExp = list()
     if(player.skillExp[skill] == NULL) player.skillExp[skill] = 0
@@ -137,27 +138,36 @@ proc/getPowerEstimation(mob/user, mob/target) {
 proc/formatSensePower(mob/user, mob/target) {
     var/power = target.currpl
     var/result = 0
-
-    // If power level sensing is OFF, always use sense mastery (fuzzy number or estimation)
-    if(!user.sensePL) {
-        var/exp = skillMasteryGetExp(user, "sense")
-        var/level = skillMasteryGetLevel(exp)
-        if(!isnum(power) || power <= 0) return "an unknown power"
-        if(level == 1)
-            result = getPowerEstimation(user, target)
-        else if(level >= 2 && level <= 8)
-            var/fuzz = skillMasteryFuzzPercents[level] * 100
-            var/randFuzz = rand(-fuzz, fuzz) / 100
-            var/delta = round(power * randFuzz)
-            result = power + delta
-        else
-            return "{Gan unknown power{x"
+    // If skill mastery is disabled, always use old system
+    if(!game.settings.skillMasteryEnabled) {
+        if(user.sensePL) {
+            result = power
+        } else {
+            return getPowerEstimation(user, target)
+        }
     } else {
-        result = power
-    }
-
-    if(user.sensePLMode == "estimation") {
-        return getPowerEstimation(user, target)
+        // If power level sensing is OFF, always use sense mastery (fuzzy number or estimation)
+        if(!user.sensePL) {
+            var/exp = skillMasteryGetExp(user, "sense")
+            var/level = skillMasteryGetLevel(exp)
+            if(!isnum(power) || power <= 0) return "an unknown power"
+            if(level == 1)
+                return getPowerEstimation(user, target)
+            else if(level >= 2 && level <= 8)
+                var/fuzz = skillMasteryFuzzPercents[level] * 100
+                var/randFuzz = rand(-fuzz, fuzz) / 100
+                var/delta = round(power * randFuzz)
+                result = power + delta
+            else
+                return "{Gan unknown power{x"
+        } else {
+            // Power level sensing is ON
+            if(user.sensePLMode == "estimation") {
+                return getPowerEstimation(user, target)
+            } else {
+                result = power
+            }
+        }
     }
 
     if(user.shortNUM){

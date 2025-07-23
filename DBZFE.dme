@@ -331,6 +331,7 @@ Combat related defines
 #include "code\commands\admin\settings.dm"
 #include "code\commands\admin\setzenni.dm"
 #include "code\commands\admin\shutdown.dm"
+#include "code\commands\admin\skillmastery.dm"
 #include "code\commands\admin\slay.dm"
 #include "code\commands\admin\snoop.dm"
 #include "code\commands\admin\stats.dm"
