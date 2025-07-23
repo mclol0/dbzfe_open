@@ -413,7 +413,7 @@ DBZFE
 				korinsStock = shop.itemQuantity("/mob/NPA/korins/Korin","/obj/item/SENZU_BEAN")*/
 
 			shop.updateItem("/mob/NPA/earth/Bulma","/obj/item/MYSTERY_BOX",1,TRUE);
-			shop.updateItem("/mob/NPA/earth/Bulma","/obj/item/SCOUTER",1,TRUE);
+			shop.updateItem("/mob/NPA/earth/Bulma","/obj/item/SCOUTER/GREEN_SCOUTER",1,TRUE);
 			shop.updateItem("/mob/NPA/earth/Bulma","/obj/item/GOLD_BAR",1,TRUE);
 			shop.updateItem("/mob/NPA/earth/Bulma","/obj/item/SILVER_BAR",1,TRUE);
 

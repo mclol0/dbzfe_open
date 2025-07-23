@@ -37,6 +37,18 @@ var/list/skillMasteryLevelColors = list(
     "{W"  // 8: Grandmaster
 )
 
+// Fuzz percent for each mastery level
+var/list/skillMasteryFuzzPercents = list(
+    0.4,    // Novice: ±40%
+    0.3,    // Beginner: ±30%
+    0.2,    // Adept: ±20%
+    0.15,   // Skilled: ±15%
+    0.1,    // Expert: ±10%
+    0.05,   // Elite: ±5%
+    0.02,   // Master: ±2%
+    0       // Grandmaster: 0%
+)
+
 // Proc to ensure the 'skillExp' column exists in the 'characters' table
 proc/ensureSkillExpColumn()
     var/exists = FALSE
@@ -113,47 +125,46 @@ proc/skillMasteryGetExp(mob/player, skill as text) {
     return player.skillExp[skill] 
 }
 
+proc/getPowerEstimation(mob/user, mob/target) {
+    if(user.currpl > (target.currpl * game.settings.map["veryWeakModifier"])) return "{yVERY WEAK{x"
+    else if(user.currpl > (target.currpl * game.settings.map["weakModifier"])) return "{yWEAK{x"
+    else if(user.currpl > (target.currpl * game.settings.map["equalModifier"])) return "{BEQUAL{x"
+    else if(user.currpl > (target.currpl * game.settings.map["strongModifier"])) return "{RSTRONG{x"
+    else return "{rGODLIKE{x"
+}
+
 // Returns a formatted string for the target's power based on the user's sense mastery level
-proc/skillMasteryFormatSensePower(mob/user, mob/target) {
-    var/exp = skillMasteryGetExp(user, "sense")
-    var/level = skillMasteryGetLevel(exp)
+proc/formatSensePower(mob/user, mob/target) {
     var/power = target.currpl
-    if(!isnum(power) || power <= 0) return "an unknown power"
+    var/result = 0
 
-    var/result = ""
-    if(level == 1) // Novice: qualitative only
-        if(target.currpl < 1000)
-            return "{yVERY WEAK{x"
-        if(user.currpl > (target.currpl * game.settings.map["veryWeakModifier"])) return "{yVERY WEAK{x"
-        else if(user.currpl > (target.currpl * game.settings.map["weakModifier"])) return "{yWEAK{x"
-        else if(user.currpl > (target.currpl * game.settings.map["equalModifier"])) return "{BEQUAL{x"
-        else if(user.currpl > (target.currpl * game.settings.map["strongModifier"])) return "{RSTRONG{x"
-        else return "{rGODLIKE{x"
-    else if(level == 2) // Beginner: gentle approximation
-        var/rounded = max(400, round(power, 400))
-        result = "[commafy(rounded)]"
-    else if(level == 3) // Adept: better, but still rough
-        var/rounded = max(250, round(power, 250))
-        result = "[commafy(rounded)]"
-    else if(level == 4) // Skilled: more accurate
-        var/rounded = round(power, 100)
-        result = "[commafy(rounded)]"
-    else if(level == 5) // Expert: even more accurate
-        var/rounded = round(power, 50)
-        result = "[commafy(rounded)]"
-    else if(level == 6) // Elite: very close
-        var/rounded = round(power, 10)
-        result = "[commafy(rounded)]"
-    else if(level == 7) // Master: almost exact
-        var/rounded = round(power, 5)
-        result = "[commafy(rounded)]"
-    else if(level == 8) // Grandmaster: closest, but never exact
-        var/rounded = round(power, 1)
-        result = "[commafy(rounded)]"
-    else
-        result = "an unknown power"
+    // If power level sensing is OFF, always use sense mastery (fuzzy number or estimation)
+    if(!user.sensePL) {
+        var/exp = skillMasteryGetExp(user, "sense")
+        var/level = skillMasteryGetLevel(exp)
+        if(!isnum(power) || power <= 0) return "an unknown power"
+        if(level == 1)
+            result = getPowerEstimation(user, target)
+        else if(level >= 2 && level <= 8)
+            var/fuzz = skillMasteryFuzzPercents[level] * 100
+            var/randFuzz = rand(-fuzz, fuzz) / 100
+            var/delta = round(power * randFuzz)
+            result = power + delta
+        else
+            return "{Gan unknown power{x"
+    } else {
+        result = power
+    }
 
-    return "{G[result]{x"
+    if(user.sensePLMode == "estimation") {
+        return getPowerEstimation(user, target)
+    }
+
+    if(user.shortNUM){
+        return "{G[short_num(result)]{x"
+    } else {
+        return "{G[commafy(result)]{x"
+    }
 }
 
 proc/skillMasteryGetLevelColor(level as num) {

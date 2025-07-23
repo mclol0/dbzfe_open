@@ -52,6 +52,8 @@ mob/cClient
 				"insideBuilding",
 				"disableMap",
 				"defenseOnly",
+				"sensePL",
+				"sensePLMode",
 			)
 
 			itemRowCount = _rowCount("FROM `inventory` WHERE `owner`='[name]' COLLATE NOCASE;")
@@ -142,6 +144,9 @@ mob/cClient
 			m.skillExp[x] = text2num(skillExp[x])
 		}
 
+		m.sensePL = ("sensePL" in load_variables) ? text2num(load_variables["sensePL"]) : TRUE
+		m.sensePLMode = ("sensePLMode" in load_variables) ? load_variables["sensePLMode"] : "number"
+
 		client.mob = m
 
 		if(COPYOVER){ 
@@ -211,7 +216,9 @@ mob/Player
 				"demonWeapon",
 				"insideBuilding",
 				"disableMap",
-				"defenseOnly"
+				"defenseOnly",
+				"sensePL",
+				"sensePLMode"
 			)
 
 			saveParams = list()

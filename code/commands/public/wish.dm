@@ -120,7 +120,7 @@ Command/Public
 						DBDatum.scatterDBS();
 						DBDatum.WISHING = NULL;
 					}else if(choice == "Shenron's Lenses of Wisdom"){
-						var/obj/item/I = new /obj/item/SHENRONS_LENSES_OF_WISDOM;
+						var/obj/item/I = new /obj/item/SCOUTER/SHENRONS_LENSES_OF_WISDOM;
 						send("You obtain a [I.DISPLAY]!",user,TRUE)
 						user.addInv(I);
 						qFac.updateVariable(user,"SQ002_HUNT_DBS","Make a wish",TRUE);
@@ -318,7 +318,7 @@ Command/Public
 						DBDatum_NAMEK.scatterDBS();
 						DBDatum_NAMEK.WISHING = NULL;
 					}else if(choice == "Porunga's Lenses of Defiance"){
-						var/obj/item/I = new /obj/item/PORUNGAS_LENSES_OF_DEFIANCE;
+						var/obj/item/I = new /obj/item/SCOUTER/PORUNGAS_LENSES_OF_DEFIANCE;
 						send("You obtain a [I.DISPLAY]!",user,TRUE)
 						user.addInv(I);
 						qFac.updateVariable(user,"SQ002_HUNT_DBS","Make a wish",TRUE);

@@ -156,6 +156,9 @@ obj/item/
 		SHOW_ITEMDB = TRUE;
 
 	proc
+		onEquip(mob/m)
+		onRemove(mob/m)
+		
 		_open(mob/m){
 			if(CONTAINER){
 				send("You open [PREFIX][DISPLAY].",m);
@@ -211,6 +214,7 @@ obj/item/
 
 			send("You equip [PREFIX][DISPLAY] [EQ_MSG] your [_getName(Sl)]!",m)
 			send("[m.raceColor(m.name)] equip's [PREFIX][DISPLAY] [EQ_MSG] [m.determineSex(1)] [_getName(Sl)]!",_ohearers(0,m))
+			onEquip(m)
 			m.remInv(src)
 			loc = NULL;
 			m.equipment[Sl] = src
@@ -229,6 +233,7 @@ obj/item/
 					send("You unequip [PREFIX][DISPLAY] from your [_getName(_SLOT)]!",m)
 					send("[m.raceColor(m.name)] unequip's [PREFIX][DISPLAY] from [m.determineSex(1)] [_getName(_SLOT)]!",_ohearers(0,m))
 				}
+				onRemove(m)
 				m.equipment[_SLOT] = NULL;
 				m.addInv(src);
 				if(m.curreng>m.getMaxEN()){ m.curreng=m.getMaxEN() }
@@ -426,6 +431,17 @@ obj/item/
 		}
 
 	SCOUTER
+		var/SCOUTER_LEVEL = 2
+
+		onEquip(mob/m) {
+			m.sensePL = TRUE
+		}
+
+		onRemove(mob/m) {
+			m.sensePL = FALSE
+		}
+
+	SCOUTER/GREEN_SCOUTER
 		EQUIPABLE = TRUE;
 		PREFIX = "a ";
 		DISPLAY = "{GGreen Scouter{x"
@@ -443,8 +459,9 @@ obj/item/
 		WEIGHT = 0.1
 		DROP_CHANCE = 25.00
 		PRICE = 500
+		SCOUTER_LEVEL = 1
 
-	RED_SCOUTER
+	SCOUTER/RED_SCOUTER
 		EQUIPABLE = TRUE;
 		PREFIX = "a ";
 		DISPLAY = "{RRed Scouter{x"
@@ -772,7 +789,7 @@ obj/item/
 		WEIGHT = 0.1
 		PRICE = 1000
 
-	MASTER_ROSHIS_SUNGLASSES
+	SCOUTER/MASTER_ROSHIS_SUNGLASSES
 		EQUIPABLE = TRUE;
 		DISPLAY = "{yMaster Roshi's{x {DSunglasses{x"
 		MULTI = FALSE;
@@ -786,6 +803,7 @@ obj/item/
 		BONUS_MF = 350
 		WEIGHT = 0.1
 		PRICE = 1000
+		SCOUTER_LEVEL = 1
 
 	THE_THIRD_EYE
 		EQUIPABLE = TRUE;
@@ -1021,7 +1039,7 @@ obj/item/
 		ANNOUNCE_DROP = TRUE
 		PRICE = 10000
 
-	GENERAL_TAO_POWER_GOGGLES
+	SCOUTER/GENERAL_TAO_POWER_GOGGLES
 		EQUIPABLE = TRUE;
 		DISPLAY = "{yGeneral Tao's{x {DPo{x{Rw{x{Der{x {DGo{Rggl{x{Des{x"
 		MULTI = FALSE;
@@ -1036,6 +1054,7 @@ obj/item/
 		WEIGHT = 0.3
 		DROP_CHANCE = 7.50
 		PRICE = 2500
+		SCOUTER_LEVEL = 1
 	/*TAO SET END*/
 
 	DR_GERO_VEST
@@ -1172,7 +1191,7 @@ obj/item/
 		ANNOUNCE_DROP = TRUE
 		PRICE = 100000
 
-	GODLY_FLAME_SCOUTER
+	SCOUTER/GODLY_FLAME_SCOUTER
 		EQUIPABLE = TRUE
 		DISPLAY = "{YGo{x{rdly{x {RFlame{x {GScouter{x"
 		MULTI = FALSE
@@ -1188,6 +1207,7 @@ obj/item/
 		DROP_CHANCE = 0.1
 		ANNOUNCE_DROP = TRUE
 		PRICE = 100000
+		var/active = TRUE
 
 	BLACK_FUSION_BRACERS
 		EQUIPABLE = TRUE;
@@ -2745,7 +2765,7 @@ obj/item/
 		MISC = TRUE
 		CAN_SELL = FALSE
 
-	SHENRONS_LENSES_OF_WISDOM //
+	SCOUTER/SHENRONS_LENSES_OF_WISDOM
 		EQUIPABLE = TRUE;
 		DISPLAY = "{GS{x{Ch{x{Ge{x{Cn{x{Gr{x{Co{x{Gn{x{C's{x {GL{x{Ce{Rns{x{Ce{x{Gs{x {cof{x {WW{x{Di{Csd{x{Do{x{Wm{x"
 		MULTI = FALSE;
@@ -2986,7 +3006,7 @@ obj/item/
 		MISC = TRUE;
 		CAN_SELL = FALSE
 
-	PORUNGAS_LENSES_OF_DEFIANCE //
+	SCOUTER/PORUNGAS_LENSES_OF_DEFIANCE
 		EQUIPABLE = TRUE;
 		PREFIX = "";
 		DISPLAY = "{GP{x{go{x{Rr{x{Yun{x{Rg{x{ga{x{G's{x {GL{x{Re{x{Yns{x{Re{x{Gs{x {cof{x {DDe{x{Bf{x{Wia{x{Bn{x{Dce{x"
@@ -3230,7 +3250,7 @@ obj/item/
 		MISC = TRUE;
 		CAN_SELL = FALSE
 
-	BLACK_STAR_LENSES_OF_MALICE //
+	SCOUTER/BLACK_STAR_LENSES_OF_MALICE //
 		EQUIPABLE = TRUE;
 		PREFIX = "the ";
 		DISPLAY = "{DBl{x{ba{x{Dck{x {WS{x{Dta{x{Wr{x {DL{x{be{x{rns{x{be{x{Ds{x {cof{x {DM{x{Wa{rli{x{Wc{x{De{x"
@@ -3246,6 +3266,7 @@ obj/item/
 		BONUS_MF = 0
 		MISC = TRUE;
 		CAN_SELL = FALSE
+		SCOUTER_LEVEL = 2
 
 	BLACK_STAR_CHAINS //
 		EQUIPABLE = TRUE;
@@ -3507,7 +3528,7 @@ obj/item/
 		PRICE = 500000
 		ANNOUNCE_DROP = TRUE
 
-	GOLDEN_SCOUTER
+	SCOUTER/GOLDEN_SCOUTER
 		EQUIPABLE = TRUE;
 		PREFIX = "a ";
 		DISPLAY = "{YGolden Scouter{x"
@@ -3526,7 +3547,7 @@ obj/item/
 		DROP_CHANCE = 10.00
 		PRICE = 300000
 		ANNOUNCE_DROP = TRUE
-		NO_MYSTERY = TRUE;
+		NO_MYSTERY = TRUE
 
 	NEO_TECH_BLINDFOLD
 		EQUIPABLE = TRUE;
@@ -4321,7 +4342,7 @@ obj/item/
 		DROP_CHANCE = 3.00
 		PRICE = 6000
 
-	RADITZS_SCOUTER_HEADPIECE
+	SCOUTER/RADITZS_SCOUTER_HEADPIECE
 		EQUIPABLE = TRUE;
 		DISPLAY = "{cRaditz's{x {gScouter{x {yHeadpiece{x"
 		MULTI = FALSE;

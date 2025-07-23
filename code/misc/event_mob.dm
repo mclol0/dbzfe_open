@@ -74,7 +74,7 @@ eventMOB
 					eventMob.maxeng = 500
 					eventMob.bonus_str = 1250;
 					eventMob.bonus_arm = 1250;
-					eventMob.dropList.Add(/obj/item/EVENT_BOX,/obj/item/GOLDEN_SCOUTER);
+					eventMob.dropList.Add(/obj/item/EVENT_BOX,/obj/item/SCOUTER/GOLDEN_SCOUTER);
 					eventMob.techniques.Add(/Command/Technique/fly,
 										/Command/Technique/punch,
 										/Command/Technique/roundhouse,

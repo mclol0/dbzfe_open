@@ -37,6 +37,8 @@ mob
 		lastTell = NULL // Last person we send a tell to. Used for reply
 		canReceiveItems = FALSE
 		list/skillExp = list()
+		sensePL = TRUE
+		sensePLMode = "number"
 
 		/* NEW Bonus Stats */
 		bonus_ki = 0; // Ki aka powerlevel mod
@@ -1781,31 +1783,7 @@ mob
 				return "{RIMM{x";
 			}
 
-			var/obj/item/i = equipment[EYE]
-
-			if(i && isScanner(i,FALSE) || isAndroid(src) || (race == SPIRIT && hasSkill("perception"))){
-				if(shortNUM){
-					return "{G[short_num(m.currpl)]{x"
-				}else{
-					return "{G[commafy(m.currpl)]{x"
-				}
-			}
-
-			if(currpl >= (m.currpl * game.settings.map["veryWeakModifier"])) {
-				return "{yVERY WEAK{x";
-			}
-			else if(currpl >= (m.currpl * game.settings.map["weakModifier"])) {
-				return "{yWEAK{x";
-			}
-			else if(currpl >= (m.currpl * game.settings.map["equalModifier"])) {
-				return "{BEQUAL{x";
-			}
-			else if(currpl >= (m.currpl * game.settings.map["strongModifier"])) {
-				return "{RSTRONG{x";
-			} else {
-				return "{rGODLIKE{x";
-			}
-			return "ERROR";
+			return formatSensePower(src, m)
 		}
 
 		map_mobMark(mob/m){

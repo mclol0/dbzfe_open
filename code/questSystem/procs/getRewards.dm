@@ -39,7 +39,7 @@ fQuest_Factory
 			if("SQ002_HUNT_DBS"){
 				var/items = list(/obj/item/PORUNGAS_DRAGON_EYE,
 				/obj/item/PORUNGAS_HORNS,
-				/obj/item/PORUNGAS_LENSES_OF_DEFIANCE,
+				/obj/item/SCOUTER/PORUNGAS_LENSES_OF_DEFIANCE,
 				/obj/item/PORUNGAS_GAUGES,
 				/obj/item/PORUNGAS_DRAGON_BONE_BEVOR,
 				/obj/item/PORUNGAS_SPIKED_PAULDRONS,
@@ -57,7 +57,7 @@ fQuest_Factory
 			}
 
 			if("Q003_PREPARE_FOR_THE_SAIYANS"){
-				awardItem(m,/obj/item/SCOUTER);
+				awardItem(m,/obj/item/SCOUTER/GREEN_SCOUTER);
 				obtainQuest(m,"Q004_PREPARE_FOR_THE_ELITE");
 				if(m.race == ANDROID){ m:gainlc(6,m,TRUE); }else{ m.gainPL(500,m); }
 			}

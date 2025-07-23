@@ -184,7 +184,7 @@ mob
 				maxeng = 100
 				teach = list("kamehameha")
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/kamehameha)
-				dropList = list(/obj/item/MASTER_ROSHI_INSIGNIA,/obj/item/ROSHIS_TURTLESHELL,/obj/item/MASTER_ROSHIS_SUNGLASSES)
+				dropList = list(/obj/item/MASTER_ROSHI_INSIGNIA,/obj/item/ROSHIS_TURTLESHELL,/obj/item/SCOUTER/MASTER_ROSHIS_SUNGLASSES)
 
 				visuals = list("skin_color" = "{yTan{x",
 								"eye_color" = "{DBlack{x",
@@ -230,7 +230,7 @@ mob
 				maxeng = 100
 				teach = list("kizan")
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast)
-				dropList = list(/obj/item/GENERAL_TAO_PINK_KIMONO,/obj/item/KILL_YOU_INSIGNIA,/obj/item/GENERAL_TAO_POWER_GOGGLES)
+				dropList = list(/obj/item/GENERAL_TAO_PINK_KIMONO,/obj/item/KILL_YOU_INSIGNIA,/obj/item/SCOUTER/GENERAL_TAO_POWER_GOGGLES)
 
 				visuals = list("skin_color" = "{yTan{x",
 								"eye_color" = "{DBlack{x",
@@ -375,7 +375,7 @@ mob
 				maxeng = 100
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/zanzoken, /Command/Technique/hammer,
 						/Command/Technique/uppercut, /Command/Technique/masenko)
-				dropList = list(/obj/item/SCOUTER)
+				dropList = list(/obj/item/SCOUTER/GREEN_SCOUTER)
 
 				visuals = list("skin_color" = "{mPurple{x",
 								"eye_color" = "{RRed{x",
@@ -435,7 +435,7 @@ mob
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/zenkai, /Command/Technique/hammer,
 						/Command/Technique/uppercut, /Command/Technique/galick_gun)
 				teach = list("galick gun", "powerball","vanishing beam")
-				dropList = list(/obj/item/RED_SCOUTER,/obj/item/SAIYAN_BATTLE_ARMOR,/obj/item/WHITE_BOOTS,/obj/item/WHITE_GLOVES)
+				dropList = list(/obj/item/SCOUTER/RED_SCOUTER,/obj/item/SAIYAN_BATTLE_ARMOR,/obj/item/WHITE_BOOTS,/obj/item/WHITE_GLOVES)
 
 				visuals = list("skin_color" = "{yTan{x",
 								"eye_color" = "{DBlack{x",
@@ -460,7 +460,7 @@ mob
 				//teach = list("summon")
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/zenkai, /Command/Technique/hammer,
 						/Command/Technique/uppercut)
-				dropList = list(/obj/item/SCOUTER,/obj/item/SAIYAN_BATTLE_ARMOR,/obj/item/SAIYAN_BRACERS)
+				dropList = list(/obj/item/SCOUTER/RADITZS_SCOUTER_HEADPIECE,/obj/item/SAIYAN_BATTLE_ARMOR,/obj/item/SAIYAN_BRACERS)
 
 				visuals = list("skin_color" = "{yTan{x",
 								"eye_color" = "{DBlack{x",

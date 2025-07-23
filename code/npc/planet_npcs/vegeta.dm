@@ -14,7 +14,7 @@ mob
 				bonus_arm = 40
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/zenkai, /Command/Technique/hammer,
 						/Command/Technique/uppercut)
-				dropList = list(/obj/item/SAIYAN_BATTLE_ARMOR, /obj/item/SAIYAN_BRACERS, /obj/item/VEGETAS_SAIYAN_PRIDE_ARMOR, /obj/item/SAIYAN_TAIL_BELT,/obj/item/RADITZS_SCOUTER_HEADPIECE)
+				dropList = list(/obj/item/SAIYAN_BATTLE_ARMOR, /obj/item/SAIYAN_BRACERS, /obj/item/VEGETAS_SAIYAN_PRIDE_ARMOR, /obj/item/SAIYAN_TAIL_BELT)
 
 				visuals = list("skin_color" = "{yTan{x",
 								"eye_color" = "{DBlack{x",
@@ -293,7 +293,7 @@ mob
 				maxeng = 100
 				techniques = list(/Command/Technique/elbow, /Command/Technique/blast, /Command/Technique/zanzoken, /Command/Technique/hammer,
 						/Command/Technique/uppercut, /Command/Technique/masenko)
-				dropList = list(/obj/item/SCOUTER)
+				dropList = list(/obj/item/SCOUTER/GREEN_SCOUTER)
 
 				visuals = list("skin_color" = "{mPurple{x",
 								"eye_color" = "{RRed{x",

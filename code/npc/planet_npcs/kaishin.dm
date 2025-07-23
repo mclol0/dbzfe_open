@@ -208,7 +208,7 @@ mob
 				maxeng = 666
 				bonus_str = 666;
 				bonus_arm = 666;
-				dropList = list(/obj/item/GODLY_FLAME_VEST,/obj/item/GODLY_FLAME_BRACERS,/obj/item/GODLY_FLAME_HELMET, /obj/item/GODLY_FLAME_SCOUTER);
+				dropList = list(/obj/item/GODLY_FLAME_VEST,/obj/item/GODLY_FLAME_BRACERS,/obj/item/GODLY_FLAME_HELMET, /obj/item/SCOUTER/GODLY_FLAME_SCOUTER);
 				techniques = list(/Command/Technique/elbow,/Command/Technique/blast,/Command/Technique/hellfirelance,/Command/Technique/hammer,
 						/Command/Technique/uppercut,/Command/Technique/soulspear,/Command/Technique/siphon)
 
@@ -416,7 +416,7 @@ mob
 				maxeng = 270
 				bonus_arm = 225;
 				teach = list("spiritwave");
-				dropList = list(/obj/item/CRIMSON_EARRINGS,/obj/item/GODLY_FLAME_GLOVES,/obj/item/GODLY_FLAME_BOOTS, /obj/item/GODLY_FLAME_SCOUTER);
+				dropList = list(/obj/item/CRIMSON_EARRINGS,/obj/item/GODLY_FLAME_GLOVES,/obj/item/GODLY_FLAME_BOOTS, /obj/item/SCOUTER/GODLY_FLAME_SCOUTER);
 				techniques = list(/Command/Technique/elbow,/Command/Technique/blast,/Command/Technique/shyouken,/Command/Technique/hammer,
 						/Command/Technique/uppercut,/Command/Technique/gekiretsu,/Command/Technique/kizan)
 

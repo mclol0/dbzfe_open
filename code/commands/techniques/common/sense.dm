@@ -18,6 +18,64 @@ Command/Technique
 				buffer[] = list()
 				direction;
 
+			if(istext(argument) && (lowertext(argument) == "on" || lowertext(argument) == "off" || lowertext(argument) == "status")) {
+				var/obj/item/i = user.equipment[EYE]
+				var/isAndroid = isAndroid(user)
+				var/hasPerception = user.hasSkill("perception")
+
+				var/msg_on = ""
+				var/msg_off = ""
+				var/msg_status_on = ""
+				var/msg_status_off = ""
+
+				if(isAndroid) {
+					msg_on = "You enable your internal power sensors."
+					msg_off = "You disable your internal power sensors."
+					msg_status_on = "Your internal power sensors are currently ON."
+					msg_status_off = "Your internal power sensors are currently OFF."
+				} else if(hasPerception) {
+					msg_on = "You focus your perception to sense power levels."
+					msg_off = "You relax your perception, no longer focusing on power levels."
+					msg_status_on = "Your perception is currently focused on sensing power levels."
+					msg_status_off = "Your perception is currently relaxed."
+				} else if(i && isScanner(i)) {
+					msg_on = "You activate [i.DISPLAY]."
+					msg_off = "You deactivate [i.DISPLAY]."
+					msg_status_on = "[i.DISPLAY] is currently ON."
+					msg_status_off = "[i.DISPLAY] is currently OFF."
+				} else {
+					send("You do not have a power level sensing device equipped.", user)
+					return
+				}
+					
+				if(lowertext(argument) == "on") {
+					user.sensePL = TRUE
+					send(msg_on, user)
+					return
+				} else if(lowertext(argument) == "off") {
+					user.sensePL = FALSE
+					send(msg_off, user)
+					return
+				} else if(lowertext(argument) == "status") {
+					if(user.sensePL)
+						send(msg_status_on, user)
+					else
+						send(msg_status_off, user)
+					return
+				}
+			}
+
+			if(istext(argument) && (lowertext(argument) == "number" || lowertext(argument) == "estimation")) {
+				if(lowertext(argument) == "number") {
+					user.sensePLMode = "number"
+					send("You will now see numeric power levels when possible.", user)
+				} else {
+					user.sensePLMode = "estimation"
+					send("You will now see qualitative estimations of power levels.", user)
+				}
+				return
+			}
+
 			if(user && istext(argument)){
 				if(TextMatch("north",argument,1,1)){
 					send("You gaze north.",user)
@@ -52,7 +110,7 @@ Command/Technique
 				for(var/mob/m in user.zMobs()){
 					if(a_get_dir(user,m) in argument){
 						if(!m.canSense(user)){ continue; }
-						buffer += format_text("[user.enCheck(m,TRUE)][user.checkSkill(m,TRUE)]<al26>[m.raceColor(m.name)]</a><al16>{D[uppertext(game.dir2text(a_get_dir(user,m)))]{x</a><al17>{D[coord(m:x,m:loc.loc:getMaxX())]{x.{D[coord(m:y,m:loc.loc:getMaxY())]{x</a><al32>([skillMasteryFormatSensePower(user, m)])</a>\n");
+						buffer += format_text("[user.enCheck(m,TRUE)][user.checkSkill(m,TRUE)]<al26>[m.raceColor(m.name)]</a><al16>{D[uppertext(game.dir2text(a_get_dir(user,m)))]{x</a><al17>{D[coord(m:x,m:loc.loc:getMaxX())]{x.{D[coord(m:y,m:loc.loc:getMaxY())]{x</a><al32>([formatSensePower(user, m)])</a>\n");
 						c++;
 					}
 				}
@@ -65,9 +123,9 @@ Command/Technique
 				if(!argument:canSense(user)){ syntax(user,getSyntax());;return FALSE}
 
 				if(user.loc == argument:loc){
-					buffer += "You sense [user.enCheck(argument)][user.checkSkill(argument)][argument:raceColor(argument:name)] ([skillMasteryFormatSensePower(user, argument)]) [game.dir2text(a_get_dir(user,argument))].\n"
+					buffer += "You sense [user.enCheck(argument)][user.checkSkill(argument)][argument:raceColor(argument:name)] ([formatSensePower(user, argument)]) [game.dir2text(a_get_dir(user,argument))].\n"
 				}else{
-					buffer += "You sense [user.enCheck(argument)][user.checkSkill(argument)][argument:raceColor(argument:name)] ([skillMasteryFormatSensePower(user, argument)]) to the [game.dir2text(a_get_dir(user,argument))].\n"
+					buffer += "You sense [user.enCheck(argument)][user.checkSkill(argument)][argument:raceColor(argument:name)] ([formatSensePower(user, argument)]) to the [game.dir2text(a_get_dir(user,argument))].\n"
 				}
 				send(implodetext(buffer,""),user)
 			}else{
@@ -75,7 +133,7 @@ Command/Technique
 
 				for(var/mob/m in user.zMobs()){
 					if(!m.canSense(user)){ continue; }
-					buffer += format_text("[user.enCheck(m,TRUE)][user.checkSkill(m,TRUE)]<al26>[m.raceColor(m.name)]</a><al16>{D[uppertext(game.dir2text(a_get_dir(user,m)))]{x</a><al17>{D[coord(m:x,m:loc.loc:getMaxX())]{x.{D[coord(m:y,m:loc.loc:getMaxY())]{x</a><al32>([skillMasteryFormatSensePower(user, m)])</a>\n");
+					buffer += format_text("[user.enCheck(m,TRUE)][user.checkSkill(m,TRUE)]<al26>[m.raceColor(m.name)]</a><al16>{D[uppertext(game.dir2text(a_get_dir(user,m)))]{x</a><al17>{D[coord(m:x,m:loc.loc:getMaxX())]{x.{D[coord(m:y,m:loc.loc:getMaxY())]{x</a><al32>([formatSensePower(user, m)])</a>\n");
 					c++;
 				}
 
@@ -84,6 +142,8 @@ Command/Technique
 				send(implodetext(buffer,""),user)
 			}
 
-			skillMasteryGainExp(user, "sense", 1)
+			if (!user.sensePL) {
+				skillMasteryGainExp(user, "sense", 1)
+			}
 			game.addCooldown(user.name,internal_name,cdTime);
 		}
