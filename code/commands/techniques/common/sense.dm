@@ -20,8 +20,6 @@ Command/Technique
 
 			if(istext(argument) && (lowertext(argument) == "on" || lowertext(argument) == "off" || lowertext(argument) == "status")) {
 				var/obj/item/i = user.equipment[EYE]
-				var/isAndroid = isAndroid(user)
-				var/hasPerception = user.hasSkill("perception")
 
 				var/msg_on = ""
 				var/msg_off = ""
