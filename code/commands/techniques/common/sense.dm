@@ -3,7 +3,7 @@ Command/Technique
 		name = "sense"
 		internal_name = "sense"
 		format = "~sense; ?!searc(mob@planet_all)|?~searc(mob@planet_all)|?any";
-		syntax = list("mobile | direction")
+		syntax = list("mobile | direction | on | off | status | number | estimation")
 		priority = 2
 		_maxDistance = 0;
 		iCommand = FALSE;
@@ -11,7 +11,7 @@ Command/Technique
 		canUseWhileRESTING = TRUE;
 		var/cdTime = 1 SECONDS;
 		helpCategory = "Utility"
-		helpDescription = "Sense the energy of a specific target, or of everyone in a given direction."
+		helpDescription = "Sense the energy of a specific target, or of everyone in a given direction. You can also toggle power level sensing, or change the mode of power level sensing."
 
 		command(mob/Player/user, argument) {
 			var
@@ -133,5 +133,5 @@ Command/Technique
 			if (!user.sensePL || user.sensePL && (isAndroid(user) || user.hasSkill("perception"))) {
 				skillMasteryGainExp(user, "sense", 1)
 			}
-			game.addCooldown(user.name,internal_name,cdTime);
+			game.addCooldown(user.name,internal_name,10 SECONDS);
 		}
