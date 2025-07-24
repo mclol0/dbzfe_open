@@ -138,6 +138,7 @@ proc/getPowerEstimation(mob/user, mob/target) {
 proc/formatSensePower(mob/user, mob/target) {
     var/power = target.currpl
     var/result = 0
+
     // If skill mastery is disabled, always use old system
     if(!game.settings.skillMasteryEnabled) {
         if(user.sensePL) {
@@ -147,11 +148,11 @@ proc/formatSensePower(mob/user, mob/target) {
         }
     } else {
         // If power level sensing is OFF, always use sense mastery (fuzzy number or estimation)
-        if(!user.sensePL) {
+        if(!user.sensePL || user.sensePL && (isAndroid(user) || user.hasSkill("perception"))) {
             var/exp = skillMasteryGetExp(user, "sense")
             var/level = skillMasteryGetLevel(exp)
             if(!isnum(power) || power <= 0) return "an unknown power"
-            if(level == 1)
+            if(level == 1 || user.sensePLMode == "estimation")
                 return getPowerEstimation(user, target)
             else if(level >= 2 && level <= 8)
                 var/fuzz = skillMasteryFuzzPercents[level] * 100

@@ -28,17 +28,7 @@ Command/Technique
 				var/msg_status_on = ""
 				var/msg_status_off = ""
 
-				if(isAndroid) {
-					msg_on = "You enable your internal power sensors."
-					msg_off = "You disable your internal power sensors."
-					msg_status_on = "Your internal power sensors are currently ON."
-					msg_status_off = "Your internal power sensors are currently OFF."
-				} else if(hasPerception) {
-					msg_on = "You focus your perception to sense power levels."
-					msg_off = "You relax your perception, no longer focusing on power levels."
-					msg_status_on = "Your perception is currently focused on sensing power levels."
-					msg_status_off = "Your perception is currently relaxed."
-				} else if(i && isScanner(i)) {
+				if(i && isScanner(i)) {
 					msg_on = "You activate [i.DISPLAY]."
 					msg_off = "You deactivate [i.DISPLAY]."
 					msg_status_on = "[i.DISPLAY] is currently ON."
@@ -142,7 +132,7 @@ Command/Technique
 				send(implodetext(buffer,""),user)
 			}
 
-			if (!user.sensePL) {
+			if (!user.sensePL || user.sensePL && (isAndroid(user) || user.hasSkill("perception"))) {
 				skillMasteryGainExp(user, "sense", 1)
 			}
 			game.addCooldown(user.name,internal_name,cdTime);

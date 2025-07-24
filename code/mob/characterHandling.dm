@@ -95,13 +95,17 @@ mob/cClient
 		m.visuals = params2list(rowData["visuals"])
 
 		for(var/x in load_equipment){
+			var/itemPath = text2path(load_equipment[x])
+			if (!itemPath) {
+				itemPath = migrateOldPath(load_equipment[x])
+			}
 
 			if(!isnum(text2num(x))){
-				var/obj/item/z = createItem(text2path(load_equipment[x]))
+				var/obj/item/z = createItem(itemPath)
 
 				if(z){ m.addInv(z); }
 			}else{
-				var/obj/item/z = createItem(text2path(load_equipment[x]))
+				var/obj/item/z = createItem(itemPath)
 
 				if(z){ m.equipment[text2num(x)] = z; }
 			}
@@ -144,7 +148,7 @@ mob/cClient
 			m.skillExp[x] = text2num(skillExp[x])
 		}
 
-		m.sensePL = ("sensePL" in load_variables) ? text2num(load_variables["sensePL"]) : TRUE
+		m.sensePL = ("sensePL" in load_variables) ? text2num(load_variables["sensePL"]) : isAndroid(m) || m.hasSkill("perception")
 		m.sensePLMode = ("sensePLMode" in load_variables) ? load_variables["sensePLMode"] : "number"
 
 		client.mob = m
@@ -262,3 +266,22 @@ mob/Player
 
 		return TRUE;
 	}
+
+// Mapping from old scouter paths to new ones
+var/list/pathMigration = list(
+    "/obj/item/SCOUTER" = "/obj/item/SCOUTER/GREEN_SCOUTER",
+    "/obj/item/RED_SCOUTER" = "/obj/item/SCOUTER/RED_SCOUTER",
+    "/obj/item/MASTER_ROSHIS_SUNGLASSES" = "/obj/item/SCOUTER/MASTER_ROSHIS_SUNGLASSES",
+    "/obj/item/GENERAL_TAO_POWER_GOGGLES" = "/obj/item/SCOUTER/GENERAL_TAO_POWER_GOGGLES",
+    "/obj/item/SHENRONS_LENSES_OF_WISDOM" = "/obj/item/SCOUTER/SHENRONS_LENSES_OF_WISDOM",
+    "/obj/item/PORUNGAS_LENSES_OF_DEFIANCE" = "/obj/item/SCOUTER/PORUNGAS_LENSES_OF_DEFIANCE",
+    "/obj/item/BLACK_STAR_LENSES_OF_MALICE" = "/obj/item/SCOUTER/BLACK_STAR_LENSES_OF_MALICE",
+    "/obj/item/GOLDEN_SCOUTER" = "/obj/item/SCOUTER/GOLDEN_SCOUTER",
+    "/obj/item/GODLY_FLAME_SCOUTER" = "/obj/item/SCOUTER/GODLY_FLAME_SCOUTER",
+    "/obj/item/RADITZS_SCOUTER_HEADPIECE" = "/obj/item/SCOUTER/RADITZS_SCOUTER_HEADPIECE"
+)
+
+proc/migrateOldPath(oldPath) {
+    var/newType = pathMigration[oldPath]
+    return newType ? newType : oldPath
+}
