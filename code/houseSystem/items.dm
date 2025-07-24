@@ -339,7 +339,13 @@ obj
 									for(var/C in dbContents) {
 										//find the : to split the path and the number to create
 										var/sep = findtext(C, ":")
-										var/objPath = text2path(copytext(C, 1, sep))
+										var/value = copytext(C, 1, sep)
+										var/objPath = text2path(value)
+
+										if (!objPath) {
+											objPath = migrateOldPath(value)
+										}
+
 										var/quantity = copytext(C, sep+1)
 
 										for(var/n = 0; n < text2num(quantity); n++) {

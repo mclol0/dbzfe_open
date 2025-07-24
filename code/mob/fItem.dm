@@ -154,6 +154,7 @@ obj/item/
 		CAN_GIVE = TRUE; //Can this item be given to someone else through the give command
 		CAN_SELL = TRUE; //Can this item be sold to NPC stores
 		SHOW_ITEMDB = TRUE;
+		SKIP_SHOP = FALSE //Should skip from any shop list
 
 	proc
 		onEquip(mob/m)
@@ -432,6 +433,7 @@ obj/item/
 
 	SCOUTER
 		var/SCOUTER_LEVEL = 2
+		SKIP_SHOP = TRUE // Need this because some old paths might still try to create this item. So it actually does create it but it should not
 
 		onEquip(mob/m) {
 			m.sensePL = TRUE
@@ -460,6 +462,7 @@ obj/item/
 		DROP_CHANCE = 25.00
 		PRICE = 500
 		SCOUTER_LEVEL = 1
+		SKIP_SHOP = FALSE
 
 	SCOUTER/RED_SCOUTER
 		EQUIPABLE = TRUE;
@@ -479,6 +482,7 @@ obj/item/
 		WEIGHT = 0.1
 		DROP_CHANCE = 7.00
 		PRICE = 2500
+		SKIP_SHOP = FALSE
 
 	WHITE_FUSION_BOOTS
 		EQUIPABLE = TRUE;
@@ -804,6 +808,7 @@ obj/item/
 		WEIGHT = 0.1
 		PRICE = 1000
 		SCOUTER_LEVEL = 1
+		SKIP_SHOP = FALSE
 
 	THE_THIRD_EYE
 		EQUIPABLE = TRUE;
@@ -1055,6 +1060,7 @@ obj/item/
 		DROP_CHANCE = 7.50
 		PRICE = 2500
 		SCOUTER_LEVEL = 1
+		SKIP_SHOP = FALSE
 	/*TAO SET END*/
 
 	DR_GERO_VEST
@@ -1208,6 +1214,7 @@ obj/item/
 		ANNOUNCE_DROP = TRUE
 		PRICE = 100000
 		var/active = TRUE
+		SKIP_SHOP = FALSE
 
 	BLACK_FUSION_BRACERS
 		EQUIPABLE = TRUE;
@@ -2780,6 +2787,7 @@ obj/item/
 		WEIGHT = 0.1
 		MISC = TRUE
 		CAN_SELL = FALSE
+		SKIP_SHOP = FALSE
 
 	SHENRONS_HOOPS //
 		EQUIPABLE = TRUE;
@@ -3022,6 +3030,7 @@ obj/item/
 		BONUS_MF = 250
 		MISC = TRUE;
 		CAN_SELL = FALSE
+		SKIP_SHOP = FALSE
 
 	PORUNGAS_GAUGES //
 		EQUIPABLE = TRUE;
@@ -3267,6 +3276,7 @@ obj/item/
 		MISC = TRUE;
 		CAN_SELL = FALSE
 		SCOUTER_LEVEL = 2
+		SKIP_SHOP = FALSE
 
 	BLACK_STAR_CHAINS //
 		EQUIPABLE = TRUE;
@@ -3548,6 +3558,7 @@ obj/item/
 		PRICE = 300000
 		ANNOUNCE_DROP = TRUE
 		NO_MYSTERY = TRUE
+		SKIP_SHOP = FALSE
 
 	NEO_TECH_BLINDFOLD
 		EQUIPABLE = TRUE;
@@ -3758,6 +3769,7 @@ obj/item/
 		MISC = TRUE;
 		PRICE = 350000
 		STOCK_SHOP = FALSE
+
 	SHADOW_BARRIER
 		EQUIPABLE = TRUE;
 		PREFIX = "an ";
@@ -4357,6 +4369,7 @@ obj/item/
 		WEIGHT = 0.5
 		DROP_CHANCE = 4.00
 		PRICE = 2500
+		SKIP_SHOP = FALSE
 
 	TURTLE_HERMIT_SHELL
 		EQUIPABLE = TRUE;

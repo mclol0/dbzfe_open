@@ -607,9 +607,13 @@ mob
 
 					while(q.NextRow()){
 						RowData = q.GetRowData();
-						var
-							item = text2path(RowData["item"]);
-							obj/item/i = new item;
+						var/item = text2path(RowData["item"]);
+
+						if (!item) {
+							item = migrateOldPath(RowData["item"])
+						}
+
+						var/obj/item/i = new item;
 
 						send("You obtain [i.PREFIX][i.DISPLAY]!",src,TRUE);
 						addInv(i);

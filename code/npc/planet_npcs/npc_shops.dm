@@ -13,7 +13,12 @@ proc
 		while(q.NextRow()){
 			RowData = q.GetRowData();
 
-			items.Add(list(text2path(RowData["ITEM"]) = "x[RowData["QUANTITY"]]"));
+			var/item = text2path(RowData["ITEM"])
+			if (!item) {
+				item = migrateOldPath(RowData["ITEM"])
+			}
+
+			items.Add(list(item = "x[RowData["QUANTITY"]]"));
 		}
 
 		return items;

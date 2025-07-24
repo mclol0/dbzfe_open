@@ -9,22 +9,34 @@ Shop
 			while(q.NextRow()){
 				RowData = q.GetRowData();
 
-				if(text2num(RowData["Infinite"])){
-					items.Add(list(text2path(RowData["ItemPath"]) = "#INF"));
-				}else{
-					var/itemPath = text2path(RowData["ItemPath"])
-					var/obj/item/I = new itemPath
-					if (I) {
-						if (!I.STOCK_SHOP) 
-						{
-							del I
-							continue
-						}
-					}
+				var/value = RowData["ItemPath"]
 
-					del I
-					items.Add(list(text2path(RowData["ItemPath"]) = "[RowData["Quantity"]]"));
+				var/itemPath = text2path(value)
+				if (!itemPath) {
+					itemPath = migrateOldPath(value)
 				}
+
+				var/obj/item/I = new itemPath
+
+				if (!I || I.SKIP_SHOP) {
+					del I
+					continue
+				}
+
+				if(text2num(RowData["Infinite"])){
+					items.Add(list(itemPath:type = "#INF"));
+					del I
+					continue
+				}
+
+				if (!I.STOCK_SHOP) 
+				{
+					del I
+					continue
+				}
+
+				del I
+				items.Add(list(itemPath:type = "[RowData["Quantity"]]"));
 			}
 
 			return items;

@@ -160,8 +160,6 @@ Command/Technique
 	}
 
 	command(mob/user, mob/target, isEnergy=FALSE, attkName=NULL,or=FALSE){
-		//if(!user && !target && tType in list(MELEE)){ . = FALSE; }
-
 		if(!istype(user,/mob/Player/Immortal) && game.checkCooldown(user.name,internal_name)){
 			send("You can't use [name] for another [num2text((game.coolDowns["([user.name])[internal_name]"] - world.time) / 10,3)] second(s)!",user)
 			return TRUE;

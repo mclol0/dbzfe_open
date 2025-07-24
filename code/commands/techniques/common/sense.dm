@@ -9,7 +9,7 @@ Command/Technique
 		iCommand = FALSE;
 		tType = UTILITY;
 		canUseWhileRESTING = TRUE;
-		var/cdTime = 1 SECONDS;
+		var/cdTime = 1.5 SECONDS;
 		helpCategory = "Utility"
 		helpDescription = "Sense the energy of a specific target, or of everyone in a given direction. You can also toggle power level sensing, or change the mode of power level sensing."
 
@@ -61,6 +61,11 @@ Command/Technique
 					user.sensePLMode = "estimation"
 					send("You will now see qualitative estimations of power levels.", user)
 				}
+				return
+			}
+
+			if (game.checkCooldown(user.name,internal_name)) {
+				send("You can't use [name] for another [num2text((game.coolDowns["([user.name])[internal_name]"] - world.time) / 10,3)] second(s)!",user)
 				return
 			}
 
@@ -133,5 +138,5 @@ Command/Technique
 			if (!user.sensePL || user.sensePL && (isAndroid(user) || user.hasSkill("perception"))) {
 				skillMasteryGainExp(user, "sense", 1)
 			}
-			game.addCooldown(user.name,internal_name,10 SECONDS);
+			game.addCooldown(user.name,internal_name,cdTime);
 		}

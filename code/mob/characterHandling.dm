@@ -119,6 +119,9 @@ mob/cClient
 			while(i.NextRow()){
 				data = i.GetRowData()
 				var/item = text2path(data["type"])
+				if (!item) {
+					item = migrateOldPath(data["type"])
+				}
 				var/obj/item/z = createItem(item)
 				if(z){
 					z.dBID = text2num(data["ID"]);
@@ -283,5 +286,5 @@ var/list/pathMigration = list(
 
 proc/migrateOldPath(oldPath) {
     var/newType = pathMigration[oldPath]
-    return newType ? newType : oldPath
+    return newType ? text2path(newType) : oldPath
 }
